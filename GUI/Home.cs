@@ -22,20 +22,21 @@ namespace QuanLyHoaDon.GUI
         {
             ChuHoBLL chuHoBLL = new ChuHoBLL();
             chuHoBLL.HienThiDanhSachChuHo(chuHoBLL.FullListChuHo(), listView1);
-            this.SizeListView();
+            this.SizeListView(listView1);
         }
 
         // Hàm chỉnh lại size của listview
-        private void SizeListView()
+        private void SizeListView(ListView l)
         {
-            int count=listView1.Columns.Count;  
-            int totalWith=listView1.Width;
-            int columnWith=totalWith/count;
-            foreach(ColumnHeader c in listView1.Columns )
+            int count=l.Columns.Count;  
+            int totalWith=l.Width;
+            int columnWith=totalWith/ count;
+            foreach (ColumnHeader c in l.Columns)
             {
                 c.Width = columnWith;
             }
-        }       
+            return;
+        }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -57,7 +58,7 @@ namespace QuanLyHoaDon.GUI
             chuHoBLL.AddChuHo(tBoxID.Text, tBoxName.Text, date, tBoxSex.Text, SDT.Text);
             listView1.Items.Clear();    
             chuHoBLL.HienThiDanhSachChuHo(chuHoBLL.FullListChuHo(), listView1);
-            this.SizeListView();
+            this.SizeListView(listView1);
             return;
         }
 
@@ -76,7 +77,7 @@ namespace QuanLyHoaDon.GUI
             chuHoBLL.UpdateChuHo(tBoxID.Text,tBoxName.Text,date, tBoxSex.Text,SDT.Text);
             listView1.Items.Clear();
             chuHoBLL.HienThiDanhSachChuHo(chuHoBLL.FullListChuHo(),listView1);
-            this.SizeListView();
+            this.SizeListView(listView1);
             return;
         }
 

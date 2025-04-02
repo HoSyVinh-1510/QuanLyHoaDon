@@ -415,7 +415,7 @@
             this.columnHeader10,
             this.columnHeader11});
             this.listView2.HideSelection = false;
-            this.listView2.Location = new System.Drawing.Point(9, 232);
+            this.listView2.Location = new System.Drawing.Point(8, 232);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(1028, 439);
             this.listView2.TabIndex = 0;
