@@ -151,12 +151,50 @@ namespace QuanLyHoaDon.GUI
             this.Show();
         }
 
-
-
         //HÓA ĐƠN ĐIỆN
         //HÓA ĐƠN ĐIỆN
 
 
+        private void button10_Click(object sender, EventArgs e)
+        {
+            if (textBox1.Text==null || textBox2.Text == null || textBox3.Text == null || textBox4.Text == null || comboBox2.SelectedItem == null ||comboBox3.SelectedItem==null )
+            {
+                MessageBox.Show("Không được để trống thông tin"); return;
+            }        
+            
+            HoaDonDien hoaDonDien = new HoaDonDien(comboBox2.SelectedItem.ToString(), textBox4.Text, DateTime.Parse(textBox3.Text),float.Parse( textBox2.Text), float.Parse(textBox2.Text), comboBox3.SelectedItem.ToString());
+            HoaDonDienDAL hoaDonDienDAL = new HoaDonDienDAL();
+            hoaDonDienDAL.AddHoaDonDien(hoaDonDien.Phong, hoaDonDien.TenChuHo, hoaDonDien.NgayLapHoaDon, hoaDonDien.SoDienCu, hoaDonDien.SoDienMoi, hoaDonDien.ThanhTien, hoaDonDien.TrangThai);
+            listView2.Items.Clear();
+            HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
+            hoaDonDienBLL.HienThiToanBoHoaDonDien(hoaDonDienBLL.AllHoaDonDien(),listView2);
+            textBox1.Text = null;
+            textBox2.Text = null;
+            textBox3.Text = null;
+            textBox4.Text = null;
+            comboBox2.SelectedItem = null;
+            comboBox3.SelectedItem = null;
+            return;
+        }
 
+        private void comboBox2_Click(object sender, EventArgs e)
+        {
+            comboBox2.Items.Clear();
+            ChuHoBLL chuHoBLL = new ChuHoBLL();
+            foreach (ListViewItem item in listView1.Items)
+            {
+                comboBox2.Items.Add(item.SubItems[0].Text);
+            }
+            return;
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach(ListViewItem item in listView1.Items)
+            {
+                if (item.SubItems[0].Text == comboBox2.SelectedItem.ToString())
+                { textBox4.Text = item.SubItems[1].Text; return; }
+            }
+        }
     }
 }
