@@ -19,10 +19,14 @@ namespace QuanLyHoaDon.GUI
             InitializeComponent();
         }
         private void Home_Load(object sender, EventArgs e)
-        {
+        {   //Tab thông tin chủ hộ
             ChuHoBLL chuHoBLL = new ChuHoBLL();
             chuHoBLL.HienThiDanhSachChuHo(chuHoBLL.FullListChuHo(), listView1);
             this.SizeListView(listView1);
+            // Tab Hóa đơn điện
+            HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
+            hoaDonDienBLL.HienThiToanBoHoaDonDien(hoaDonDienBLL.AllHoaDonDien(), listView2);
+            this.SizeListView(listView2);
         }
 
         // Hàm chỉnh lại size của listview
@@ -42,6 +46,9 @@ namespace QuanLyHoaDon.GUI
         {
 
         }
+
+        // THÔNG TIN CHỦ HỘ TAB
+        // THÔNG TIN CHỦ HỘ TAB
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -125,5 +132,8 @@ namespace QuanLyHoaDon.GUI
 
         //HÓA ĐƠN ĐIỆN
         //HÓA ĐƠN ĐIỆN
+
+
+
     }
 }
