@@ -162,7 +162,7 @@ namespace QuanLyHoaDon.GUI
                 MessageBox.Show("Không được để trống thông tin"); return;
             }        
             
-            HoaDonDien hoaDonDien = new HoaDonDien(comboBox2.SelectedItem.ToString(), textBox4.Text, DateTime.Parse(textBox3.Text),float.Parse( textBox2.Text), float.Parse(textBox2.Text), comboBox3.SelectedItem.ToString());
+            HoaDonDien hoaDonDien = new HoaDonDien(comboBox2.SelectedItem.ToString(), textBox4.Text, DateTime.Parse(textBox3.Text),float.Parse( textBox2.Text), float.Parse(textBox1.Text), comboBox3.SelectedItem.ToString());
             HoaDonDienDAL hoaDonDienDAL = new HoaDonDienDAL();
             hoaDonDienDAL.AddHoaDonDien(hoaDonDien.Phong, hoaDonDien.TenChuHo, hoaDonDien.NgayLapHoaDon, hoaDonDien.SoDienCu, hoaDonDien.SoDienMoi, hoaDonDien.ThanhTien, hoaDonDien.TrangThai);
             listView2.Items.Clear();
@@ -189,12 +189,46 @@ namespace QuanLyHoaDon.GUI
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            foreach(ListViewItem item in listView1.Items)
-            {
-                if (item.SubItems[0].Text == comboBox2.SelectedItem.ToString())
-                { textBox4.Text = item.SubItems[1].Text; return; }
+        {           
+            if (comboBox2.SelectedItem == null) return;
+            foreach (ListViewItem item in listView1.Items)
+            {             
+                if ( item.SubItems[0].Text == comboBox2.SelectedItem.ToString())
+                { textBox4.Text = item.SubItems[1].Text; break;  }
+                return;
             }
+            
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
+            hoaDonDienBLL.HienThiToanBoHoaDonDien(hoaDonDienBLL.AllHoaDonDien(),listView2);
+            return;
+        }
+
+        private void listView2_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            
+        }
+
+        private void listView2_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            MessageBox.Show("thuộc tính check của item!");
+        }
+
+        private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (comboBox2.SelectedIndex == -1) return;
+            foreach (ListViewItem item in listView1.Items)
+            {
+                if (item.SubItems[0].Text.Equals(comboBox2.SelectedItem.ToString())) { textBox4.Text = item.SubItems[1].Text; return; }
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

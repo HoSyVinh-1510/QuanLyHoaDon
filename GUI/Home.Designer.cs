@@ -65,6 +65,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
@@ -92,7 +93,6 @@
             this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button6 = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.listView3 = new System.Windows.Forms.ListView();
             this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -433,7 +433,6 @@
             // 
             this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Controls.Add(this.listView2);
-            this.tabPage2.Controls.Add(this.button6);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -446,6 +445,7 @@
             // 
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Controls.Add(this.textBox8);
+            this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.textBox7);
@@ -477,21 +477,33 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(153, 24);
             this.comboBox2.TabIndex = 27;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.comboBox2.SelectedValueChanged += new System.EventHandler(this.comboBox2_SelectedValueChanged);
             this.comboBox2.Click += new System.EventHandler(this.comboBox2_Click);
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(17, 334);
+            this.textBox8.Location = new System.Drawing.Point(17, 312);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(153, 22);
             this.textBox8.TabIndex = 26;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.SystemColors.Info;
+            this.button6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button6.Location = new System.Drawing.Point(22, 387);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(132, 49);
+            this.button6.TabIndex = 17;
+            this.button6.Text = "Show Full Again";
+            this.button6.UseVisualStyleBackColor = false;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label14.Location = new System.Drawing.Point(193, 337);
+            this.label14.Location = new System.Drawing.Point(193, 315);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(78, 19);
             this.label14.TabIndex = 25;
@@ -501,7 +513,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label5.Location = new System.Drawing.Point(203, 300);
+            this.label5.Location = new System.Drawing.Point(197, 287);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 19);
             this.label5.TabIndex = 24;
@@ -509,7 +521,7 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(17, 297);
+            this.textBox7.Location = new System.Drawing.Point(17, 284);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(153, 22);
             this.textBox7.TabIndex = 23;
@@ -548,7 +560,7 @@
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button7.Location = new System.Drawing.Point(174, 373);
+            this.button7.Location = new System.Drawing.Point(170, 350);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(101, 31);
             this.button7.TabIndex = 16;
@@ -608,7 +620,7 @@
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button8.Location = new System.Drawing.Point(34, 373);
+            this.button8.Location = new System.Drawing.Point(33, 350);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(88, 31);
             this.button8.TabIndex = 7;
@@ -624,6 +636,7 @@
             this.button9.TabIndex = 6;
             this.button9.Text = "Sửa";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -677,12 +690,15 @@
             this.listView2.FullRowSelect = true;
             this.listView2.GridLines = true;
             this.listView2.HideSelection = false;
+            this.listView2.HoverSelection = true;
             this.listView2.Location = new System.Drawing.Point(8, 229);
             this.listView2.Name = "listView2";
             this.listView2.Size = new System.Drawing.Size(866, 439);
             this.listView2.TabIndex = 0;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
+            this.listView2.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.listView2_ItemCheck);
+            this.listView2.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView2_ItemSelectionChanged);
             // 
             // columnHeader18
             // 
@@ -711,17 +727,6 @@
             // columnHeader11
             // 
             this.columnHeader11.Text = "TrangThai";
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.SystemColors.Info;
-            this.button6.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button6.Location = new System.Drawing.Point(8, 174);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(100, 49);
-            this.button6.TabIndex = 17;
-            this.button6.Text = "Show Full Again";
-            this.button6.UseVisualStyleBackColor = false;
             // 
             // tabPage3
             // 
