@@ -122,5 +122,8 @@ namespace QuanLyHoaDon.GUI
             ChuHoBLL chuHoBLL = new ChuHoBLL();
             chuHoBLL.HienThiDanhSachChuHo(chuHoBLL.FullListChuHo(),listView1);
         }
+
+        //HÓA ĐƠN ĐIỆN
+        //HÓA ĐƠN ĐIỆN
     }
 }

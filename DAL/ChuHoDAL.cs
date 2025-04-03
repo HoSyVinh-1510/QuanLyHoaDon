@@ -68,8 +68,7 @@ namespace QuanLyHoaDon.DAL
             cn.OpenConnect();
             string query = "DELETE ChuHo WHERE MaChuHo= @name";
             SqlCommand cmd = new SqlCommand(query, cn.connect);
-            cmd.Parameters.AddWithValue("@name",name);
-            SqlDataReader reader = cmd.ExecuteReader();                      
+            cmd.Parameters.AddWithValue("@name",name);                     
             cn.CloseConnect();
             return;
 
