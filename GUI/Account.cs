@@ -29,6 +29,7 @@ namespace QuanLyHoaDon.GUI
                 textBox2.UseSystemPasswordChar = false;
             }
             else  textBox2.UseSystemPasswordChar= true;
+            return;
         }
     }
 }
