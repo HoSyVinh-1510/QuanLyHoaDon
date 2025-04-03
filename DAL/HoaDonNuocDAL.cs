@@ -2,7 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,22 +9,22 @@ using System.Windows.Forms;
 
 namespace QuanLyHoaDon.DAL
 {
-    internal class HoaDonDienDAL
+    internal class HoaDonNuocDAL
     {
-        public HoaDonDienDAL() { }
+        public HoaDonNuocDAL() { }
 
         // Trả về toàn bộ danh sách hóa đơn điện trong sql
-        public List<HoaDonDien> FullListHoaDonDien()
+        public List<HoaDonNuoc> FullListHoaDonNuoc()
         {
-            List<HoaDonDien> listChuHo = new List<HoaDonDien>();
+            List<HoaDonNuoc> listChuHo = new List<HoaDonNuoc>();
             Connect connect = new Connect();
             connect.OpenConnect();
-            string query = "SELECT * FROM HoaDonDien";
+            string query = "SELECT * FROM HoaDonNuoc";
             SqlCommand cmd = new SqlCommand(query, connect.connect);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                HoaDonDien hoaDon = new HoaDonDien(reader.GetString(0), reader.GetString(1), reader.GetDateTime(2), ((float)reader.GetDecimal(3)), ((float)reader.GetDecimal(4)), reader.GetString(6));
+                HoaDonNuoc hoaDon = new HoaDonNuoc(reader.GetString(0), reader.GetString(1), reader.GetDateTime(2), ((float)reader.GetDecimal(3)), ((float)reader.GetDecimal(4)), reader.GetString(6));
 
                 listChuHo.Add(hoaDon);
             }
@@ -34,18 +33,18 @@ namespace QuanLyHoaDon.DAL
         }
 
         // tìm kiếm hóa đơn theo phòng
-        public List<HoaDonDien> Find(string phong)
+        public List<HoaDonNuoc> Find(string phong, DateTime date)
         {
-            List<HoaDonDien> listChuHo = new List<HoaDonDien>();
+            List<HoaDonNuoc> listChuHo = new List<HoaDonNuoc>();
             Connect cn = new Connect();
             cn.OpenConnect();
-            string query = "SELECT * FROM HoaDonDien WHERE Phong= @name";
+            string query = "SELECT * FROM HoaDonNuoc WHERE Phong= @name";
             SqlCommand cmd = new SqlCommand(query, cn.connect);
             cmd.Parameters.AddWithValue("@name", phong);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                HoaDonDien hd = new HoaDonDien(reader.GetString(0), reader.GetString(1), reader.GetDateTime(2), ((float)reader.GetDecimal(3)), ((float)reader.GetDecimal(4)), reader.GetString(6));
+                HoaDonNuoc hd = new HoaDonNuoc(reader.GetString(0), reader.GetString(1), reader.GetDateTime(2), ((float)reader.GetDecimal(3)), ((float)reader.GetDecimal(4)), reader.GetString(6));
                 listChuHo.Add(hd);
             }
             cn.CloseConnect();
@@ -53,20 +52,21 @@ namespace QuanLyHoaDon.DAL
         }
 
         // Hàm xóa hóa đơn điện
-        public void DeleteHoaDonDien(string phong, DateTime date)
+        public void DeleteHoaDonNuoc(string phong, DateTime date)
         {
             Connect cn = new Connect();
             cn.OpenConnect();
-            string query = "DELETE HoaDonDien WHERE Phong=@phong AND NgayLapHoaDon=@date";
+            string query = "DELETE HoaDonNuoc WHERE Phong=@phong AND NgayLapHoaDon=@date";
             SqlCommand cmd = new SqlCommand(query, cn.connect);
-            cmd.Parameters.AddWithValue("@phong",phong);
-            cmd.Parameters.AddWithValue("@date",date);
+            cmd.Parameters.AddWithValue("@phong", phong);
+            cmd.Parameters.AddWithValue("@date", date);
             if (cmd.ExecuteNonQuery() <= 0)
             {
                 MessageBox.Show("Không thể xóa");
                 return;
             }
-            else {
+            else
+            {
                 MessageBox.Show("Xóa hóa đơn thành công");
             }
             cn.CloseConnect();
@@ -74,13 +74,11 @@ namespace QuanLyHoaDon.DAL
         }
         // Hàm cập nhật hóa đơn điện
 
-        public void UpdateHoaDonDien(string a0, string a1, DateTime a2, float a3, float a4, float a5, string a6)
+        public void UpdateHoaDonNuoc(string a0, string a1, DateTime a2, float a3, float a4, float a5, string a6)
         {
             Connect connect = new Connect();
             connect.OpenConnect();
-            try
-            {
-                string query = "UPDATE HoaDonDien SET TenChuHo=@a1, SoDienCu=@a3, SoDienMoi=@a4, ThanhTien=@a5, TrangThai=@a6 WHERE (Phong=@a0 AND NgayLapHoaDon=@a2)";
+                string query = "UPDATE HoaDonNuoc SET TenChuHo=@a1, SoDienCu=@a3, SoDienMoi=@a4, ThanhTien=@a5, TrangThai=@a6 WHERE (Phong=@a0 AND NgayLapHoaDon=@a2)";
                 SqlCommand cmd = new SqlCommand(query, connect.connect);
                 cmd.Parameters.AddWithValue("@a0", a0);
                 cmd.Parameters.AddWithValue("@a1", a1);
@@ -98,24 +96,17 @@ namespace QuanLyHoaDon.DAL
                 else
                 {
                     MessageBox.Show("Cập nhật dữ liệu thành công!");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi: " + ex.Message);
-            }
-            finally
-            {
+                }           
                 connect.CloseConnect();
-            }
+            
         }
 
         // hàm thêm hóa đơn điện
-        public void AddHoaDonDien(string a0, string a1, DateTime a2, float a3, float a4, float a5, string a6)
+        public void AddHoaDonNuoc(string a0, string a1, DateTime a2, float a3, float a4, float a5, string a6)
         {
             Connect connect = new Connect();
             connect.OpenConnect();
-            string query = "SELECT COUNT(*) FROM HoaDonDien where (Phong=@a0 AND NgayLapHoaDon=@a2)";
+            string query = "SELECT * FROM HoaDonNuoc where (Phong=@a0 AND NgayLapHoaDon=@a2)";
             SqlCommand cmd1 = new SqlCommand(query, connect.connect);
             cmd1.Parameters.AddWithValue("@a0", a0);
             cmd1.Parameters.AddWithValue("@a2", a2);
@@ -128,7 +119,7 @@ namespace QuanLyHoaDon.DAL
             }
             else
             {
-                query = "INSERT INTO HoaDonDien VALUES (@a0,@a1,@a2,@a3,@a4,@a5,@a6)";
+                query = "INSERT INTO HoaDonNuoc VALUES (@a0,@a1,@a2,@a3,@a4,@a5,@a6)";
                 SqlCommand cmd = new SqlCommand(query, connect.connect);
                 cmd.Parameters.AddWithValue("@a0", a0);
                 cmd.Parameters.AddWithValue("@a1", a1);

@@ -63,6 +63,8 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button11 = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
@@ -101,9 +103,7 @@
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.button11 = new System.Windows.Forms.Button();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -445,9 +445,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.comboBox4);
             this.panel2.Controls.Add(this.button11);
             this.panel2.Controls.Add(this.textBox6);
-            this.panel2.Controls.Add(this.textBox5);
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Controls.Add(this.button6);
             this.panel2.Controls.Add(this.label14);
@@ -472,6 +472,25 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(294, 439);
             this.panel2.TabIndex = 2;
+            // 
+            // button11
+            // 
+            this.button11.BackColor = System.Drawing.SystemColors.Info;
+            this.button11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button11.Location = new System.Drawing.Point(175, 384);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(109, 42);
+            this.button11.TabIndex = 30;
+            this.button11.Text = "Xóa bộ lọc tìm kiếm";
+            this.button11.UseVisualStyleBackColor = false;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(22, 315);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(153, 22);
+            this.textBox6.TabIndex = 29;
             // 
             // comboBox2
             // 
@@ -549,12 +568,13 @@
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button7.Location = new System.Drawing.Point(170, 350);
+            this.button7.Location = new System.Drawing.Point(181, 343);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(101, 31);
             this.button7.TabIndex = 16;
             this.button7.Text = "Tìm Kiếm";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label7
             // 
@@ -687,8 +707,6 @@
             this.listView2.TabIndex = 0;
             this.listView2.UseCompatibleStateImageBehavior = false;
             this.listView2.View = System.Windows.Forms.View.Details;
-            this.listView2.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.listView2_ItemCheck);
-            this.listView2.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listView2_ItemSelectionChanged);
             this.listView2.DoubleClick += new System.EventHandler(this.listView2_DoubleClick);
             // 
             // columnHeader18
@@ -777,31 +795,13 @@
             // 
             this.columnHeader19.Text = "TrangThai";
             // 
-            // textBox5
+            // comboBox4
             // 
-            this.textBox5.Location = new System.Drawing.Point(22, 287);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(153, 22);
-            this.textBox5.TabIndex = 28;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(22, 315);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(153, 22);
-            this.textBox6.TabIndex = 29;
-            // 
-            // button11
-            // 
-            this.button11.BackColor = System.Drawing.SystemColors.Info;
-            this.button11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button11.Location = new System.Drawing.Point(170, 387);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(109, 42);
-            this.button11.TabIndex = 30;
-            this.button11.Text = "Xóa bộ lọc tìm kiếm";
-            this.button11.UseVisualStyleBackColor = false;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(22, 284);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(153, 24);
+            this.comboBox4.TabIndex = 31;
             // 
             // Home
             // 
@@ -905,7 +905,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.ComboBox comboBox4;
     }
 }

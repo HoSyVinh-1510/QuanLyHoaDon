@@ -48,13 +48,16 @@
   <ItemGroup>
     <Compile Include="BLL\ChuHoBLL.cs" />
     <Compile Include="BLL\HoaDonDienBLL.cs" />
+    <Compile Include="BLL\HoaDonNuocBLL.cs" />
     <Compile Include="BLL\LogInBLL.cs" />
     <Compile Include="DAL\ChuHoDAL.cs" />
     <Compile Include="DAL\HoaDonDienDAL.cs" />
+    <Compile Include="DAL\HoaDonNuocDAL.cs" />
     <Compile Include="DAL\LogInDAL.cs" />
     <Compile Include="DAL\OpenConnect.cs" />
     <Compile Include="DTO\ChuHo.cs" />
     <Compile Include="DTO\HoaDonDien.cs" />
+    <Compile Include="DTO\HoaDonNuoc.cs" />
     <Compile Include="DTO\LogIn.cs" />
     <Compile Include="GUI\Account.cs">
       <SubType>Form</SubType>

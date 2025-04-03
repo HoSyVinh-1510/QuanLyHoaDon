@@ -22,6 +22,7 @@ namespace QuanLyHoaDon.BLL
 
         public void HienThiToanBoHoaDonDien(List<HoaDonDien> list0, ListView list1)
         {
+            list1.Items.Clear();
             foreach (HoaDonDien hd in list0)
             {
                 ListViewItem item = new ListViewItem(hd.Phong);
@@ -37,10 +38,10 @@ namespace QuanLyHoaDon.BLL
         }
 
         // Hàm trả về hóa đơn điện theo tên, và ngày lập hóa đơn
-        public List<HoaDonDien> Find(string phong, DateTime date)
+        public List<HoaDonDien> Find(string phong)
         {
             HoaDonDienDAL hoaDonDienDAL= new HoaDonDienDAL();
-            return hoaDonDienDAL.Find(phong, date);
+            return hoaDonDienDAL.Find(phong);
         }
 
         // Hàm xóa hóa đơn điện

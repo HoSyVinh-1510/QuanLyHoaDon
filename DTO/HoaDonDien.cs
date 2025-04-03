@@ -33,7 +33,7 @@ namespace QuanLyHoaDon.DTO
             float c = a5 - a4;
             if (c <= 50) { this.ThanhTien = (float)(c * 1.8); return; }
             else if (c <= 100) { this.ThanhTien = (float)((c-50)*2+50*1.8); return; }
-            else if (c<=200) { this.ThanhTien = (float)(50 * 1.8+50*2+(c-200)*2.5); return; }
+            else if (c<=200) { this.ThanhTien = (float)(50 * 1.8+50*2+(c-100)*2.5); return; }
             else { this.ThanhTien = (float)(50 * 1.8 + 50 * 2 + 100 * 2.5+(c-200)*3); return; }
          }
 
