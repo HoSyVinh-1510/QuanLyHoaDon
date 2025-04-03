@@ -38,10 +38,10 @@ namespace QuanLyHoaDon.BLL
         }
 
         // Hàm trả về hóa đơn nước theo tên, và ngày lập hóa đơn
-        public List<HoaDonNuoc> Find(string phong, DateTime date)
+        public List<HoaDonNuoc> Find(string phong)
         {
             HoaDonNuocDAL hoaDonDienDAL = new HoaDonNuocDAL();
-            return hoaDonDienDAL.Find(phong, date);
+            return hoaDonDienDAL.Find(phong);
         }
 
         // Hàm xóa hóa đơn nước

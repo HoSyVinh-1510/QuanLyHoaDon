@@ -33,7 +33,7 @@ namespace QuanLyHoaDon.DAL
         }
 
         // tìm kiếm hóa đơn theo phòng
-        public List<HoaDonNuoc> Find(string phong, DateTime date)
+        public List<HoaDonNuoc> Find(string phong)
         {
             List<HoaDonNuoc> listChuHo = new List<HoaDonNuoc>();
             Connect cn = new Connect();

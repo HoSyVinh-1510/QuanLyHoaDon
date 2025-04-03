@@ -27,6 +27,9 @@ namespace QuanLyHoaDon.GUI
             HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
             hoaDonDienBLL.HienThiToanBoHoaDonDien(hoaDonDienBLL.AllHoaDonDien(), listView2);
             this.SizeListView(listView2);
+            HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
+            hoaDonNuocBLL.HienThiToanBoHoaDonNuoc(hoaDonNuocBLL.AllHoaDonNuoc(),listView3);
+                this.SizeListView(listView3);
         }
 
         // Hàm chỉnh lại size của listview
@@ -153,7 +156,7 @@ namespace QuanLyHoaDon.GUI
         //HÓA ĐƠN ĐIỆN
         //HÓA ĐƠN ĐIỆN
 
-
+        //hàm thêm
         private void button10_Click(object sender, EventArgs e)
         {
             if (textBox1.Text==null || textBox2.Text == null || textBox3.Text == null || textBox4.Text == null || comboBox2.SelectedItem == null ||comboBox3.SelectedItem==null )
@@ -165,48 +168,30 @@ namespace QuanLyHoaDon.GUI
             hoaDonDienDAL.AddHoaDonDien(hoaDonDien.Phong, hoaDonDien.TenChuHo, hoaDonDien.NgayLapHoaDon, hoaDonDien.SoDienCu, hoaDonDien.SoDienMoi, hoaDonDien.ThanhTien, hoaDonDien.TrangThai);
             HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
             hoaDonDienBLL.HienThiToanBoHoaDonDien(hoaDonDienBLL.AllHoaDonDien(),listView2);
-            textBox1.Text = null;
-            textBox2.Text = null;
-            textBox3.Text = null;
-            textBox4.Text = null;
-            comboBox2.SelectedItem = null;
-            comboBox3.SelectedItem = null;
             return;
         }
 
+        // Hàm hiển thị comboBox Phòng
         private void comboBox2_Click(object sender, EventArgs e)
         {
             comboBox2.Items.Clear();
             ChuHoBLL chuHoBLL = new ChuHoBLL();
             foreach (ListViewItem item in listView1.Items)
             {
-                comboBox2.Items.Add(item.SubItems[0].Text);
-                
+                comboBox2.Items.Add(item.SubItems[0].Text);               
             }
             return;
         }
 
-        private void comboBox4_Click(object sender, EventArgs e)
-        {
-            comboBox4.Items.Clear();
-            ChuHoBLL chuHoBLL = new ChuHoBLL();
-            foreach (ListViewItem item in listView1.Items)
-            {
-                
-                comboBox4.Items.Add(item.SubItems[0].Text);
-            }
-            return;
-        }
-
-
+        // Button showfullagain
         private void button6_Click(object sender, EventArgs e)
         {
-            listView2.Items.Clear ();
             HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
             hoaDonDienBLL.HienThiToanBoHoaDonDien(hoaDonDienBLL.AllHoaDonDien(),listView2);
             return;
         }
      
+        // Hàm hiên thị tên chủ phòng theo lựa chọn của comboBox
         private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
         {
             if (comboBox2.SelectedIndex == -1) return;
@@ -214,18 +199,32 @@ namespace QuanLyHoaDon.GUI
             {
                 if (item.SubItems[0].Text.Equals(comboBox2.SelectedItem.ToString())) { textBox4.Text = item.SubItems[1].Text; return; }
             }
-        }        
+        }
+       
+        // Hàm hiên thị tên chủ phòng theo lựa chọn của comboBox
+        private void comboBox4_Click_1(object sender, EventArgs e)
+        {
+            comboBox4.Items.Clear();
+            ChuHoBLL chuHoBLL = new ChuHoBLL();
+            foreach (ListViewItem item in listView1.Items)
+            {
+                comboBox4.Items.Add(item.SubItems[0].Text);
+            }
+            return;
+        }
+
+        // Hàm sửa hóa đơn điện
         private void button9_Click(object sender, EventArgs e)
         {         
             HoaDonDien hoaDonDien = new HoaDonDien(comboBox2.Text, textBox4.Text, DateTime.Parse(textBox3.Text), float.Parse(textBox2.Text), float.Parse(textBox1.Text), comboBox3.Text);
             HoaDonDienDAL hoaDonDienDAL = new HoaDonDienDAL();
             hoaDonDienDAL.UpdateHoaDonDien(hoaDonDien.Phong, hoaDonDien.TenChuHo, hoaDonDien.NgayLapHoaDon, hoaDonDien.SoDienCu, hoaDonDien.SoDienMoi, hoaDonDien.ThanhTien, hoaDonDien.TrangThai);
-            listView2.Items.Clear();
             HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
             hoaDonDienBLL.HienThiToanBoHoaDonDien(hoaDonDienBLL.AllHoaDonDien(), listView2);           
             return;
         }
 
+        // Ấn 2 lần vào list 2 để lấy thông tin
         private void listView2_DoubleClick(object sender, EventArgs e)
         {
             if (listView2.SelectedItems.Count > 0)
@@ -246,7 +245,7 @@ namespace QuanLyHoaDon.GUI
         {
 
         }
-
+        // hàm xóa
         private void button8_Click(object sender, EventArgs e)
         {
             HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
@@ -255,19 +254,20 @@ namespace QuanLyHoaDon.GUI
             return;
         }
 
+        // Button Xóa bộ lọc tìm kiếm
         private void button11_Click(object sender, EventArgs e)
         {
             textBox1.Text = null;
             textBox2.Text = null;
             textBox3.Text = null;
             textBox4.Text = null;
-            comboBox4.Text = null;
+            comboBox4.Text = null; comboBox4.SelectedItem = null;
             textBox6.Text = null;
-            comboBox2.Text = null;
-            comboBox3.Text = null;
-
+            comboBox2.Text = null; comboBox2.SelectedItem = null;
+            comboBox3.Text = null; comboBox3.SelectedItem = null;
         }
 
+        // Hàm tìm kiếm
         private void button7_Click(object sender, EventArgs e)
         {
             if (comboBox4.SelectedItem==null)
@@ -279,5 +279,136 @@ namespace QuanLyHoaDon.GUI
             hoaDonDienBLL.HienThiToanBoHoaDonDien(hoaDonDienBLL.Find(comboBox4.SelectedItem.ToString()),listView2);
             return ;
         }
+
+
+
+
+
+
+        // HÓA ĐƠN NƯỚC
+        // HÓA ĐƠN NƯỚC
+
+        // Hàm thêm
+        private void button17_Click(object sender, EventArgs e)
+        {
+            if (textBoxchuHo.Text==null || textBoxNgayLap.Text == null || textBoxSoCu.Text == null || textBoxSoMoi.Text == null || comboBoxPhong.SelectedItem == null ||comboBoxState.SelectedItem==null )
+            {
+                MessageBox.Show("Không được để trống thông tin"); return;
+            }                   
+            HoaDonNuoc hoaDonNuoc = new HoaDonNuoc(comboBoxPhong.Text, textBoxchuHo.Text, DateTime.Parse(textBoxNgayLap.Text),float.Parse( textBoxSoCu.Text), float.Parse(textBoxSoMoi.Text), comboBoxState.Text);
+            HoaDonNuocDAL hoaDonNuocDAL = new HoaDonNuocDAL();
+            hoaDonNuocDAL.AddHoaDonNuoc(hoaDonNuoc.Phong, hoaDonNuoc.TenChuHo, hoaDonNuoc.NgayLapHoaDon, hoaDonNuoc.SoNuocCu, hoaDonNuoc.SoNuocMoi, hoaDonNuoc.ThanhTien, hoaDonNuoc.TrangThai);
+            HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
+            hoaDonNuocBLL.HienThiToanBoHoaDonNuoc(hoaDonNuocBLL.AllHoaDonNuoc(),listView3);
+            return;
+        }
+
+        // Hàm sửa hóa đơn nước
+        private void button16_Click(object sender, EventArgs e)
+        {
+            HoaDonNuoc hoaDonNuoc = new HoaDonNuoc(comboBoxPhong.Text, textBoxchuHo.Text, DateTime.Parse(textBoxNgayLap.Text), float.Parse(textBoxSoCu.Text), float.Parse(textBoxSoMoi.Text), comboBoxState.Text);
+            HoaDonNuocDAL hoaDonNuocDAL = new HoaDonNuocDAL();
+            hoaDonNuocDAL.UpdateHoaDonNuoc(hoaDonNuoc.Phong, hoaDonNuoc.TenChuHo, hoaDonNuoc.NgayLapHoaDon, hoaDonNuoc.SoNuocCu, hoaDonNuoc.SoNuocMoi, hoaDonNuoc.ThanhTien, hoaDonNuoc.TrangThai);
+            HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
+            hoaDonNuocBLL.HienThiToanBoHoaDonNuoc(hoaDonNuocBLL.AllHoaDonNuoc(), listView3);
+            return;
+        }
+
+
+        // Hàm xóa hóa đơn nước
+        private void button15_Click(object sender, EventArgs e)
+        {
+            HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
+            hoaDonNuocBLL.DeleteHoaDonNuoc(comboBoxPhong1.Text, DateTime.Parse(textBoxNgayLap1.Text));
+            hoaDonNuocBLL.HienThiToanBoHoaDonNuoc(hoaDonNuocBLL.AllHoaDonNuoc(), listView3);
+            return;
+        }
+
+        // Hàm tìm kiếm hóa đơn nước
+        private void button14_Click(object sender, EventArgs e)
+        {
+            if (comboBoxPhong1.SelectedItem == null)
+            {
+                MessageBox.Show("Chọn phòng để hiển thị");
+                return;
+            }
+            HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
+            hoaDonNuocBLL.HienThiToanBoHoaDonNuoc(hoaDonNuocBLL.Find(comboBoxPhong1.SelectedItem.ToString()), listView3);
+            return;
+        }
+
+
+        // hàm show lại listview3
+        private void button13_Click(object sender, EventArgs e)
+        {
+            HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
+            hoaDonNuocBLL.HienThiToanBoHoaDonNuoc(hoaDonNuocBLL.AllHoaDonNuoc(),listView3);
+            return;
+        }
+
+        // hàm xóa bộ lọc tìm kiếm
+        private void button12_Click(object sender, EventArgs e)
+        {
+            textBoxchuHo.Text = null;
+            textBoxSoCu.Text = null;
+            textBoxSoMoi.Text = null;
+            textBoxNgayLap.Text = null; 
+            textBoxNgayLap1.Text = null;
+            comboBoxState.Text = null; comboBoxState.SelectedItem = null;
+            comboBoxPhong.Text = null; comboBoxPhong.SelectedItem = null;
+            comboBoxPhong1.Text = null; comboBoxPhong1.SelectedItem = null;
+        }
+
+        // Ấn vào comboBox hiện ra số phòng
+        private void comboBoxPhong1_Click(object sender, EventArgs e)
+        {
+            comboBoxPhong1.Items.Clear();
+            ChuHoBLL chuHoBLL = new ChuHoBLL();
+            foreach (ListViewItem item in listView1.Items)
+            {
+                comboBoxPhong1.Items.Add(item.SubItems[0].Text);
+            }
+            return;
+        }
+        private void comboBoxPhong_Click(object sender, EventArgs e)
+        {
+            comboBoxPhong.Items.Clear();
+            ChuHoBLL chuHoBLL = new ChuHoBLL();
+            foreach (ListViewItem item in listView1.Items)
+            {
+                comboBoxPhong.Items.Add(item.SubItems[0].Text);
+            }
+            return;
+        }
+       
+        // hàm lấy thông tin từ double click from listview HoaDonNuoc
+        private void listView3_DoubleClick(object sender, EventArgs e)
+        {
+            if (listView3.SelectedItems.Count > 0)
+            {
+                ListViewItem item = listView3.SelectedItems[0];
+                comboBoxPhong.Text = item.SubItems[0].Text;
+                textBoxNgayLap.Text = item.SubItems[2].Text;
+                textBoxSoCu.Text = item.SubItems[3].Text;
+                textBoxSoMoi.Text = item.SubItems[4].Text;
+                comboBoxState.Text = item.SubItems[6].Text;
+                textBoxchuHo.Text = item.SubItems[1].Text;
+                comboBoxPhong1.Text = item.SubItems[0].Text;
+                textBoxNgayLap1.Text = item.SubItems[2].Text;
+            }
+        }
+       
+
+        // hàm lấy ra tên của chủ phòng từ combobox
+        private void comboBoxPhong_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (comboBoxPhong.SelectedIndex == -1) return;
+            foreach (ListViewItem item in listView1.Items)
+            {
+                if (item.SubItems[0].Text.Equals(comboBoxPhong.SelectedItem.ToString())) { textBoxchuHo.Text = item.SubItems[1].Text; return; }
+            }
+        }
+
+        
     }
 }
