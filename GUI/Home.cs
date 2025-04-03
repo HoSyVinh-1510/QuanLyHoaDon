@@ -160,8 +160,7 @@ namespace QuanLyHoaDon.GUI
             if (textBox1.Text==null || textBox2.Text == null || textBox3.Text == null || textBox4.Text == null || comboBox2.SelectedItem == null ||comboBox3.SelectedItem==null )
             {
                 MessageBox.Show("Không được để trống thông tin"); return;
-            }        
-            
+            }                   
             HoaDonDien hoaDonDien = new HoaDonDien(comboBox2.SelectedItem.ToString(), textBox4.Text, DateTime.Parse(textBox3.Text),float.Parse( textBox2.Text), float.Parse(textBox1.Text), comboBox3.SelectedItem.ToString());
             HoaDonDienDAL hoaDonDienDAL = new HoaDonDienDAL();
             hoaDonDienDAL.AddHoaDonDien(hoaDonDien.Phong, hoaDonDien.TenChuHo, hoaDonDien.NgayLapHoaDon, hoaDonDien.SoDienCu, hoaDonDien.SoDienMoi, hoaDonDien.ThanhTien, hoaDonDien.TrangThai);
@@ -202,6 +201,7 @@ namespace QuanLyHoaDon.GUI
 
         private void button6_Click(object sender, EventArgs e)
         {
+            listView2.Items.Clear ();
             HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
             hoaDonDienBLL.HienThiToanBoHoaDonDien(hoaDonDienBLL.AllHoaDonDien(),listView2);
             return;
@@ -226,8 +226,58 @@ namespace QuanLyHoaDon.GUI
             }
         }
 
+        // Sửa bằng double click vào row trong listview
         private void button9_Click(object sender, EventArgs e)
+        {         
+            HoaDonDien hoaDonDien = new HoaDonDien(comboBox2.SelectedItem.ToString(), textBox4.Text, DateTime.Parse(textBox3.Text), float.Parse(textBox2.Text), float.Parse(textBox1.Text), comboBox3.SelectedItem.ToString());
+            HoaDonDienDAL hoaDonDienDAL = new HoaDonDienDAL();
+            hoaDonDienDAL.UpdateHoaDonDien(hoaDonDien.Phong, hoaDonDien.TenChuHo, hoaDonDien.NgayLapHoaDon, hoaDonDien.SoDienCu, hoaDonDien.SoDienMoi, hoaDonDien.ThanhTien, hoaDonDien.TrangThai);
+            listView2.Items.Clear();
+            HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
+            hoaDonDienBLL.HienThiToanBoHoaDonDien(hoaDonDienBLL.AllHoaDonDien(), listView2);           
+            return;
+        }
+
+        private void listView2_DoubleClick(object sender, EventArgs e)
         {
+            if (listView2.SelectedItems.Count > 0)
+            {
+                ListViewItem item = listView2.SelectedItems[0];
+                comboBox2.SelectedItem = item.SubItems[0].Text;               
+                textBox3.Text = item.SubItems[2].Text;
+                textBox2.Text= item.SubItems[3].Text;
+                textBox1.Text = item.SubItems[4].Text;
+                comboBox3.SelectedItem = item.SubItems[6].Text;
+
+                textBox5.Text = item.SubItems[0].Text;
+                textBox6.Text = item.SubItems[2].Text;
+            }
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
+            hoaDonDienBLL.DeleteHoaDonDien(textBox5.Text,DateTime.Parse(textBox6.Text));
+            listView2.Items.Clear();    
+            hoaDonDienBLL.HienThiToanBoHoaDonDien(hoaDonDienBLL.AllHoaDonDien(),listView2);
+            return;
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = null;
+            textBox2.Text = null;
+            textBox3.Text = null;
+            textBox4.Text = null;
+            textBox5.Text = null;
+            textBox6.Text = null;
+            comboBox2.SelectedItem = null;
+            comboBox3.SelectedItem = null;
 
         }
     }

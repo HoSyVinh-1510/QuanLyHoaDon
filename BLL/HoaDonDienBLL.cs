@@ -44,10 +44,12 @@ namespace QuanLyHoaDon.BLL
         }
 
         // Hàm xóa hóa đơn điện
-        public List<HoaDonDien> DeleteHoaDonDien(string phong, DateTime date)
+        public void DeleteHoaDonDien(string phong, DateTime date)
         {
             HoaDonDienDAL hoaDonDienDAL = new HoaDonDienDAL();
-            return hoaDonDienDAL.Find(phong, date);
+            hoaDonDienDAL.DeleteHoaDonDien(phong, date);
+            return;
+
         }
 
         // hàm cập nhật hóa đơn điện

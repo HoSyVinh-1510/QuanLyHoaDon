@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,10 +57,18 @@ namespace QuanLyHoaDon.DAL
         {
             Connect cn = new Connect();
             cn.OpenConnect();
-            string query = "DELETE HoaDonDien WHERE ( Phong= @phong AND NgayLapHoaDon= @date)";
+            string query = "DELETE HoaDonDien WHERE Phong=@phong AND NgayLapHoaDon=@date";
             SqlCommand cmd = new SqlCommand(query, cn.connect);
-            cmd.Parameters.AddWithValue("@phong", phong);
-            cmd.Parameters.AddWithValue("@date", date);
+            cmd.Parameters.AddWithValue("@phong",phong);
+            cmd.Parameters.AddWithValue("@date",date);
+            if (cmd.ExecuteNonQuery() <= 0)
+            {
+                MessageBox.Show("Không thể xóa");
+                return;
+            }
+            else {
+                MessageBox.Show("Xóa hóa đơn thành công");
+            }
             cn.CloseConnect();
             return;
         }
@@ -69,25 +78,36 @@ namespace QuanLyHoaDon.DAL
         {
             Connect connect = new Connect();
             connect.OpenConnect();
-            string query = "UPDATE HoaDonDien SET (@a0,@a1,@a2,@a3,@a4,@a5,@a6) WHERE ( Phong=@a0 AND NgayLapHoaDon=@a2) ";
-            SqlCommand cmd = new SqlCommand(query, connect.connect);
-            cmd.Parameters.AddWithValue("@a0", a0);
-            cmd.Parameters.AddWithValue("@a1", a1);
-            cmd.Parameters.AddWithValue("@a2", a2);
-            cmd.Parameters.AddWithValue("@a3", a3);
-            cmd.Parameters.AddWithValue("@a4", a4);
-            cmd.Parameters.AddWithValue("@a5", a5);
-            cmd.Parameters.AddWithValue("@a6", a6);
-            if (cmd.ExecuteNonQuery() == 0)
+            try
             {
-                MessageBox.Show("Không tìm thấy đối tượng nào để cập nhật!");
+                string query = "UPDATE HoaDonDien SET TenChuHo=@a1, SoDienCu=@a3, SoDienMoi=@a4, ThanhTien=@a5, TrangThai=@a6 WHERE (Phong=@a0 AND NgayLapHoaDon=@a2)";
+                SqlCommand cmd = new SqlCommand(query, connect.connect);
+                cmd.Parameters.AddWithValue("@a0", a0);
+                cmd.Parameters.AddWithValue("@a1", a1);
+                cmd.Parameters.AddWithValue("@a2", a2);
+                cmd.Parameters.AddWithValue("@a3", a3);
+                cmd.Parameters.AddWithValue("@a4", a4);
+                cmd.Parameters.AddWithValue("@a5", a5);
+                cmd.Parameters.AddWithValue("@a6", a6);
+
+                int result = cmd.ExecuteNonQuery();
+                if (result == 0)
+                {
+                    MessageBox.Show("Không tìm thấy đối tượng nào để cập nhật!");
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật dữ liệu thành công!");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Cập nhật dữ liệu thành công!");
+                MessageBox.Show("Lỗi: " + ex.Message);
             }
-            connect.CloseConnect();
-            return;
+            finally
+            {
+                connect.CloseConnect();
+            }
         }
 
         // hàm thêm hóa đơn điện
