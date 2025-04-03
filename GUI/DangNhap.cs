@@ -35,6 +35,7 @@ namespace QuanLyHoaDon
             
             if(logInBLL.DangNhapBLL(login))
             {
+                Account ac = new Account(textBox1.Text,textBox2.Text);
                 MessageBox.Show("Đăng nhập thành công!");
                 textBox1.Text = null;
                 textBox2.Text = null;

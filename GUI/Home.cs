@@ -137,7 +137,18 @@ namespace QuanLyHoaDon.GUI
 
         private void thôngTinĐăngNhậpToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Account account = new Account();
+            this.Hide();
+            account.ShowDialog();
+            this.Show();
+        }
 
+        private void sửaTàiKhoảnĐăngNhậpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Account account = new Account();
+            this.Hide();
+            account.ShowDialog();
+            this.Show();
         }
 
 

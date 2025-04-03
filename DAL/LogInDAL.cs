@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using QuanLyHoaDon.DTO;
 
 namespace QuanLyHoaDon.DAL
@@ -13,6 +14,7 @@ namespace QuanLyHoaDon.DAL
     {
         public bool CheckDangNhap(string a, string b) 
         {
+            if (b == null) { MessageBox.Show("Cập nhật mật khẩu không thành công!"); return false; }
             Connect connect = new Connect();
             connect.OpenConnect();
             int count = -1;
@@ -23,6 +25,19 @@ namespace QuanLyHoaDon.DAL
             count=(int)cmd.ExecuteScalar();
             connect.CloseConnect();
             return count > 0;                         
+        }
+
+        public void SuaDangNhap(string tk, string mk)
+        {
+            Connect connect = new Connect();
+            connect.OpenConnect();
+            string query = "Update Account SET(MatKhau=@mk) WHERE TaiKhoan=@tk";
+            SqlCommand cmd= new SqlCommand(query,connect.connect);
+            cmd.Parameters.AddWithValue("@mk",mk);
+            cmd.Parameters.AddWithValue("@tk", tk);
+            cmd.ExecuteNonQuery();
+            connect.CloseConnect();
+            return;
         }
 
 

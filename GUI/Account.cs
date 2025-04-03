@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuanLyHoaDon.DAL;
+using QuanLyHoaDon.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +14,18 @@ namespace QuanLyHoaDon.GUI
 {
     public partial class Account : Form
     {
+        static string tk;
+        static string mk;
+        public Account(string a, string b)
+        { 
+            tk= a;mk= b;
+        }
         public Account()
         {
             InitializeComponent();
+            textBox1.Text = tk;
+            textBox2.Text = mk;
         }
-
         private void Account_Load(object sender, EventArgs e)
         {
             
@@ -29,6 +38,22 @@ namespace QuanLyHoaDon.GUI
                 textBox2.UseSystemPasswordChar = false;
             }
             else  textBox2.UseSystemPasswordChar= true;
+            return;
+        }
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                textBox3.UseSystemPasswordChar = false;
+            }
+            else textBox3.UseSystemPasswordChar = true;
+            return;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            LogInDAL logInDAL = new LogInDAL();
+            logInDAL.SuaDangNhap(textBox1.Text,textBox3.Text);
             return;
         }
     }

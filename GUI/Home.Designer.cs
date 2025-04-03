@@ -148,6 +148,7 @@
             this.sửaTàiKhoảnĐăngNhậpToolStripMenuItem.Name = "sửaTàiKhoảnĐăngNhậpToolStripMenuItem";
             this.sửaTàiKhoảnĐăngNhậpToolStripMenuItem.Size = new System.Drawing.Size(257, 26);
             this.sửaTàiKhoảnĐăngNhậpToolStripMenuItem.Text = "Sửa tài khoản đăng nhập";
+            this.sửaTàiKhoảnĐăngNhậpToolStripMenuItem.Click += new System.EventHandler(this.sửaTàiKhoảnĐăngNhậpToolStripMenuItem_Click);
             // 
             // đăngXuấtToolStripMenuItem
             // 
