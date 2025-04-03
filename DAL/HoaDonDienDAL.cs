@@ -24,7 +24,7 @@ namespace QuanLyHoaDon.DAL
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                HoaDonDien hoaDon = new HoaDonDien(reader.GetString(0), reader.GetString(1), reader.GetDateTime(2), reader.GetFloat(3), reader.GetFloat(4), reader.GetString(6));
+                HoaDonDien hoaDon = new HoaDonDien(reader.GetString(0), reader.GetString(1), reader.GetDateTime(2), ((float)reader.GetDecimal(3)), ((float)reader.GetDecimal(4)), reader.GetString(6));
 
                 listChuHo.Add(hoaDon);
             }
@@ -44,7 +44,7 @@ namespace QuanLyHoaDon.DAL
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                HoaDonDien hd = new HoaDonDien(reader.GetString(0), reader.GetString(1), reader.GetDateTime(2), reader.GetFloat(3), reader.GetFloat(4), reader.GetString(6));
+                HoaDonDien hd = new HoaDonDien(reader.GetString(0), reader.GetString(1), reader.GetDateTime(2), ((float)reader.GetDecimal(3)), ((float)reader.GetDecimal(4)), reader.GetString(6));
                 listChuHo.Add(hd);
             }
             cn.CloseConnect();

@@ -56,6 +56,12 @@
     <Compile Include="DTO\ChuHo.cs" />
     <Compile Include="DTO\HoaDonDien.cs" />
     <Compile Include="DTO\LogIn.cs" />
+    <Compile Include="GUI\Account.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Account.Designer.cs">
+      <DependentUpon>Account.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="GUI\Account.resx">
+      <DependentUpon>Account.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
     </EmbeddedResource>

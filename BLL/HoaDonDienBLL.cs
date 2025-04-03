@@ -24,14 +24,14 @@ namespace QuanLyHoaDon.BLL
         {
             foreach (HoaDonDien hd in list0)
             {
-                ListViewItem item = new ListViewItem();
-                hd.Phong=item.SubItems[0].ToString();
-                hd.TenChuHo=item.SubItems[1].ToString();
-                hd.NgayLapHoaDon = DateTime.Parse(item.SubItems[2].ToString());
-                hd.SoDienCu = float.Parse( item.SubItems[3].ToString());
-                hd.SoDienMoi = float.Parse(item.SubItems[4].ToString());
-                hd.ThanhTien= float.Parse(item.SubItems[5].ToString());
-                hd.TrangThai= item.SubItems[6].ToString();
+                ListViewItem item = new ListViewItem(hd.Phong);
+                item.SubItems.Add(hd.TenChuHo);
+                item.SubItems.Add(hd.NgayLapHoaDon.ToString());
+                item.SubItems.Add(hd.SoDienCu.ToString());
+                item.SubItems.Add(hd.SoDienMoi.ToString());
+                item.SubItems.Add(hd.ThanhTien.ToString());
+                item.SubItems.Add(hd.TrangThai.ToString());
+
                 list1.Items.Add(item);
             }
         }

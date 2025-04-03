@@ -47,6 +47,11 @@ namespace QuanLyHoaDon.GUI
 
         }
 
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         // THÔNG TIN CHỦ HỘ TAB
         // THÔNG TIN CHỦ HỘ TAB
 
@@ -129,6 +134,13 @@ namespace QuanLyHoaDon.GUI
             ChuHoBLL chuHoBLL = new ChuHoBLL();
             chuHoBLL.HienThiDanhSachChuHo(chuHoBLL.FullListChuHo(),listView1);
         }
+
+        private void thôngTinĐăngNhậpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
 
         //HÓA ĐƠN ĐIỆN
         //HÓA ĐƠN ĐIỆN
