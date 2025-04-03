@@ -26,7 +26,7 @@ namespace QuanLyHoaDon.GUI
         {
             if (checkBox1.Checked)
             {
-                textBox2.UseSystemPasswordChar == true;
+                textBox2.UseSystemPasswordChar = true;
             }
         }
     }
