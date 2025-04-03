@@ -63,6 +63,7 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.button11 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -94,16 +95,6 @@
             this.columnHeader10 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader11 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.listView3 = new System.Windows.Forms.ListView();
-            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.comboBoxPhong1 = new System.Windows.Forms.ComboBox();
             this.button12 = new System.Windows.Forms.Button();
@@ -128,6 +119,16 @@
             this.textBoxSoCu = new System.Windows.Forms.TextBox();
             this.textBoxNgayLap = new System.Windows.Forms.TextBox();
             this.textBoxchuHo = new System.Windows.Forms.TextBox();
+            this.listView3 = new System.Windows.Forms.ListView();
+            this.columnHeader12 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader14 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader15 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader16 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.label23 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -200,6 +201,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.label23);
             this.tabPage1.Controls.Add(this.panel1);
             this.tabPage1.Controls.Add(this.listView1);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
@@ -498,6 +500,15 @@
             this.panel2.Size = new System.Drawing.Size(294, 439);
             this.panel2.TabIndex = 2;
             // 
+            // comboBox4
+            // 
+            this.comboBox4.FormattingEnabled = true;
+            this.comboBox4.Location = new System.Drawing.Point(22, 284);
+            this.comboBox4.Name = "comboBox4";
+            this.comboBox4.Size = new System.Drawing.Size(153, 24);
+            this.comboBox4.TabIndex = 31;
+            this.comboBox4.Click += new System.EventHandler(this.comboBox4_Click_1);
+            // 
             // button11
             // 
             this.button11.BackColor = System.Drawing.SystemColors.Info;
@@ -773,64 +784,6 @@
             this.tabPage3.Text = "HÓA ĐƠN NƯỚC";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // listView3
-            // 
-            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader12,
-            this.columnHeader13,
-            this.columnHeader14,
-            this.columnHeader15,
-            this.columnHeader16,
-            this.columnHeader17,
-            this.columnHeader19});
-            this.listView3.FullRowSelect = true;
-            this.listView3.GridLines = true;
-            this.listView3.HideSelection = false;
-            this.listView3.Location = new System.Drawing.Point(8, 232);
-            this.listView3.Name = "listView3";
-            this.listView3.Size = new System.Drawing.Size(866, 439);
-            this.listView3.TabIndex = 1;
-            this.listView3.UseCompatibleStateImageBehavior = false;
-            this.listView3.View = System.Windows.Forms.View.Details;
-            this.listView3.DoubleClick += new System.EventHandler(this.listView3_DoubleClick);
-            // 
-            // columnHeader12
-            // 
-            this.columnHeader12.Text = "Phòng";
-            // 
-            // columnHeader13
-            // 
-            this.columnHeader13.Text = "TenChuHo";
-            // 
-            // columnHeader14
-            // 
-            this.columnHeader14.Text = "NgayLapHoaDon";
-            // 
-            // columnHeader15
-            // 
-            this.columnHeader15.Text = "SoNuocCu";
-            // 
-            // columnHeader16
-            // 
-            this.columnHeader16.Text = "SoNuocMoi";
-            // 
-            // columnHeader17
-            // 
-            this.columnHeader17.Text = "ThanhTien";
-            // 
-            // columnHeader19
-            // 
-            this.columnHeader19.Text = "TrangThai";
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(22, 284);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(153, 24);
-            this.comboBox4.TabIndex = 31;
-            this.comboBox4.Click += new System.EventHandler(this.comboBox4_Click_1);
-            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.comboBoxPhong1);
@@ -1084,6 +1037,65 @@
             this.textBoxchuHo.Size = new System.Drawing.Size(153, 22);
             this.textBoxchuHo.TabIndex = 1;
             // 
+            // listView3
+            // 
+            this.listView3.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader12,
+            this.columnHeader13,
+            this.columnHeader14,
+            this.columnHeader15,
+            this.columnHeader16,
+            this.columnHeader17,
+            this.columnHeader19});
+            this.listView3.FullRowSelect = true;
+            this.listView3.GridLines = true;
+            this.listView3.HideSelection = false;
+            this.listView3.Location = new System.Drawing.Point(8, 232);
+            this.listView3.Name = "listView3";
+            this.listView3.Size = new System.Drawing.Size(866, 439);
+            this.listView3.TabIndex = 1;
+            this.listView3.UseCompatibleStateImageBehavior = false;
+            this.listView3.View = System.Windows.Forms.View.Details;
+            this.listView3.DoubleClick += new System.EventHandler(this.listView3_DoubleClick);
+            // 
+            // columnHeader12
+            // 
+            this.columnHeader12.Text = "Phòng";
+            // 
+            // columnHeader13
+            // 
+            this.columnHeader13.Text = "TenChuHo";
+            // 
+            // columnHeader14
+            // 
+            this.columnHeader14.Text = "NgayLapHoaDon";
+            // 
+            // columnHeader15
+            // 
+            this.columnHeader15.Text = "SoNuocCu";
+            // 
+            // columnHeader16
+            // 
+            this.columnHeader16.Text = "SoNuocMoi";
+            // 
+            // columnHeader17
+            // 
+            this.columnHeader17.Text = "ThanhTien";
+            // 
+            // columnHeader19
+            // 
+            this.columnHeader19.Text = "TrangThai";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label23.Location = new System.Drawing.Point(83, 51);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(560, 32);
+            this.label23.TabIndex = 2;
+            this.label23.Text = "DANH SÁCH PHÒNG TRONG CHUNG CƯ";
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1099,6 +1111,7 @@
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -1214,5 +1227,6 @@
         private System.Windows.Forms.TextBox textBoxSoCu;
         private System.Windows.Forms.TextBox textBoxNgayLap;
         private System.Windows.Forms.TextBox textBoxchuHo;
+        private System.Windows.Forms.Label label23;
     }
 }
