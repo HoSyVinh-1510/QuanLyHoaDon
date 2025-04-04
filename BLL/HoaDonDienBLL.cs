@@ -104,7 +104,23 @@ namespace QuanLyHoaDon.BLL
                 }
             }
             return tien;
+        }
 
+
+        // hàm phòng sẽ bị cắt nước
+        public int CountPhong(string phong)
+        {
+            HoaDonDienDAL hoaDonDienDAL = new HoaDonDienDAL();
+            List<HoaDonDien> list = hoaDonDienDAL.FindState("Chưa thanh toán");
+            int count = 0;
+            foreach (HoaDonDien hd in list)
+            {
+                if (hd.Phong == phong)
+                {
+                    count++;
+                }
+            }
+            return count;
         }
 
     }

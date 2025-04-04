@@ -65,6 +65,8 @@ namespace QuanLyHoaDon.BLL
         }
 
 
+
+
         // Hàm xóa hóa đơn nước
         public void DeleteHoaDonNuoc(string phong, DateTime date)
         {
@@ -89,7 +91,7 @@ namespace QuanLyHoaDon.BLL
             hoaDonDienDAL.AddHoaDonNuoc(a0, a1, a2, a3, a4, a5, a6);
             return;
         }
-
+        // Tính tiền
         public float TinhTien(string phong, List<HoaDonNuoc> list)
         {
             float tien = 0;
@@ -101,7 +103,22 @@ namespace QuanLyHoaDon.BLL
                 }
             }
             return tien;
+        }
 
+         // Đếm phòng
+         public int CountPhong(string phong)
+        {
+            HoaDonNuocDAL hoaDonNuocDAL = new HoaDonNuocDAL();
+            List<HoaDonNuoc> list= hoaDonNuocDAL.FindState("Chưa thanh toán");
+            int count = 0;
+            foreach (HoaDonNuoc hd in list)
+            {
+                if (hd.Phong == phong)
+                {
+                    count++;
+                }
+            }         
+           return count;
         }
     }
 }

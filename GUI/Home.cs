@@ -322,7 +322,20 @@ namespace QuanLyHoaDon.GUI
 
             return;
         }
-
+        private void comboBox10_Click(object sender, EventArgs e)
+        {
+            comboBox10.Items.Clear();
+            foreach (ListViewItem item in listView1.Items)
+            {
+                comboBox10.Items.Add(item.SubItems[0].Text);
+            }
+            HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
+            for (int i = 0; i <= comboBox10.Items.Count; i++)
+            {
+                if (hoaDonDienBLL.CountPhong(comboBox10.Items[i].ToString()) < 2)
+                    comboBox10.Items.RemoveAt(i);
+            }
+        }
 
 
         // HÓA ĐƠN NƯỚC
@@ -491,5 +504,22 @@ namespace QuanLyHoaDon.GUI
             this.SizeListView(listView4);
             return;
         }
+
+        private void comboBox9_Click(object sender, EventArgs e)
+        {
+            comboBox9.Items.Clear();
+            foreach (ListViewItem item in listView1.Items)
+            {
+                comboBox9.Items.Add(item.SubItems[0].Text);
+            }
+            HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
+            for (int i = 1; i <= comboBox9.Items.Count; i++)
+            {
+                if (hoaDonNuocBLL.CountPhong(comboBox9.Items[i].ToString()) < 2  )
+                    comboBox9.Items.RemoveAt(i);  
+            }
+        }
+
+       
     }
 }
