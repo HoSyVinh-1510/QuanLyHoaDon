@@ -16,7 +16,7 @@ namespace QuanLyHoaDon.BLL
 
         public void HienThiDanhSachChuHo(List<ChuHo> list, ListView listView1)
         {
-
+            listView1.Items.Clear();
             foreach (ChuHo ch in list)
             {
                 ListViewItem item = new ListViewItem(ch.MaChuHo);
@@ -28,11 +28,6 @@ namespace QuanLyHoaDon.BLL
             }
             return;
         }
-
-        public void HideDanhSachChuHo(ListView list)
-        {
-            list.Items.Clear();
-        } 
 
         public List<ChuHo> FullListChuHo() 
         {
@@ -64,6 +59,26 @@ namespace QuanLyHoaDon.BLL
             ChuHoDAL dAL = new ChuHoDAL();  
             dAL.UpdateChuHo(id,name,day,sex,sdt);
             return;
+        }
+
+        public float ChuaThanhToan(List<HoaDonDien> list0, ListView list1)
+        {
+            float result = 0;
+            list1.Items.Clear();
+            foreach (HoaDonDien hd in list0)
+            {
+                if (hd.TrangThai == "Chưa thanh toán")
+                {
+                    ListViewItem item = new ListViewItem();
+                    item.SubItems.Add(hd.Phong);
+                    item.SubItems.Add(hd.NgayLapHoaDon.ToString());
+                    item.SubItems.Add(hd.ThanhTien.ToString());
+                    item.SubItems.Add(hd.TrangThai);
+                    list1.Items.Add(item);
+                    result += hd.ThanhTien;
+                }               
+            }
+            return result;
         }
         
     }

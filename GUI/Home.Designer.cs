@@ -36,6 +36,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label23 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -62,6 +63,15 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.button18 = new System.Windows.Forms.Button();
+            this.listView4 = new System.Windows.Forms.ListView();
+            this.columnHeader20 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader21 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader22 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader23 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.label24 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.button11 = new System.Windows.Forms.Button();
@@ -128,12 +138,12 @@
             this.columnHeader17 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader19 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.label23 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -212,6 +222,16 @@
             this.tabPage1.Text = "THÔNG TIN PHÒNG";
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label23.Location = new System.Drawing.Point(83, 51);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(560, 32);
+            this.label23.TabIndex = 2;
+            this.label23.Text = "DANH SÁCH PHÒNG TRONG CHUNG CƯ";
             // 
             // panel1
             // 
@@ -459,6 +479,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.panel4);
             this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Controls.Add(this.listView2);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
@@ -469,6 +490,82 @@
             this.tabPage2.Text = "HÓA ĐƠN ĐIỆN";
             this.tabPage2.UseVisualStyleBackColor = true;
             this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.comboBox5);
+            this.panel4.Controls.Add(this.button18);
+            this.panel4.Controls.Add(this.listView4);
+            this.panel4.Controls.Add(this.label24);
+            this.panel4.Location = new System.Drawing.Point(1181, 229);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(448, 439);
+            this.panel4.TabIndex = 3;
+            // 
+            // comboBox5
+            // 
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Items.AddRange(new object[] {
+            "Đã thanh toán",
+            "Chưa thanh toán"});
+            this.comboBox5.Location = new System.Drawing.Point(8, 80);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(153, 24);
+            this.comboBox5.TabIndex = 23;
+            // 
+            // button18
+            // 
+            this.button18.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.button18.Location = new System.Drawing.Point(182, 75);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(101, 31);
+            this.button18.TabIndex = 17;
+            this.button18.Text = "Tìm Kiếm";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // listView4
+            // 
+            this.listView4.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader20,
+            this.columnHeader21,
+            this.columnHeader22,
+            this.columnHeader23});
+            this.listView4.FullRowSelect = true;
+            this.listView4.GridLines = true;
+            this.listView4.HideSelection = false;
+            this.listView4.Location = new System.Drawing.Point(8, 202);
+            this.listView4.Name = "listView4";
+            this.listView4.Size = new System.Drawing.Size(442, 231);
+            this.listView4.TabIndex = 10;
+            this.listView4.UseCompatibleStateImageBehavior = false;
+            this.listView4.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader20
+            // 
+            this.columnHeader20.Text = "Phòng";
+            // 
+            // columnHeader21
+            // 
+            this.columnHeader21.Text = "Ngày Lập Hóa Đơn";
+            // 
+            // columnHeader22
+            // 
+            this.columnHeader22.Text = "Tổng thành tiền";
+            // 
+            // columnHeader23
+            // 
+            this.columnHeader23.Text = "Trạng thái";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label24.Location = new System.Drawing.Point(122, 18);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(230, 25);
+            this.label24.TabIndex = 9;
+            this.label24.Text = "THAO TÁC CƠ BẢN";
             // 
             // panel2
             // 
@@ -1086,16 +1183,6 @@
             // 
             this.columnHeader19.Text = "TrangThai";
             // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label23.Location = new System.Drawing.Point(83, 51);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(560, 32);
-            this.label23.TabIndex = 2;
-            this.label23.Text = "DANH SÁCH PHÒNG TRONG CHUNG CƯ";
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1115,6 +1202,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
@@ -1228,5 +1317,14 @@
         private System.Windows.Forms.TextBox textBoxNgayLap;
         private System.Windows.Forms.TextBox textBoxchuHo;
         private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.ListView listView4;
+        private System.Windows.Forms.ColumnHeader columnHeader20;
+        private System.Windows.Forms.ColumnHeader columnHeader21;
+        private System.Windows.Forms.ColumnHeader columnHeader22;
+        private System.Windows.Forms.ColumnHeader columnHeader23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.Button button18;
     }
 }

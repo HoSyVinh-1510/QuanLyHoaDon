@@ -99,8 +99,7 @@ namespace QuanLyHoaDon.GUI
         private void button3_Click(object sender, EventArgs e)
         {
             ChuHoBLL chbll=new ChuHoBLL();
-            chbll.DeleteChuHo(comboBox1.SelectedItem.ToString());
-            
+            chbll.DeleteChuHo(comboBox1.SelectedItem.ToString());            
             chbll.HienThiDanhSachChuHo(chbll.FullListChuHo(), listView1);
             return;
         }
@@ -132,7 +131,6 @@ namespace QuanLyHoaDon.GUI
 
         private void button5_Click(object sender, EventArgs e)
         {
-            listView1.Items.Clear();
             ChuHoBLL chuHoBLL = new ChuHoBLL();
             chuHoBLL.HienThiDanhSachChuHo(chuHoBLL.FullListChuHo(),listView1);
         }
@@ -280,7 +278,16 @@ namespace QuanLyHoaDon.GUI
             return ;
         }
 
+        // Hàm hiển thị trạng thái chưa thanh toán
+        private void button18_Click(object sender, EventArgs e)
+        {
+            if (comboBox5.SelectedItem.ToString() == null) return;
+            HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
+            hoaDonDienBLL.HienThiHoaDonDienTheoTrangThai(comboBox5.SelectedItem.ToString(), listView4);
 
+            return;
+
+        }
 
 
 
@@ -409,6 +416,6 @@ namespace QuanLyHoaDon.GUI
             }
         }
 
-        
+       
     }
 }

@@ -1,6 +1,7 @@
 ﻿using QuanLyHoaDon.DAL;
 using QuanLyHoaDon.DTO;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,7 +38,29 @@ namespace QuanLyHoaDon.BLL
             }
         }
 
-        // Hàm trả về hóa đơn điện theo tên, và ngày lập hóa đơn
+        
+        public void HienThiHoaDonDienTheoTrangThai(  string trangthai,ListView list1)
+        {
+            list1.Items.Clear();
+            HoaDonDienDAL hoaDonDienDAL = new HoaDonDienDAL();
+
+            foreach (HoaDonDien hd in hoaDonDienDAL.FindState(trangthai))
+            { 
+                    ListViewItem item = new ListViewItem(hd.Phong);
+                    item.SubItems.Add(hd.NgayLapHoaDon.ToString());
+                    item.SubItems.Add(hd.ThanhTien.ToString());
+                    item.SubItems.Add(hd.TrangThai.ToString());
+                    list1.Items.Add(item);         
+            }
+        }
+
+        public List<HoaDonDien> FindState(string trangthai)
+        {
+            HoaDonDienDAL hoaDonDienDAL = new HoaDonDienDAL();
+            return hoaDonDienDAL.FindState(trangthai);
+        }
+
+        // Hàm trả về hóa đơn điện theo tên
         public List<HoaDonDien> Find(string phong)
         {
             HoaDonDienDAL hoaDonDienDAL= new HoaDonDienDAL();
@@ -69,6 +92,23 @@ namespace QuanLyHoaDon.BLL
             return;
         }
 
+        // Hàm tính tiền điện chưa thanh toán
+        public float TinhTien(string state, string phong)
+        {
+            HoaDonDienDAL hoaDonDienDAL = new HoaDonDienDAL();
+            List<HoaDonDien> list = hoaDonDienDAL.Find(state);
+            if (list.Count == 0) return 0;
+            float tien = 0;
+            foreach (HoaDonDien hd in list)
+            {
+                if (hd.Phong== phong)
+                {
+                    tien += hd.ThanhTien;
+                }
+            }
+            return tien;
+
+        }
 
     }
 }

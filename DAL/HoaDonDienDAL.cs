@@ -52,6 +52,26 @@ namespace QuanLyHoaDon.DAL
             return listChuHo;
         }
 
+        public List<HoaDonDien> FindState(string trangthai)
+        {
+            List<HoaDonDien> listChuHo = new List<HoaDonDien>();
+            Connect cn = new Connect();
+            cn.OpenConnect();
+            string query = "SELECT * FROM HoaDonDien WHERE TrangThai= @trangthai";
+            SqlCommand cmd = new SqlCommand(query, cn.connect);
+            cmd.Parameters.AddWithValue("@trangthai", trangthai);
+            cmd.ExecuteNonQuery();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                HoaDonDien hd = new HoaDonDien(reader.GetString(0), reader.GetString(1), reader.GetDateTime(2), ((float)reader.GetDecimal(3)), ((float)reader.GetDecimal(4)), reader.GetString(6));
+                listChuHo.Add(hd);
+            }
+            cn.CloseConnect();
+            return listChuHo;
+        }
+
+
         // Hàm xóa hóa đơn điện
         public void DeleteHoaDonDien(string phong, DateTime date)
         {

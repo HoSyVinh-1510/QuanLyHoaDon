@@ -68,7 +68,8 @@ namespace QuanLyHoaDon.DAL
             cn.OpenConnect();
             string query = "DELETE ChuHo WHERE MaChuHo= @name";
             SqlCommand cmd = new SqlCommand(query, cn.connect);
-            cmd.Parameters.AddWithValue("@name",name);                     
+            cmd.Parameters.AddWithValue("@name",name);     
+            cmd.ExecuteNonQuery();
             cn.CloseConnect();
             return;
 
@@ -85,6 +86,7 @@ namespace QuanLyHoaDon.DAL
             cmd.Parameters.AddWithValue("@day", day);
             cmd.Parameters.AddWithValue("@sex", sex);
             cmd.Parameters.AddWithValue("@sdt", sdt);
+            cmd.ExecuteNonQuery();
             if (cmd.ExecuteNonQuery() == 0)
             {
                 MessageBox.Show("Không tìm thấy đối tượng nào để cập nhật!");
