@@ -305,6 +305,26 @@ namespace QuanLyHoaDon.GUI
 
         }
 
+        // Tính tiền Điện
+        private void button19_Click(object sender, EventArgs e)
+        {
+            if (comboBox5.SelectedItem == null)
+            {
+                MessageBox.Show("Hãy chọn phân loại!");
+                ; return;
+            }
+            HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
+            hoaDonDienBLL.HienThiHoaDonDienTheoTrangThai(comboBox5.SelectedItem.ToString(), listView4);
+            this.SizeListView(listView4);
+            if (comboBox6.SelectedItem == null)
+            {
+                MessageBox.Show("Hãy chọn phòng!");
+                return;
+            }
+            textBox5.Text = hoaDonDienBLL.TinhTien(comboBox6.SelectedItem.ToString(), hoaDonDienBLL.FindState(comboBox5.SelectedItem.ToString())).ToString();
+
+            return;
+        }
 
 
 
@@ -432,25 +452,6 @@ namespace QuanLyHoaDon.GUI
             }
         }
 
-        // Tính tiền
-        private void button19_Click(object sender, EventArgs e)
-        {
-            if (comboBox5.SelectedItem == null)
-            {
-                MessageBox.Show("Hãy chọn phân loại!");
-                ; return;
-            }
-                HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
-                hoaDonDienBLL.HienThiHoaDonDienTheoTrangThai(comboBox5.SelectedItem.ToString(), listView4);
-                this.SizeListView(listView4);
-            if (comboBox6.SelectedItem == null)
-            {
-                MessageBox.Show("Hãy chọn phòng!");
-                return;
-            }
-                textBox5.Text = hoaDonDienBLL.TinhTien(comboBox6.SelectedItem.ToString(),hoaDonDienBLL.FindState(comboBox5.SelectedItem.ToString())).ToString();
-                
-                return;
-        }
+        
     }
 }
