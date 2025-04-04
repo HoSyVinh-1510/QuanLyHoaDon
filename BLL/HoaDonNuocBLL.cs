@@ -44,25 +44,26 @@ namespace QuanLyHoaDon.BLL
             HoaDonNuocDAL hoaDonDienDAL = new HoaDonNuocDAL();
             return hoaDonDienDAL.Find(phong);
         }
-
         public List<HoaDonNuoc> FindState(string trangthai)
         {
-            List<HoaDonNuoc> listChuHo = new List<HoaDonNuoc>();
-            Connect cn = new Connect();
-            cn.OpenConnect();
-            string query = "SELECT * FROM HoaDonNuoc WHERE TrangThai= @trangthai";
-            SqlCommand cmd = new SqlCommand(query, cn.connect);
-            cmd.Parameters.AddWithValue("@trangthai", trangthai);
-            cmd.ExecuteNonQuery();
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                HoaDonNuoc hd = new HoaDonNuoc(reader.GetString(0), reader.GetString(1), reader.GetDateTime(2), ((float)reader.GetDecimal(3)), ((float)reader.GetDecimal(4)), reader.GetString(6));
-                listChuHo.Add(hd);
-            }
-            cn.CloseConnect();
-            return listChuHo;
+            HoaDonNuocDAL hoaDonDienDAL = new HoaDonNuocDAL();
+            return hoaDonDienDAL.FindState(trangthai);
         }
+        public void HienThiHoaDonNuocTheoTrangThai(string trangthai, ListView list1)
+        {
+            list1.Items.Clear();
+            HoaDonNuocDAL hoaDonNuocDAL = new HoaDonNuocDAL();
+
+            foreach (HoaDonNuoc hd in hoaDonNuocDAL.FindState(trangthai))
+            {
+                ListViewItem item = new ListViewItem(hd.Phong);
+                item.SubItems.Add(hd.NgayLapHoaDon.ToString());
+                item.SubItems.Add(hd.ThanhTien.ToString());
+                item.SubItems.Add(hd.TrangThai.ToString());
+                list1.Items.Add(item);
+            }
+        }
+
 
         // Hàm xóa hóa đơn nước
         public void DeleteHoaDonNuoc(string phong, DateTime date)
@@ -87,6 +88,20 @@ namespace QuanLyHoaDon.BLL
             HoaDonNuocDAL hoaDonDienDAL = new HoaDonNuocDAL();
             hoaDonDienDAL.AddHoaDonNuoc(a0, a1, a2, a3, a4, a5, a6);
             return;
+        }
+
+        public float TinhTien(string phong, List<HoaDonNuoc> list)
+        {
+            float tien = 0;
+            foreach (HoaDonNuoc hd in list)
+            {
+                if (hd.Phong == phong)
+                {
+                    tien += hd.ThanhTien;
+                }
+            }
+            return tien;
+
         }
     }
 }

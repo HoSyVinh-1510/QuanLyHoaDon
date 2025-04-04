@@ -287,22 +287,19 @@ namespace QuanLyHoaDon.GUI
             return ;
         }
 
-        // Hàm hiển thị trạng thái chưa thanh toán
+        // Hàm hiển thị trạng thái của thanh toán
         private void button18_Click(object sender, EventArgs e)
         {
             if (comboBox5.SelectedItem == null)
             {
                 MessageBox.Show("Hãy chọn phân loại!");
-                ; return;
+                 return;
             }
         
             HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
             hoaDonDienBLL.HienThiHoaDonDienTheoTrangThai(comboBox5.SelectedItem.ToString(), listView4);
-            //if (comboBox6.SelectedItem == null) return;
-            //     textBox5.Text = hoaDonDienBLL.TinhTien(comboBox5.SelectedItem.ToString(),comboBox6.SelectedItem.ToString()).ToString();
             this.SizeListView(listView4);
             return;
-
         }
 
         // Tính tiền Điện
@@ -452,6 +449,33 @@ namespace QuanLyHoaDon.GUI
             }
         }
 
-        
+        private void comboBox7_Click(object sender, EventArgs e)
+        {
+            comboBox7.Items.Clear();
+            ChuHoBLL chuHoBLL = new ChuHoBLL();
+            foreach (ListViewItem item in listView1.Items)
+            {
+                comboBox7.Items.Add(item.SubItems[0].Text);
+            }
+            return;
+        }
+
+
+        // Hàm thanh toán
+        private void button20_Click(object sender, EventArgs e)
+        {
+            if (comboBox8.SelectedItem == null)
+            {
+                MessageBox.Show("Hãy chọn phân loại!");
+                return;
+            }
+
+            HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
+            hoaDonNuocBLL.HienThiHoaDonNuocTheoTrangThai(comboBox8.SelectedItem.ToString(), listView5);
+            if (comboBox7.SelectedItem == null) return;
+              textBox7.Text = hoaDonNuocBLL.TinhTien(comboBox7.SelectedItem.ToString(), hoaDonNuocBLL.FindState(comboBox8.SelectedItem.ToString())).ToString();
+            this.SizeListView(listView4);
+            return;
+        }
     }
 }
