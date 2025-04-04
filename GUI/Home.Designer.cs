@@ -548,7 +548,7 @@
             this.listView4.HideSelection = false;
             this.listView4.Location = new System.Drawing.Point(8, 202);
             this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(442, 231);
+            this.listView4.Size = new System.Drawing.Size(437, 231);
             this.listView4.TabIndex = 10;
             this.listView4.UseCompatibleStateImageBehavior = false;
             this.listView4.View = System.Windows.Forms.View.Details;
@@ -1229,7 +1229,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label26.Location = new System.Drawing.Point(49, 122);
+            this.label26.Location = new System.Drawing.Point(65, 154);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(79, 19);
             this.label26.TabIndex = 27;
@@ -1239,7 +1239,7 @@
             // 
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label27.Location = new System.Drawing.Point(59, 154);
+            this.label27.Location = new System.Drawing.Point(65, 122);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(56, 19);
             this.label27.TabIndex = 28;

@@ -432,6 +432,7 @@ namespace QuanLyHoaDon.GUI
             }
         }
 
+        // Tính tiền
         private void button19_Click(object sender, EventArgs e)
         {
             if (comboBox5.SelectedItem == null)
@@ -441,13 +442,14 @@ namespace QuanLyHoaDon.GUI
             }
                 HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
                 hoaDonDienBLL.HienThiHoaDonDienTheoTrangThai(comboBox5.SelectedItem.ToString(), listView4);
+                this.SizeListView(listView4);
             if (comboBox6.SelectedItem == null)
             {
                 MessageBox.Show("Hãy chọn phòng!");
                 return;
             }
-                textBox5.Text = hoaDonDienBLL.TinhTien(comboBox6.SelectedItem.ToString(),hoaDonDienBLL.FindState(comboBox6.SelectedItem.ToString())).ToString();
-                this.SizeListView(listView4);
+                textBox5.Text = hoaDonDienBLL.TinhTien(comboBox6.SelectedItem.ToString(),hoaDonDienBLL.FindState(comboBox5.SelectedItem.ToString())).ToString();
+                
                 return;
         }
     }

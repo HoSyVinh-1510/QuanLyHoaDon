@@ -95,11 +95,10 @@ namespace QuanLyHoaDon.BLL
         // Hàm tính tiền điện chưa thanh toán
         public float TinhTien(string phong, List<HoaDonDien> list)
         {
-            if (list.Count == 0) return 0;
             float tien = 0;
             foreach (HoaDonDien hd in list)
             {
-                if (hd.Phong== phong)
+                if (hd.Phong == phong)
                 {
                     tien += hd.ThanhTien;
                 }
