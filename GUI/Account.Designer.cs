@@ -165,6 +165,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Account";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Account";
             this.Load += new System.EventHandler(this.Account_Load);
             this.ResumeLayout(false);

@@ -520,6 +520,9 @@ namespace QuanLyHoaDon.GUI
             }
         }
 
-       
+        private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
