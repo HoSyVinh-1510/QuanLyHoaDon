@@ -26,7 +26,6 @@ namespace QuanLyHoaDon.DAL
             while (reader.Read())
             {
                 HoaDonDien hoaDon = new HoaDonDien(reader.GetString(0), reader.GetString(1), reader.GetDateTime(2), ((float)reader.GetDecimal(3)), ((float)reader.GetDecimal(4)), reader.GetString(6));
-
                 listChuHo.Add(hoaDon);
             }
             connect.CloseConnect();
@@ -60,7 +59,6 @@ namespace QuanLyHoaDon.DAL
             string query = "SELECT * FROM HoaDonDien WHERE TrangThai= @trangthai";
             SqlCommand cmd = new SqlCommand(query, cn.connect);
             cmd.Parameters.AddWithValue("@trangthai", trangthai);
-            cmd.ExecuteNonQuery();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -81,7 +79,8 @@ namespace QuanLyHoaDon.DAL
             SqlCommand cmd = new SqlCommand(query, cn.connect);
             cmd.Parameters.AddWithValue("@phong",phong);
             cmd.Parameters.AddWithValue("@date",date);
-            if (cmd.ExecuteNonQuery() <= 0)
+            int i= cmd.ExecuteNonQuery();
+            if (i==0)
             {
                 MessageBox.Show("Không thể xóa");
                 return;
@@ -110,8 +109,8 @@ namespace QuanLyHoaDon.DAL
                 cmd.Parameters.AddWithValue("@a5", a5);
                 cmd.Parameters.AddWithValue("@a6", a6);
 
-                int result = cmd.ExecuteNonQuery();
-                if (result == 0)
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (!reader.HasRows)
                 {
                     MessageBox.Show("Không tìm thấy đối tượng nào để cập nhật!");
                 }

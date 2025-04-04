@@ -31,7 +31,7 @@ namespace QuanLyHoaDon.DAL
         {
             Connect connect = new Connect();
             connect.OpenConnect();
-            string query = "Update Account SET(MatKhau=@mk) WHERE TaiKhoan=@tk";
+            string query = "Update Account SET (MatKhau= @mk) WHERE TaiKhoan= @tk";
             SqlCommand cmd= new SqlCommand(query,connect.connect);
             cmd.Parameters.AddWithValue("@mk",mk);
             cmd.Parameters.AddWithValue("@tk", tk);

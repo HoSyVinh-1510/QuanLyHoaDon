@@ -64,7 +64,6 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button22 = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.button19 = new System.Windows.Forms.Button();
@@ -520,7 +519,6 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.button22);
             this.panel4.Controls.Add(this.label33);
             this.panel4.Controls.Add(this.comboBox10);
             this.panel4.Controls.Add(this.button19);
@@ -538,20 +536,11 @@
             this.panel4.Size = new System.Drawing.Size(448, 456);
             this.panel4.TabIndex = 3;
             // 
-            // button22
-            // 
-            this.button22.Location = new System.Drawing.Point(37, 230);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(116, 29);
-            this.button22.TabIndex = 34;
-            this.button22.Text = "Dừng dịch vụ";
-            this.button22.UseVisualStyleBackColor = true;
-            // 
             // label33
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label33.Location = new System.Drawing.Point(16, 191);
+            this.label33.Location = new System.Drawing.Point(31, 196);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(137, 19);
             this.label33.TabIndex = 33;
@@ -560,9 +549,9 @@
             // comboBox10
             // 
             this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Location = new System.Drawing.Point(168, 186);
+            this.comboBox10.Location = new System.Drawing.Point(217, 191);
             this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(139, 24);
+            this.comboBox10.Size = new System.Drawing.Size(203, 24);
             this.comboBox10.TabIndex = 32;
             this.comboBox10.Click += new System.EventHandler(this.comboBox10_Click);
             // 
@@ -1643,6 +1632,5 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.ComboBox comboBox10;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Button button22;
     }
 }

@@ -42,6 +42,11 @@ namespace QuanLyHoaDon.DAL
             SqlCommand cmd = new SqlCommand(query, cn.connect);
             cmd.Parameters.AddWithValue("@name", phong);
             SqlDataReader reader = cmd.ExecuteReader();
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Không tìm thấy hóa đơn nào");
+                return null;
+            }
             while (reader.Read())
             {
                 HoaDonNuoc hd = new HoaDonNuoc(reader.GetString(0), reader.GetString(1), reader.GetDateTime(2), ((float)reader.GetDecimal(3)), ((float)reader.GetDecimal(4)), reader.GetString(6));
@@ -60,8 +65,12 @@ namespace QuanLyHoaDon.DAL
             string query = "SELECT * FROM HoaDonNuoc WHERE TrangThai= @trangthai";
             SqlCommand cmd = new SqlCommand(query, cn.connect);
             cmd.Parameters.AddWithValue("@trangthai", trangthai);
-            cmd.ExecuteNonQuery();
             SqlDataReader reader = cmd.ExecuteReader();
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Không tìm thấy hóa đơn nào");
+                return null;
+            }
             while (reader.Read())
             {
                 HoaDonNuoc hd = new HoaDonNuoc(reader.GetString(0), reader.GetString(1), reader.GetDateTime(2), ((float)reader.GetDecimal(3)), ((float)reader.GetDecimal(4)), reader.GetString(6));
@@ -79,9 +88,10 @@ namespace QuanLyHoaDon.DAL
             SqlCommand cmd = new SqlCommand(query, cn.connect);
             cmd.Parameters.AddWithValue("@phong", phong);
             cmd.Parameters.AddWithValue("@date", date);
-            if (cmd.ExecuteNonQuery() <= 0)
+           int i= cmd.ExecuteNonQuery() ;
+            if (i==0)
             {
-                MessageBox.Show("Không thể xóa");
+                MessageBox.Show("Không tìm thấy hóa đơn nào để xóa");
                 return;
             }
             else
@@ -91,7 +101,7 @@ namespace QuanLyHoaDon.DAL
             cn.CloseConnect();
             return;
         }
-        // Hàm cập nhật hóa đơn điện
+        // Hàm cập nhật hóa đơn nước
 
         public void UpdateHoaDonNuoc(string a0, string a1, DateTime a2, float a3, float a4, float a5, string a6)
         {
@@ -107,8 +117,8 @@ namespace QuanLyHoaDon.DAL
                 cmd.Parameters.AddWithValue("@a5", a5);
                 cmd.Parameters.AddWithValue("@a6", a6);
 
-                int result = cmd.ExecuteNonQuery();
-                if (result == 0)
+                int t = cmd.ExecuteNonQuery();
+                if (t == 0)
                 {
                     MessageBox.Show("Không tìm thấy đối tượng nào để cập nhật!");
                 }
@@ -120,17 +130,17 @@ namespace QuanLyHoaDon.DAL
             
         }
 
-        // hàm thêm hóa đơn điện
+        // hàm thêm hóa đơn nước
         public void AddHoaDonNuoc(string a0, string a1, DateTime a2, float a3, float a4, float a5, string a6)
         {
             Connect connect = new Connect();
             connect.OpenConnect();
-            string query = "SELECT * FROM HoaDonNuoc where (Phong=@a0 AND NgayLapHoaDon=@a2)";
+            string query = "SELECT * FROM HoaDonNuoc WHERE (Phong=@a0 AND NgayLapHoaDon=@a2)";
             SqlCommand cmd1 = new SqlCommand(query, connect.connect);
-            cmd1.Parameters.AddWithValue("@a0", a0);
-            cmd1.Parameters.AddWithValue("@a2", a2);
-            int k = cmd1.ExecuteNonQuery();
-            if (k > 0)
+            cmd1.Parameters.AddWithValue("@a0",a0);
+            cmd1.Parameters.AddWithValue("@a2",a2);
+            SqlDataReader reader = cmd1.ExecuteReader();
+            if (reader.HasRows)
             {
                 MessageBox.Show("Đã tồn tại hóa đơn trùng!");
                 connect.CloseConnect();
@@ -138,8 +148,9 @@ namespace QuanLyHoaDon.DAL
             }
             else
             {
+                reader.Close();
                 query = "INSERT INTO HoaDonNuoc VALUES (@a0,@a1,@a2,@a3,@a4,@a5,@a6)";
-                SqlCommand cmd = new SqlCommand(query, connect.connect);
+                SqlCommand  cmd = new SqlCommand(query, connect.connect);
                 cmd.Parameters.AddWithValue("@a0", a0);
                 cmd.Parameters.AddWithValue("@a1", a1);
                 cmd.Parameters.AddWithValue("@a2", a2);
@@ -149,6 +160,7 @@ namespace QuanLyHoaDon.DAL
                 cmd.Parameters.AddWithValue("@a6", a6);
                 cmd.ExecuteNonQuery();
                 connect.CloseConnect();
+                return;
             }
         }
 
