@@ -210,7 +210,16 @@ namespace QuanLyHoaDon.GUI
             }
             return;
         }
-
+        private void comboBox6_Click(object sender, EventArgs e)
+        {
+            comboBox6.Items.Clear();
+            ChuHoBLL chuHoBLL = new ChuHoBLL();
+            foreach (ListViewItem item in listView1.Items)
+            {
+                comboBox6.Items.Add(item.SubItems[0].Text);
+            }
+            return;
+        }
         // Hàm sửa hóa đơn điện
         private void button9_Click(object sender, EventArgs e)
         {         
@@ -247,7 +256,7 @@ namespace QuanLyHoaDon.GUI
         private void button8_Click(object sender, EventArgs e)
         {
             HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
-            hoaDonDienBLL.DeleteHoaDonDien(comboBox4.Text,DateTime.Parse(textBox6.Text));  
+            hoaDonDienBLL.DeleteHoaDonDien(comboBox4.Text, DateTime.Parse(textBox6.Text));  
             hoaDonDienBLL.HienThiToanBoHoaDonDien(hoaDonDienBLL.AllHoaDonDien(),listView2);
             return;
         }
@@ -281,10 +290,17 @@ namespace QuanLyHoaDon.GUI
         // Hàm hiển thị trạng thái chưa thanh toán
         private void button18_Click(object sender, EventArgs e)
         {
-            if (comboBox5.SelectedItem.ToString() == null) return;
+            if (comboBox5.SelectedItem == null)
+            {
+                MessageBox.Show("Hãy chọn phân loại!");
+                ; return;
+            }
+        
             HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
             hoaDonDienBLL.HienThiHoaDonDienTheoTrangThai(comboBox5.SelectedItem.ToString(), listView4);
-
+            //if (comboBox6.SelectedItem == null) return;
+            //     textBox5.Text = hoaDonDienBLL.TinhTien(comboBox5.SelectedItem.ToString(),comboBox6.SelectedItem.ToString()).ToString();
+            this.SizeListView(listView4);
             return;
 
         }
@@ -416,6 +432,23 @@ namespace QuanLyHoaDon.GUI
             }
         }
 
-       
+        private void button19_Click(object sender, EventArgs e)
+        {
+            if (comboBox5.SelectedItem == null)
+            {
+                MessageBox.Show("Hãy chọn phân loại!");
+                ; return;
+            }
+                HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
+                hoaDonDienBLL.HienThiHoaDonDienTheoTrangThai(comboBox5.SelectedItem.ToString(), listView4);
+            if (comboBox6.SelectedItem == null)
+            {
+                MessageBox.Show("Hãy chọn phòng!");
+                return;
+            }
+                textBox5.Text = hoaDonDienBLL.TinhTien(comboBox6.SelectedItem.ToString(),hoaDonDienBLL.FindState(comboBox6.SelectedItem.ToString())).ToString();
+                this.SizeListView(listView4);
+                return;
+        }
     }
 }
