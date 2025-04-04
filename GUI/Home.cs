@@ -477,5 +477,19 @@ namespace QuanLyHoaDon.GUI
             this.SizeListView(listView4);
             return;
         }
+        // hàm tìm kiếm trạng thái thanh toán
+        private void button21_Click(object sender, EventArgs e)
+        {
+            if (comboBox8.SelectedItem == null)
+            {
+                MessageBox.Show("Hãy chọn phân loại!");
+                return;
+            }
+
+            HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
+            hoaDonNuocBLL.HienThiHoaDonNuocTheoTrangThai(comboBox8.SelectedItem.ToString(), listView5);
+            this.SizeListView(listView4);
+            return;
+        }
     }
 }

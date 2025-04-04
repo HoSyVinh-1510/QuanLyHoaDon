@@ -1371,6 +1371,7 @@
             this.button21.TabIndex = 17;
             this.button21.Text = "Tìm Kiếm";
             this.button21.UseVisualStyleBackColor = true;
+            this.button21.Click += new System.EventHandler(this.button21_Click);
             // 
             // listView5
             // 
