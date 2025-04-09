@@ -365,6 +365,43 @@ namespace QuanLyHoaDon.GUI
 
             }
         }
+        // Hàm mở form thanh toán
+        private void button23_Click(object sender, EventArgs e)
+        {
+            if (comboBox10.SelectedItem != null)
+            {
+                ChuHoBLL chuHoBLL = new ChuHoBLL();
+                ChuHo ch = chuHoBLL.FindChuHo(comboBox10.SelectedItem.ToString());
+                HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
+                ThanhToan tt = new ThanhToan(ch, hoaDonDienBLL.FindState("Chưa thanh toán"));
+                this.Hide();
+                tt.ShowDialog();
+                this.Show();
+            }
+        }
+
+
+        // Hàm xóa phòng không đủ điều kiện sử dụng
+        private void button24_Click(object sender, EventArgs e)
+        {
+            if (comboBox10.SelectedItem == null)
+            {
+                MessageBox.Show("Hãy chọn phòng!");
+                return;
+            }
+            DialogResult kq= MessageBox.Show(" Quản lý muốn dừng dịch vụ phòng này?","Xác nhận",MessageBoxButtons.YesNo);
+            if (kq == DialogResult.Yes)
+            {
+                ChuHoBLL chuHoBLL = new ChuHoBLL();
+                chuHoBLL.DeleteChuHo(comboBox10.SelectedItem.ToString());
+            }
+            this.button5_Click(sender, e);
+            return;
+        }
+
+
+
+
 
 
         // HÓA ĐƠN NƯỚC
@@ -564,28 +601,38 @@ namespace QuanLyHoaDon.GUI
             {
                 if (hoaDonNuocBLL.CountPhong(item.SubItems[0].Text) >= 2)
                     comboBox9.Items.Add(item.SubItems[0].Text);
-            }
-          
-           
+            }       
         }
 
-        private void button22_Click_1(object sender, EventArgs e)
+       // Hàm hiển thị thanh toán tiền nước
+        private void button22_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void button23_Click(object sender, EventArgs e)
-        {
-            if( comboBox10.SelectedItem != null)
+            if (comboBox9.SelectedItem != null)
             {
                 ChuHoBLL chuHoBLL = new ChuHoBLL();
-                ChuHo ch=chuHoBLL.FindChuHo(comboBox10.SelectedItem.ToString());
-                HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
-                ThanhToan tt= new ThanhToan(ch, hoaDonDienBLL.FindState("Chưa thanh toán"));
+                ChuHo ch = chuHoBLL.FindChuHo(comboBox9.SelectedItem.ToString());
+                HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
+                ThanhToan tt = new ThanhToan(ch, hoaDonNuocBLL.FindState("Chưa thanh toán"));
                 this.Hide();
                 tt.ShowDialog();
                 this.Show();
             }
+        }
+
+        private void button25_Click(object sender, EventArgs e)
+        {
+            if (comboBox9.SelectedItem == null)
+            {
+                MessageBox.Show("Hãy chọn phòng!");
+                return;
+            }
+            DialogResult kq = MessageBox.Show(" Quản lý muốn dừng dịch vụ phòng này?", "Xác nhận", MessageBoxButtons.YesNo);
+            if (kq == DialogResult.Yes)
+            {
+                ChuHoBLL chuHoBLL = new ChuHoBLL();
+                chuHoBLL.DeleteChuHo(comboBox9.SelectedItem.ToString());
+            }
+            this.button5_Click(sender, e);
         }
     }
 }

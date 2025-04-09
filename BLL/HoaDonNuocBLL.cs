@@ -91,6 +91,24 @@ namespace QuanLyHoaDon.BLL
             hoaDonDienDAL.AddHoaDonNuoc(a0, a1, a2, a3, a4, a5, a6);
             return;
         }
+
+
+        // Thanh toán hóa đơn nước
+        public void PayAllHoaDonNuoc(string phong)
+        {
+            HoaDonNuocDAL hoaDonNuocDAL = new HoaDonNuocDAL();
+            hoaDonNuocDAL.PayAllHoaDonNuoc(phong);
+            return;
+        }
+
+        public void PayHoaDonNuoc(string phong, DateTime date)
+        {
+            HoaDonNuocDAL hoaDonNuocDAL = new HoaDonNuocDAL();
+            hoaDonNuocDAL.PayHoaDonNuoc(phong, date);
+            return;
+        }
+
+
         // Tính tiền
         public float TinhTien(string phong, List<HoaDonNuoc> list)
         {

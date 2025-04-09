@@ -59,7 +59,49 @@ namespace QuanLyHoaDon.DAL
             cn.CloseConnect();
             return listChuHo;
         }
+        // Hàm thanh toán toàn bộ hóa đơn nước
+        public void PayAllHoaDonNuoc(string phong)
+        {
+            Connect cn = new Connect();
+            cn.OpenConnect();
+            string query = "UPDATE HoaDonNuoc SET TrangThai= @trangthai WHERE TrangThai= @trangthai2 AND Phong= @phong ";
+            SqlCommand cmd = new SqlCommand(query, cn.connect);
+            cmd.Parameters.AddWithValue("@phong", phong);
+            cmd.Parameters.AddWithValue("@trangthai", "Đã thanh toán");
+            cmd.Parameters.AddWithValue("@trangthai2", "Chưa thanh toán");
+            if (cmd.ExecuteNonQuery() != 0)
+            {
+                MessageBox.Show("Thanh toán toàn bộ hóa đơn thành công");
+            }
+            else
+            {
+                MessageBox.Show("Không thành công!");
+            }
 
+            cn.CloseConnect();
+            return;
+        }
+        // Thanh toán 1 hóa đơn nước
+        public void PayHoaDonNuoc(string phong, DateTime date)
+        {
+            Connect cn = new Connect();
+            cn.OpenConnect();
+            string query = "UPDATE HoaDonNuoc SET TrangThai= @trangthai Where NgayLapHoaDon= @date AND Phong= @phong";
+            SqlCommand cmd = new SqlCommand(query, cn.connect);
+            cmd.Parameters.AddWithValue("@trangthai", "Đã thanh toán");
+            cmd.Parameters.AddWithValue("@date", date);
+            cmd.Parameters.AddWithValue("@phong", phong);
+            if (cmd.ExecuteNonQuery() == 0)
+            {
+                MessageBox.Show("Không thể thanh toán hóa đơn này");
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Thanh toán hóa đơn thành công");
+            }
+            cn.CloseConnect();
+        }
 
         public List<HoaDonNuoc> FindState(string trangthai)
         {
