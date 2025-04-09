@@ -111,7 +111,7 @@ namespace QuanLyHoaDon.DAL
         {
             Connect connect = new Connect();
             connect.OpenConnect();
-                string query = "UPDATE HoaDonNuoc SET TenChuHo=@a1, SoDienCu=@a3, SoDienMoi=@a4, ThanhTien=@a5, TrangThai=@a6 WHERE (Phong=@a0 AND NgayLapHoaDon=@a2)";
+                string query = "UPDATE HoaDonNuoc SET TenChuHo=@a1, SoNuocCu=@a3, SoNuocMoi=@a4, ThanhTien=@a5, TrangThai=@a6 WHERE (Phong=@a0 AND NgayLapHoaDon=@a2)";
                 SqlCommand cmd = new SqlCommand(query, connect.connect);
                 cmd.Parameters.AddWithValue("@a0", a0);
                 cmd.Parameters.AddWithValue("@a1", a1);

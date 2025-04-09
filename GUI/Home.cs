@@ -555,19 +555,18 @@ namespace QuanLyHoaDon.GUI
             this.SizeListView(listView4);
             return;
         }
+        // Hiển phòng quá 2 tháng chưa  đóng tiền
         private void comboBox9_Click_1(object sender, EventArgs e)
         {
             comboBox9.Items.Clear();
+            HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
             foreach (ListViewItem item in listView1.Items)
             {
-                comboBox9.Items.Add(item.SubItems[0].Text);
+                if (hoaDonNuocBLL.CountPhong(item.SubItems[0].Text) >= 2)
+                    comboBox9.Items.Add(item.SubItems[0].Text);
             }
-            HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
-            for (int i = 1; i <= comboBox9.Items.Count; i++)
-            {
-                if (hoaDonNuocBLL.CountPhong(comboBox9.Items[i].ToString()) < 2)
-                    comboBox9.Items.RemoveAt(i);
-            }
+          
+           
         }
 
         private void button22_Click_1(object sender, EventArgs e)
