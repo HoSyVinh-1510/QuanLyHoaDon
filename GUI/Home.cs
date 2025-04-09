@@ -634,5 +634,71 @@ namespace QuanLyHoaDon.GUI
             }
             this.button5_Click(sender, e);
         }
+
+
+
+        // TÍNH DOANH THU CỦA CHỦ HỘ
+        // TÍNH DOANH THU CỦA CHỦ HỘ
+
+
+        // Hàm tính doanh thu điện
+        private void DoanhThuDien(ListView list)
+        {
+            HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
+            foreach (HoaDonDien hdd in hoaDonDienBLL.FindState("Đã thanh toán"))
+            {
+                ListViewItem item= new ListViewItem(hdd.Phong);
+                item.SubItems.Add(hdd.NgayLapHoaDon.ToString());
+                item.SubItems.Add(hdd.SoDienCu.ToString());
+                item.SubItems.Add(hdd.SoDienMoi.ToString());
+                item.SubItems.Add(hdd.ThanhTien.ToString());
+                list.Items.Add(item);
+                this.SizeListView(list);
+            }
+            return;
+        }
+
+
+        private void DoanhThuNuoc(ListView list) 
+        {
+            HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
+            foreach (HoaDonNuoc hdn in hoaDonNuocBLL.FindState("Đã thanh toán"))
+            {
+                ListViewItem item = new ListViewItem(hdn.Phong);
+                item.SubItems.Add(hdn.NgayLapHoaDon.ToString());
+                item.SubItems.Add(hdn.SoNuocCu.ToString());
+                item.SubItems.Add(hdn.SoNuocMoi.ToString());
+                item.SubItems.Add(hdn.ThanhTien.ToString());
+                list.Items.Add(item);
+                this.SizeListView(list);
+            }
+            return;
+        }
+        private string DoanhThu(ListView list)
+        {
+            float sum = 0;
+            foreach (ListViewItem item in list.Items)
+            {
+               sum += float.Parse(item.SubItems[4].Text);   
+            }
+            return sum.ToString();
+        }
+
+        // Hàm hiển thị toàn bộ nội dung trang doanh thu
+        private void button26_Click(object sender, EventArgs e)
+        {
+            listView6.Items.Clear();
+            listView7.Items.Clear();
+            this.DoanhThuDien(listView6);
+            this.DoanhThuNuoc(listView7);
+            textBox8.Text = this.DoanhThu(listView6);
+            textBox9.Text = this.DoanhThu(listView7);
+            textBox10.Text = (float.Parse(textBox8.Text) + float.Parse(textBox9.Text)).ToString();
+            return;
+        }
+
+        private void tabPage4_Click(object sender, EventArgs e)
+        {
+        }
     }
 }
