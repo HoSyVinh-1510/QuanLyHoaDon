@@ -83,6 +83,20 @@ namespace QuanLyHoaDon.BLL
             hoaDonDienDAL.UpdateHoaDonDien(a0, a1, a2,a3, a4, a5, a6);
             return;
         }
+        // Thanh toán toàn bộ hóa đơn điện
+        public void PayAllHoaDonDien(string phong)
+        {
+            HoaDonDienDAL hoaDonDienDAL = new HoaDonDienDAL();
+            hoaDonDienDAL.PayAllHoaDonDien(phong);
+            return;
+        }
+
+        public void PayHoaDonDien(string phong,DateTime date)
+        {
+            HoaDonDienDAL hoaDonDienDAL = new HoaDonDienDAL();
+            hoaDonDienDAL.PayHoaDonDien(phong, date);
+            return;
+        }
 
         // Hàm thêm hóa đơn điện 
         public void AddHoaDonDien(string a0, string a1, DateTime a2, float a3, float a4, float a5, string a6)
@@ -113,6 +127,11 @@ namespace QuanLyHoaDon.BLL
             HoaDonDienDAL hoaDonDienDAL = new HoaDonDienDAL();
             List<HoaDonDien> list = hoaDonDienDAL.FindState("Chưa thanh toán");
             int count = 0;
+            if (list==null)
+            {
+                MessageBox.Show("Các hóa đơn đã được thanh toán");
+                return 0;
+            }
             foreach (HoaDonDien hd in list)
             {
                 if (hd.Phong == phong)
@@ -122,6 +141,8 @@ namespace QuanLyHoaDon.BLL
             }
             return count;
         }
+
+        
 
     }
 }

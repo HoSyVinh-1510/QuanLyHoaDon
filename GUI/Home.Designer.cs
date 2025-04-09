@@ -64,6 +64,7 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button23 = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
             this.comboBox10 = new System.Windows.Forms.ComboBox();
             this.button19 = new System.Windows.Forms.Button();
@@ -183,7 +184,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1645, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1645, 30);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -519,6 +520,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.button23);
             this.panel4.Controls.Add(this.label33);
             this.panel4.Controls.Add(this.comboBox10);
             this.panel4.Controls.Add(this.button19);
@@ -531,16 +533,27 @@
             this.panel4.Controls.Add(this.button18);
             this.panel4.Controls.Add(this.listView4);
             this.panel4.Controls.Add(this.label24);
-            this.panel4.Location = new System.Drawing.Point(1181, 212);
+            this.panel4.Location = new System.Drawing.Point(1181, 6);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(448, 456);
+            this.panel4.Size = new System.Drawing.Size(448, 662);
             this.panel4.TabIndex = 3;
+            // 
+            // button23
+            // 
+            this.button23.BackColor = System.Drawing.Color.Yellow;
+            this.button23.Location = new System.Drawing.Point(321, 215);
+            this.button23.Name = "button23";
+            this.button23.Size = new System.Drawing.Size(115, 51);
+            this.button23.TabIndex = 35;
+            this.button23.Text = "Gia hạn";
+            this.button23.UseVisualStyleBackColor = false;
+            this.button23.Click += new System.EventHandler(this.button23_Click);
             // 
             // label33
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label33.Location = new System.Drawing.Point(31, 196);
+            this.label33.Location = new System.Drawing.Point(4, 224);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(137, 19);
             this.label33.TabIndex = 33;
@@ -549,9 +562,9 @@
             // comboBox10
             // 
             this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Location = new System.Drawing.Point(217, 191);
+            this.comboBox10.Location = new System.Drawing.Point(154, 223);
             this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(203, 24);
+            this.comboBox10.Size = new System.Drawing.Size(153, 24);
             this.comboBox10.TabIndex = 32;
             this.comboBox10.Click += new System.EventHandler(this.comboBox10_Click);
             // 
@@ -648,9 +661,9 @@
             this.listView4.FullRowSelect = true;
             this.listView4.GridLines = true;
             this.listView4.HideSelection = false;
-            this.listView4.Location = new System.Drawing.Point(8, 271);
+            this.listView4.Location = new System.Drawing.Point(8, 373);
             this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(437, 179);
+            this.listView4.Size = new System.Drawing.Size(437, 283);
             this.listView4.TabIndex = 10;
             this.listView4.UseCompatibleStateImageBehavior = false;
             this.listView4.View = System.Windows.Forms.View.Details;
@@ -726,7 +739,7 @@
             this.button11.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button11.Location = new System.Drawing.Point(175, 384);
             this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(109, 42);
+            this.button11.Size = new System.Drawing.Size(109, 49);
             this.button11.TabIndex = 30;
             this.button11.Text = "Xóa bộ lọc tìm kiếm";
             this.button11.UseVisualStyleBackColor = false;
@@ -1010,16 +1023,16 @@
             this.panel5.Controls.Add(this.button21);
             this.panel5.Controls.Add(this.listView5);
             this.panel5.Controls.Add(this.label31);
-            this.panel5.Location = new System.Drawing.Point(1181, 110);
+            this.panel5.Location = new System.Drawing.Point(1181, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(448, 561);
+            this.panel5.Size = new System.Drawing.Size(448, 668);
             this.panel5.TabIndex = 4;
             // 
             // label34
             // 
             this.label34.AutoSize = true;
             this.label34.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label34.Location = new System.Drawing.Point(19, 249);
+            this.label34.Location = new System.Drawing.Point(23, 202);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(137, 19);
             this.label34.TabIndex = 34;
@@ -1028,15 +1041,16 @@
             // comboBox9
             // 
             this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Location = new System.Drawing.Point(171, 244);
+            this.comboBox9.Location = new System.Drawing.Point(166, 197);
             this.comboBox9.Name = "comboBox9";
             this.comboBox9.Size = new System.Drawing.Size(151, 24);
             this.comboBox9.TabIndex = 31;
+            this.comboBox9.Click += new System.EventHandler(this.comboBox9_Click_1);
             // 
             // button20
             // 
             this.button20.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button20.Location = new System.Drawing.Point(339, 178);
+            this.button20.Location = new System.Drawing.Point(339, 126);
             this.button20.Name = "button20";
             this.button20.Size = new System.Drawing.Size(101, 31);
             this.button20.TabIndex = 29;
@@ -1048,7 +1062,7 @@
             // 
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label28.Location = new System.Drawing.Point(53, 181);
+            this.label28.Location = new System.Drawing.Point(65, 115);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(56, 19);
             this.label28.TabIndex = 28;
@@ -1058,7 +1072,7 @@
             // 
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label29.Location = new System.Drawing.Point(42, 214);
+            this.label29.Location = new System.Drawing.Point(48, 159);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(79, 19);
             this.label29.TabIndex = 27;
@@ -1068,7 +1082,7 @@
             // 
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label30.Location = new System.Drawing.Point(36, 132);
+            this.label30.Location = new System.Drawing.Point(42, 73);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(85, 19);
             this.label30.TabIndex = 26;
@@ -1076,7 +1090,7 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(169, 213);
+            this.textBox7.Location = new System.Drawing.Point(164, 156);
             this.textBox7.Name = "textBox7";
             this.textBox7.ReadOnly = true;
             this.textBox7.Size = new System.Drawing.Size(153, 22);
@@ -1088,11 +1102,10 @@
             this.comboBox7.Items.AddRange(new object[] {
             "Đã thanh toán",
             "Chưa thanh toán"});
-            this.comboBox7.Location = new System.Drawing.Point(171, 176);
+            this.comboBox7.Location = new System.Drawing.Point(164, 114);
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(153, 24);
             this.comboBox7.TabIndex = 24;
-            this.comboBox7.SelectedIndexChanged += new System.EventHandler(this.comboBox7_SelectedIndexChanged);
             this.comboBox7.Click += new System.EventHandler(this.comboBox7_Click);
             // 
             // comboBox8
@@ -1101,7 +1114,7 @@
             this.comboBox8.Items.AddRange(new object[] {
             "Đã thanh toán",
             "Chưa thanh toán"});
-            this.comboBox8.Location = new System.Drawing.Point(169, 131);
+            this.comboBox8.Location = new System.Drawing.Point(164, 72);
             this.comboBox8.Name = "comboBox8";
             this.comboBox8.Size = new System.Drawing.Size(153, 24);
             this.comboBox8.TabIndex = 23;
@@ -1109,7 +1122,7 @@
             // button21
             // 
             this.button21.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button21.Location = new System.Drawing.Point(328, 126);
+            this.button21.Location = new System.Drawing.Point(339, 67);
             this.button21.Name = "button21";
             this.button21.Size = new System.Drawing.Size(101, 31);
             this.button21.TabIndex = 17;
@@ -1127,7 +1140,7 @@
             this.listView5.FullRowSelect = true;
             this.listView5.GridLines = true;
             this.listView5.HideSelection = false;
-            this.listView5.Location = new System.Drawing.Point(3, 295);
+            this.listView5.Location = new System.Drawing.Point(8, 412);
             this.listView5.Name = "listView5";
             this.listView5.Size = new System.Drawing.Size(437, 253);
             this.listView5.TabIndex = 10;
@@ -1154,7 +1167,7 @@
             // 
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label31.Location = new System.Drawing.Point(164, 42);
+            this.label31.Location = new System.Drawing.Point(164, 22);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(153, 25);
             this.label31.TabIndex = 9;
@@ -1632,5 +1645,6 @@
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.ComboBox comboBox10;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Button button23;
     }
 }

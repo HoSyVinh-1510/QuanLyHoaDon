@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyHoaDon.DTO
 {
-    internal class ChuHo
+    public class ChuHo
     {
         public string MaChuHo { get; set; }
         public string TenChuHo { get; set; }

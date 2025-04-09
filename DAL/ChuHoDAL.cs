@@ -62,6 +62,31 @@ namespace QuanLyHoaDon.DAL
             return listChuHo;
         }
 
+        public ChuHo FindChuHo(string id)
+        {
+            ChuHo item = new ChuHo();
+            Connect cn = new Connect();
+            cn.OpenConnect();
+            string query = "SELECT * FROM ChuHo WHERE MaChuHo= @id";
+            SqlCommand cmd = new SqlCommand(query, cn.connect);
+            cmd.Parameters.AddWithValue("@id", id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                item.MaChuHo = reader.GetString(0);
+                item.TenChuHo = reader.GetString(1);
+                if (DateTime.TryParse(reader.GetValue(2).ToString(), out DateTime ngay))
+                {
+                    item.NgaySinh = ngay;
+                }
+                item.GioiTinh = reader.GetValue(3).ToString();
+                item.SDT = reader.GetValue(4).ToString();
+                break;
+            }
+            cn.CloseConnect();
+            return item;
+        }
+
         public void DeleteChuHo(string name)
         {
             Connect cn = new Connect(); 

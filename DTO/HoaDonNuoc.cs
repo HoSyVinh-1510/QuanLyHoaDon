@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuanLyHoaDon.DTO
 {
-    internal class HoaDonNuoc
+    public class HoaDonNuoc
     {
         public string Phong { get; set; }
         public string TenChuHo { get; set; }

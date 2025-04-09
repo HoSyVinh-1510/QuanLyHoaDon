@@ -61,25 +61,11 @@ namespace QuanLyHoaDon.BLL
             return;
         }
 
-        public float ChuaThanhToan(List<HoaDonDien> list0, ListView list1)
+        public ChuHo FindChuHo(string name)
         {
-            float result = 0;
-            list1.Items.Clear();
-            foreach (HoaDonDien hd in list0)
-            {
-                if (hd.TrangThai == "Chưa thanh toán")
-                {
-                    ListViewItem item = new ListViewItem();
-                    item.SubItems.Add(hd.Phong);
-                    item.SubItems.Add(hd.NgayLapHoaDon.ToString());
-                    item.SubItems.Add(hd.ThanhTien.ToString());
-                    item.SubItems.Add(hd.TrangThai);
-                    list1.Items.Add(item);
-                    result += hd.ThanhTien;
-                }               
-            }
-            return result;
+            ChuHoDAL chDAL = new ChuHoDAL();
+            return chDAL.FindChuHo(name);
         }
-        
+
     }
 }

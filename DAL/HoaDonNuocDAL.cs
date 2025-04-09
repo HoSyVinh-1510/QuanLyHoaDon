@@ -22,10 +22,14 @@ namespace QuanLyHoaDon.DAL
             string query = "SELECT * FROM HoaDonNuoc";
             SqlCommand cmd = new SqlCommand(query, connect.connect);
             SqlDataReader reader = cmd.ExecuteReader();
+            if (!reader.HasRows)
+            {
+                MessageBox.Show("Không tìm thấy hóa đơn nào");
+                return null;
+            }
             while (reader.Read())
             {
                 HoaDonNuoc hoaDon = new HoaDonNuoc(reader.GetString(0), reader.GetString(1), reader.GetDateTime(2), ((float)reader.GetDecimal(3)), ((float)reader.GetDecimal(4)), reader.GetString(6));
-
                 listChuHo.Add(hoaDon);
             }
             connect.CloseConnect();
@@ -64,7 +68,7 @@ namespace QuanLyHoaDon.DAL
             cn.OpenConnect();
             string query = "SELECT * FROM HoaDonNuoc WHERE TrangThai= @trangthai";
             SqlCommand cmd = new SqlCommand(query, cn.connect);
-            cmd.Parameters.AddWithValue("@trangthai", trangthai);
+            cmd.Parameters.AddWithValue("@trangthai", trangthai);           
             SqlDataReader reader = cmd.ExecuteReader();
             if (!reader.HasRows)
             {
@@ -79,7 +83,7 @@ namespace QuanLyHoaDon.DAL
             cn.CloseConnect();
             return listChuHo;
         }
-        // Hàm xóa hóa đơn điện
+        // Hàm xóa hóa đơn nước
         public void DeleteHoaDonNuoc(string phong, DateTime date)
         {
             Connect cn = new Connect();
@@ -88,8 +92,8 @@ namespace QuanLyHoaDon.DAL
             SqlCommand cmd = new SqlCommand(query, cn.connect);
             cmd.Parameters.AddWithValue("@phong", phong);
             cmd.Parameters.AddWithValue("@date", date);
-           int i= cmd.ExecuteNonQuery() ;
-            if (i==0)
+            cmd.ExecuteNonQuery();
+            if (cmd.ExecuteNonQuery()==0)
             {
                 MessageBox.Show("Không tìm thấy hóa đơn nào để xóa");
                 return;
@@ -116,9 +120,8 @@ namespace QuanLyHoaDon.DAL
                 cmd.Parameters.AddWithValue("@a4", a4);
                 cmd.Parameters.AddWithValue("@a5", a5);
                 cmd.Parameters.AddWithValue("@a6", a6);
-
-                int t = cmd.ExecuteNonQuery();
-                if (t == 0)
+                cmd.ExecuteNonQuery();
+                if (cmd.ExecuteNonQuery() == 0)
                 {
                     MessageBox.Show("Không tìm thấy đối tượng nào để cập nhật!");
                 }
