@@ -658,11 +658,43 @@ namespace QuanLyHoaDon.GUI
             return;
         }
 
+        private void ChuaThuDien(ListView list)
+        {
+            HoaDonDienBLL hoaDonDienBLL = new HoaDonDienBLL();
+            foreach (HoaDonDien hdd in hoaDonDienBLL.FindState("Chưa thanh toán"))
+            {
+                ListViewItem item = new ListViewItem(hdd.Phong);
+                item.SubItems.Add(hdd.NgayLapHoaDon.ToString());
+                item.SubItems.Add(hdd.SoDienCu.ToString());
+                item.SubItems.Add(hdd.SoDienMoi.ToString());
+                item.SubItems.Add(hdd.ThanhTien.ToString());
+                list.Items.Add(item);
+                this.SizeListView(list);
+            }
+            return;
+        }
+
 
         private void DoanhThuNuoc(ListView list) 
         {
             HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
             foreach (HoaDonNuoc hdn in hoaDonNuocBLL.FindState("Đã thanh toán"))
+            {
+                ListViewItem item = new ListViewItem(hdn.Phong);
+                item.SubItems.Add(hdn.NgayLapHoaDon.ToString());
+                item.SubItems.Add(hdn.SoNuocCu.ToString());
+                item.SubItems.Add(hdn.SoNuocMoi.ToString());
+                item.SubItems.Add(hdn.ThanhTien.ToString());
+                list.Items.Add(item);
+                this.SizeListView(list);
+            }
+            return;
+        }
+
+        private void ChuaThuNuoc(ListView list)
+        {
+            HoaDonNuocBLL hoaDonNuocBLL = new HoaDonNuocBLL();
+            foreach (HoaDonNuoc hdn in hoaDonNuocBLL.FindState("Chưa thanh toán"))
             {
                 ListViewItem item = new ListViewItem(hdn.Phong);
                 item.SubItems.Add(hdn.NgayLapHoaDon.ToString());
@@ -689,16 +721,76 @@ namespace QuanLyHoaDon.GUI
         {
             listView6.Items.Clear();
             listView7.Items.Clear();
+            listView8.Items.Clear();
+            listView9.Items.Clear();
+            
             this.DoanhThuDien(listView6);
             this.DoanhThuNuoc(listView7);
+            this.ChuaThuDien(listView8);
+            this.ChuaThuNuoc(listView9);
+            
             textBox8.Text = this.DoanhThu(listView6);
             textBox9.Text = this.DoanhThu(listView7);
+            textBox11.Text = this.DoanhThu(listView8);
+            textBox12.Text = this.DoanhThu(listView9);
+            
             textBox10.Text = (float.Parse(textBox8.Text) + float.Parse(textBox9.Text)).ToString();
+            textBox13.Text=(float.Parse(textBox10.Text)+float.Parse(textBox11.Text)).ToString();
             return;
         }
 
+
+
         private void tabPage4_Click(object sender, EventArgs e)
         {
+        }
+
+        private void tabPage5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button27_Click(object sender, EventArgs e)
+        {
+            textBox17.Text = "0";
+            textBox18.Text = "0";
+            textBox19.Text = "0";
+            textBox20.Text = "0";
+            textBox21.Text = "0";
+            if (comboBox11.SelectedItem == null) { return; }
+            float cu,moi,used;
+            if( float.TryParse(textBox14.Text,out cu)==false)
+            {
+                MessageBox.Show("Đưa vào giá trị số ");
+                return;
+            }
+            if (float.TryParse(textBox15.Text, out moi) == false)
+            {
+                MessageBox.Show("Đưa vào giá trị số ");
+                return;
+            }
+            used = moi - cu;
+            
+            if (used < 0) { MessageBox.Show("Nhập số cũ nhỏ hơn số mới!");return; }
+            textBox16.Text = used.ToString();
+
+            if (comboBox11.SelectedItem.ToString() == "Hóa đơn điện")
+            {
+                if (used <= 50) textBox17.Text = (used * 1.8).ToString();
+                else if (used <= 100) { textBox18.Text = ((used - 50) * 2).ToString(); textBox17.Text = "90"; }
+                else if (used <= 200) { textBox19.Text = ((used - 100) * 2.5).ToString(); textBox17.Text = "80"; textBox18.Text = "100"; }
+                else { textBox20.Text = ((used - 200) * 3).ToString(); textBox17.Text = "80"; textBox18.Text = "100"; textBox19.Text = "250"; }
+            }
+            else
+            {
+                if (used <= 50) textBox17.Text = (used * 4.5).ToString();
+                else if (used <= 100) { textBox18.Text = ((used - 50) * 5).ToString(); textBox17.Text = "225"; }
+                else if (used <= 200) { textBox19.Text = ((used - 100) * 5.5).ToString(); textBox17.Text = "250"; textBox18.Text = "225"; }
+                else { textBox20.Text = ((used - 200) * 6).ToString(); textBox17.Text = "225"; textBox18.Text = "250"; textBox19.Text = "275"; }
+            }
+             
+            textBox21.Text= ( float.Parse(textBox17.Text)+ float.Parse(textBox18.Text) + float.Parse(textBox19.Text)+ float.Parse(textBox20.Text)).ToString();
+            return;
         }
     }
 }
