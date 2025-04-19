@@ -11,7 +11,18 @@ namespace QuanLyHoaDon.DAL
 {
     internal class HopDongDAL
     {
-        public HopDongDAL() { }
+        private static HopDongDAL instance;
+        public static HopDongDAL Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new HopDongDAL();
+                return instance;
+            }
+            private set { instance = value; }
+        }
+        private HopDongDAL() { }
         public DataTable HopDongPhong(string phong)
         {
             

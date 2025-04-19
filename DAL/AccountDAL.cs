@@ -11,6 +11,16 @@ namespace QuanLyHoaDon.DAL
 {
     internal class AccountDAL
     {
+        public static AccountDAL instance;
+        public static AccountDAL Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new AccountDAL();
+                return instance;
+            }
+        }
         public AccountDAL() { }
         public bool CheckLogin(string tk, string mk)
         {

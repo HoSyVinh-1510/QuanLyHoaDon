@@ -11,15 +11,21 @@ namespace QuanLyHoaDon.DAL
 {
     internal class PhongDAL
     {
-        public List<Phong> FullPhong()
+        private static PhongDAL instance;
+        public static PhongDAL Instance
         {
-            List<Phong> listPhong = new List<Phong>();
-            DataTable dataTable= DataProvider.Instance.ExecuteQuery("select * from Phong");
-            foreach (DataRow row in dataTable.Rows) 
+            get
             {
-                listPhong.Add( new Phong( row["Phong"].ToString(), row["TrangThai"].ToString() ) );
+                if (instance == null)
+                    instance = new PhongDAL();
+                return instance;
             }
-            return listPhong;
+            private set { instance = value; }
+        }
+        private PhongDAL() { }
+        public DataTable FullPhong()
+        {
+            return DataProvider.Instance.ExecuteQuery(" select * from Phong ");         
         }
         
         // "Đang SD" hoặc là "Trống"
@@ -41,11 +47,11 @@ namespace QuanLyHoaDon.DAL
             int k= DataProvider.Instance.ExecuteNonQuery(query, new object[] { p, tt });
             if (k==0)
             {
-                //MessageBox.Show("Thêm phòng không thành công");
+                MessageBox.Show("Thêm phòng không thành công");
             }
             else if (k > 0)
             {
-                //MessageBox.Show("Thêm phòng thành công");
+                MessageBox.Show("Thêm phòng thành công");
             }
         }
 

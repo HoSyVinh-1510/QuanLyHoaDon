@@ -54,7 +54,6 @@ namespace QuanLyHoaDon.DAL
 
                 SqlCommand command = new SqlCommand(query, connection);
                 AddParameters(command, parameters);
-
                 result = command.ExecuteNonQuery();
             }
 

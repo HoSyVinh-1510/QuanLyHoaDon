@@ -11,6 +11,19 @@ namespace QuanLyHoaDon.DAL
 {
     internal class KhachHangDAL
     {
+        public static KhachHangDAL instance;
+        public static KhachHangDAL Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new KhachHangDAL();
+                return instance;
+            }
+            private set { instance = value; }
+        }
+        private KhachHangDAL() { }
+
         public DataTable FullKhachHang()
         { 
             return DataProvider.Instance.ExecuteQuery("Select * from KhachHang");

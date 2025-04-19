@@ -11,7 +11,19 @@ namespace QuanLyHoaDon.DAL
 {
     internal class SoDienNuocDAL
     {
-        public SoDienNuocDAL() { }
+        private static SoDienNuocDAL instance;
+        public static SoDienNuocDAL Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new SoDienNuocDAL();
+                return instance;
+            }
+            private set { instance = value; }
+        }
+
+        private SoDienNuocDAL() { }
         public DataTable FullSoDienNuoc(string Phong)
         {
             return DataProvider.Instance.ExecuteQuery("Select * from SoDienNuoc where Phong= @p", new object[] { Phong });           

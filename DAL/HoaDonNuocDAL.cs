@@ -11,7 +11,18 @@ namespace QuanLyHoaDon.DAL
 {
     internal class HoaDonNuocDAL
     {
-        public HoaDonNuocDAL() { }
+        private static HoaDonNuocDAL instance;
+        public static HoaDonNuocDAL Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new HoaDonNuocDAL();
+                return instance;
+            }
+            private set { instance = value; }
+        }
+        private HoaDonNuocDAL() { }
 
         public DataTable FullHoaDonNuoc(string phong)
         {

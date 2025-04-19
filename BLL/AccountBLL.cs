@@ -9,6 +9,16 @@ namespace QuanLyHoaDon.BLL
 {
     internal class AccountBLL
     {
+        public static AccountBLL instance;
+        public static AccountBLL Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = new AccountBLL();
+                return instance;
+            }
+        }
         public AccountBLL() { }
         
         public bool CheckLogin(Account account)
