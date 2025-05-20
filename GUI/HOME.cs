@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QuanLyHoaDon
+namespace QuanLyHoaDon.GUI
 {
      
     public partial class HOME : Form
@@ -32,25 +32,30 @@ namespace QuanLyHoaDon
             InitializeComponent();
         }
 
-        private Form currentFormChild;
-        private void OpenChildForm(Form childForm)
+        public Form currentFormChild;
+        public void OpenChildForm(Form childForm)
         {
             if (currentFormChild == childForm)
             {
-                return;
+                return; // đang mở rồi
             }
-            if (currentFormChild != null) 
+
+            if (currentFormChild != null)
             {
-                currentFormChild.Close();
+                currentFormChild.Hide();  // ẩn form cũ thay vì đóng
             }
-            currentFormChild = null;
+
             currentFormChild = childForm;
 
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            panelHome.Controls.Add(childForm);
-            panelHome.Tag = childForm;
+            if (!panelHome.Controls.Contains(childForm))
+            {
+                childForm.TopLevel = false;
+                childForm.FormBorderStyle = FormBorderStyle.None;
+                childForm.Dock = DockStyle.Fill;
+                panelHome.Controls.Add(childForm);
+                panelHome.Tag = childForm;
+            }
+
             childForm.BringToFront();
             childForm.Show();
         }
@@ -63,14 +68,12 @@ namespace QuanLyHoaDon
 
         private void btnPhongAndKhachHang_Click(object sender, EventArgs e)
         {
-            time = 0;
-            OpenChildForm(PhongAndKhachHang.Instance);
+            OpenChildForm(PhongVaKhachHang.Instance);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            time = 0;
-            OpenChildForm(PhongAndKhachHang.Instance);
+            OpenChildForm(HopDong.Instance);
         }
 
         
@@ -93,25 +96,24 @@ namespace QuanLyHoaDon
             }
         }
 
-        private void panelHome_Paint(object sender, PaintEventArgs e)
+        private void btnHoaDonDien_Click(object sender, EventArgs e)
         {
-
+            OpenChildForm(HoaDonDien.Instance);
         }
 
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    string str = "CommonAppDataPath: " + Application.CommonAppDataPath;
-        //    str += "\r\n";
-        //    //str += "CommonAppDataRegistry: " + Application.CommonAppDataRegistry.ToString();
-        //    //str += "\r\n";
-        //    str += "ExecutablePath: " + Application.ExecutablePath;
-        //    str += "\r\n";
-        //    str += "LocalUserAppDataPath: " + Application.LocalUserAppDataPath;
-        //    str += "\r\n";
-        //    str += "LocalUserAppDataPath: " + Application.StartupPath;
-        //    str += "\r\n";
-        //    str += "UserAppDataPath: " + Application.UserAppDataPath;
+        private void button5_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(HoaDonNuoc.Instance);
+        }
 
-        //}
+        private void button1_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(LichSuThanhToan.Instance);
+        }
+
+        private void btnSoDienNuoc_Click_1(object sender, EventArgs e)
+        {
+            OpenChildForm(BangSoDienNuoc.Instance);
+        }
     }
 }

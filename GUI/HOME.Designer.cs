@@ -1,4 +1,4 @@
-﻿namespace QuanLyHoaDon
+﻿namespace QuanLyHoaDon.GUI
 {
     partial class HOME
     {
@@ -30,8 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnHoaDonDien = new System.Windows.Forms.Button();
             this.btnSoDienNuoc = new System.Windows.Forms.Button();
             this.btnHopDong = new System.Windows.Forms.Button();
             this.btnPhongAndKhachHang = new System.Windows.Forms.Button();
@@ -49,8 +50,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.btnHoaDonDien);
             this.panel1.Controls.Add(this.btnSoDienNuoc);
             this.panel1.Controls.Add(this.btnHopDong);
             this.panel1.Controls.Add(this.btnPhongAndKhachHang);
@@ -60,35 +62,49 @@
             this.panel1.Size = new System.Drawing.Size(166, 527);
             this.panel1.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.Location = new System.Drawing.Point(0, 334);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(166, 65);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Lịch Sử Thanh Toán";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // button5
             // 
             this.button5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button5.Location = new System.Drawing.Point(0, 260);
+            this.button5.Location = new System.Drawing.Point(0, 269);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(166, 65);
             this.button5.TabIndex = 4;
-            this.button5.Text = "button5";
+            this.button5.Text = "Hóa Đơn Nước";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // button4
+            // btnHoaDonDien
             // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button4.Location = new System.Drawing.Point(0, 195);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(166, 65);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnHoaDonDien.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHoaDonDien.Location = new System.Drawing.Point(0, 204);
+            this.btnHoaDonDien.Name = "btnHoaDonDien";
+            this.btnHoaDonDien.Size = new System.Drawing.Size(166, 65);
+            this.btnHoaDonDien.TabIndex = 3;
+            this.btnHoaDonDien.Text = "Hóa Đơn Điện";
+            this.btnHoaDonDien.UseVisualStyleBackColor = true;
+            this.btnHoaDonDien.Click += new System.EventHandler(this.btnHoaDonDien_Click);
             // 
             // btnSoDienNuoc
             // 
             this.btnSoDienNuoc.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSoDienNuoc.Location = new System.Drawing.Point(0, 130);
             this.btnSoDienNuoc.Name = "btnSoDienNuoc";
-            this.btnSoDienNuoc.Size = new System.Drawing.Size(166, 65);
+            this.btnSoDienNuoc.Size = new System.Drawing.Size(166, 74);
             this.btnSoDienNuoc.TabIndex = 2;
             this.btnSoDienNuoc.Text = "Bảng Ghi Điện Nước";
             this.btnSoDienNuoc.UseVisualStyleBackColor = true;
+            this.btnSoDienNuoc.Click += new System.EventHandler(this.btnSoDienNuoc_Click_1);
             // 
             // btnHopDong
             // 
@@ -176,7 +192,6 @@
             this.panelHome.Name = "panelHome";
             this.panelHome.Size = new System.Drawing.Size(1243, 527);
             this.panelHome.TabIndex = 3;
-            this.panelHome.Paint += new System.Windows.Forms.PaintEventHandler(this.panelHome_Paint);
             // 
             // timer1
             // 
@@ -212,9 +227,8 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panelHome;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnHoaDonDien;
         private System.Windows.Forms.Button btnSoDienNuoc;
         private System.Windows.Forms.Button btnHopDong;
         private System.Windows.Forms.Button btnPhongAndKhachHang;
@@ -222,5 +236,7 @@
         private System.Windows.Forms.Timer timer1;
         private DevExpress.XtraEditors.LabelControl lbLoading;
         private System.Windows.Forms.Panel panel4;
+        public System.Windows.Forms.Panel panelHome;
+        private System.Windows.Forms.Button button1;
     }
 }

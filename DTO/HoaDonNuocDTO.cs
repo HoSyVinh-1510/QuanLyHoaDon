@@ -3,32 +3,32 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Text.RegularExpressions;
 namespace QuanLyHoaDon.DTO
 {
-    internal class HoaDonNuoc
+    internal class HoaDonNuocDTO
     {
-        public string SoPhong;
-        public int ID, Thang, Nam;
-        public float SoNuocCu, SoNuocMoi, SoSuDung, DonGia, PhiDichVu, ThanhTien;
-        public string TrangThai;
-        // Trạng thái chỉ có thể là: Đã Thanh Toán   hoặc là: Chưa Thanh Toán
-        public HoaDonNuoc() { }
 
-        public HoaDonNuoc(string sp, int id, int thang, int nam, float SDC, float SDM, float DG, float PDV, string TrangThai)
+        public int IDHoaDonNuoc;
+        public int IDKhachHang;
+        public string SoPhong;
+        public int Thang, Nam;
+        public float SoNuocCu, SoNuocMoi, SoSuDung, DonGia, PhiDichVu, ThanhTien;
+        public HoaDonNuocDTO() { }
+
+        public HoaDonNuocDTO(int idHD, int idKH, string sp, int thang, int nam, float SDC, float SDM, float DG)
         {
+            this.IDHoaDonNuoc = idHD;
             this.SoPhong = sp;
-            this.ID = id;
+            this.IDKhachHang = idKH;
             this.Thang = thang;
             this.Nam = nam;
             this.SoNuocCu = SDC;
             this.SoNuocMoi = SDM;
             this.DonGia = DG;
-            this.SoSuDung = SDM - SDC;
-            this.PhiDichVu = PDV;
+            float SoSuDung = SDM - SDC;
+            this.PhiDichVu = (float)(SoSuDung * DonGia * 0.1);
             this.ThanhTien = this.SoSuDung * DG + this.PhiDichVu;
-            this.TrangThai = TrangThai;
-
         }
     }
 }

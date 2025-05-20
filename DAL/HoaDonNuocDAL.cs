@@ -24,71 +24,69 @@ namespace QuanLyHoaDon.DAL
         }
         private HoaDonNuocDAL() { }
 
-        public DataTable FullHoaDonNuoc(string phong)
+        public int GetMaxIDHoaDonNuoc()
         {
-            string query = " Select * from HoaDonNuoc where Phong= @p  ";
-            DataTable dt = DataProvider.Instance.ExecuteQuery(query, new object[] { phong });
-            return dt;
+            object kq= DataProvider.Instance.ExecuteScalar("select MAX(IDHoaDonNuoc) from HoaDonNuoc");
+            if (kq == null)
+            return 0;
+            else return int.Parse(kq.ToString());
         }
 
-
-        public void ThanhToanHoaDonNuoc(string phong, int thang, int nam)
+        public int? GetIDHoaDonNuoc(int IDSoDienNuoc)
         {
-            string query = " Update HoaDonNuoc Set  TrangThai= @tt Where Phong= @p and Thang= @t and Nam= @n  ";
-            string k = "Đã Thanh Toán";
-            if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { k, phong, thang, nam }) == 0)
+            // Lấy ra ID của bảng số điện nước. Check Xem nó đã có ở trong bảng Hóa Đơn Điện chưa?
+            DataRow row = DataProvider.Instance.ExecuteQuery("Select * from SoDienNuoc where IDSoDienNuoc= @a ", new object[] { IDSoDienNuoc }).Rows[0];
+            int idKh = int.Parse(row["IDKhachHang"].ToString());
+            string phong = row["Phong"].ToString();
+            int nam = int.Parse(row["Nam"].ToString());
+            int thang = int.Parse(row["Thang"].ToString());
+
+            object kq = DataProvider.Instance.ExecuteScalar("select IDHoaDonNuoc from HoaDonNuoc where IDKhachHang= @id and Phong= @p and Nam= @n and Thang= @t", new object[] { idKh, phong, nam, thang });
+            if (kq == null)
+                return null;
+            else return int.Parse(kq.ToString());
+        }
+
+        public void NewHoaDonNuoc(string phong, int idKH, int nam, int thang, int DonGia)
+        {
+            try
             {
-                MessageBox.Show("Failed!");
-                return;
+                int idSDN = SoDienNuocDAL.Instance.GetIDSoDienNuoc(phong, idKH, nam, thang);
+                DataTable dataTable = DataProvider.Instance.ExecuteQuery("Select * from SoDienNuoc where IDSoDienNuoc= @id", new object[] { idSDN });
+                DataRow row = dataTable.Rows[0];
+                int snc = int.Parse(row["SoNuocCu"].ToString());
+                int snm = int.Parse(row["SoNuocMoi"].ToString());
+                int k = DataProvider.Instance.ExecuteNonQuery("insert into HoaDonNuoc (IDHoaDonNuoc,IDKhachHang,Phong,Thang,Nam,SoNuocCu,SoNuocMoi,DonGia)  values ( @id1 , @id2 , @p , @th , @n , @sdc , @sdm , @dg)", new object[] { GetMaxIDHoaDonNuoc() + 1, idKH, phong, thang, nam, snc, snm, DonGia });
+                if (k < 0)
+                {
+                    MessageBox.Show("Thêm Hóa Đơn Điện thất bại");
+                }
             }
-            MessageBox.Show("Successful!");
-            return;
-        }
-
-        public void TaoHoaDonNuoc(string phong, int thang, int nam, float SDM, float DG, float PDV)
-        {
-            string query = " Tim_ID_KhachHang @thang , @nam ";
-            DataTable dataTable = DataProvider.Instance.ExecuteQuery(query, new object[] { thang, nam });
-            int Id = int.Parse(dataTable.Rows[0]["ID"].ToString());
-            int thang0, nam0;
-            if (thang == 1) { thang0 = 12; nam0 = nam - 1; }
-            else { thang0 = thang - 1; nam0 = nam; }
-
-            query = " Select SoNuocMoi from HoaDonNuoc where Phong= @phong and Thang= @thang and Nam= @nam ";
-            dataTable = DataProvider.Instance.ExecuteQuery(query, new object[] { phong, thang0, nam0 });
-            int SDC = int.Parse(dataTable.Rows[0]["SoNuocMoi"].ToString());
-            if (SDC > SDM) return;
-
-            HoaDonNuoc hoaDonNuoc = new HoaDonNuoc(phong, Id, thang, nam, SDC, SDM, DG, PDV, "Chưa Thanh Toán");
-            query = " Insert_HoaDonNuoc @phong , @id , @thang , @nam, @sdc , @sdm , @ssd , @db , @pdv , @tt  ";
-            int k = DataProvider.Instance.ExecuteNonQuery(query, new object[] { phong, Id, thang, nam, SDC, SDM, DG, PDV, hoaDonNuoc.ThanhTien });
-            if (k > 0)
+            catch (Exception ex)
             {
-                MessageBox.Show(" Them Hoa Don Thanh Cong!"); return;
+                MessageBox.Show("Có lỗi xảy ra khi tạo hóa đơn điện: " + ex.Message);
             }
-            else { return; }
         }
 
-
-        public DataTable HoaDonNuocChuaThanhToan()
+        public void DongBoHoaDonNuoc()
         {
-            string query = "HoaDonNuoc_ChuaThanhToan";
-            DataTable dataTable = DataProvider.Instance.ExecuteQuery(query);
-            return dataTable;
-        }
-
-        public List<string> PhongCoSoThangChuaThanhToanNhieuHonK(int k)
-        {
-
-            string query = "Phong_ChuaThanhToanNuoc @k";
-            DataTable dataTable = DataProvider.Instance.ExecuteQuery(query, new object[] { k });
-            List<string> list = new List<string>();
-            foreach (DataRow item in dataTable.Rows)
+            DataTable table = DataProvider.Instance.ExecuteQuery("Select * from SoDienNuoc ");
+            foreach (DataRow row in table.Rows)
             {
-                list.Add(item["Phong"].ToString());
+                if (GetIDHoaDonNuoc(int.Parse(row["IDSoDienNuoc"].ToString())) == null)
+                {
+                    string phong = row["Phong"].ToString();
+                    int idKD = int.Parse(row["IDKhachHang"].ToString());
+                    int nam = int.Parse(row["Nam"].ToString());
+                    int thang = int.Parse(row["Thang"].ToString());
+                    int dongia = int.Parse(row["DonGia"].ToString());
+                    //string phong,int idKH,int nam, int thang, int DonGia
+                    NewHoaDonNuoc(phong, idKD, nam, thang, dongia);
+                }
             }
-            return list;
         }
+
+
 
     }
 }

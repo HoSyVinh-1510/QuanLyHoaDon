@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Data.Common.CommandTrees.ExpressionBuilder;
 namespace QuanLyHoaDon.DAL
 {
     internal class HopDongDAL
@@ -23,47 +24,49 @@ namespace QuanLyHoaDon.DAL
             private set { instance = value; }
         }
         private HopDongDAL() { }
-        public DataTable HopDongPhong(string phong)
+        
+        public void ThemHopDong(int idHD,int idKH, string phong,DateTime ngayBD, DateTime? ngayKT)
         {
-            
-            string query = " select * from HopDong where Phong= @p";
-            return DataProvider.Instance.ExecuteQuery(query, new object[] {phong});
-           
-        }
-
-        public void UpdateHopDong(int id, DateTime kthuc)
-        {
-            
-            string tt;
-            if (kthuc > DateTime.Now || kthuc == null) tt = "Đang Thuê";
-            else tt = "Hết Hạn";
-            
-            string query = "update HopDong set NgayKT= @kthuc , TrangThai= @tt  where IDHopDong=@id";           
-            if (DataProvider.Instance.ExecuteNonQuery(query, new object[] {kthuc,tt,id}) > 0)
+            try
             {
-                MessageBox.Show("Cập nhật thành công");               
+                int k;
+                if (ngayKT!=null)
+                  k = DataProvider.Instance.ExecuteNonQuery("insert into HopDong (IDHopDong,IDKhachHang,Phong,NgayBD,NgayKT) values ( @a , @b , @c , @d , @e ) ", new object[] { idHD, idKH, phong, ngayBD.Date, ((DateTime)ngayKT).Date });
+                else
+                {
+                    k = DataProvider.Instance.ExecuteNonQuery("insert into HopDong (IDHopDong,IDKhachHang,Phong,NgayBD,NgayKT) values ( @a , @b , @c , @d , @e ) ", new object[] { idHD, idKH, phong, ngayBD.Date, null });
+                }
+                if (k == 0)
+                {
+                    MessageBox.Show("Thêm hợp đồng thất bại");
+                }
+                else
+                {
+                    PhongDAL.Instance.UpdatePhong(phong);
+                }
             }
-            else {
-                MessageBox.Show("Cập nhật thất bại");
-            }
-            DataProvider.Instance.ExecuteQuery("Update_Phong");            
-        }
-
-
-        public void StopHopDong(int id)
-        {
-
-            DateTime kt = DateTime.Now;
-            string query = " Sua_HopDong @id , @kt , @tt ";
-
-            if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { id, kt, "Hết Hạn" }) == 0)
+            catch (Exception ex) 
             {
-                MessageBox.Show("Error!");
-                return;
+                MessageBox.Show("Có lỗi xảy ra khi tạo hợp đồng: "+ex.Message);
             }
-            query = "Update_Phong";
-            DataProvider.Instance.ExecuteNonQuery(query);
-
+                    
         }
+
+        public int GetMaxIDHopDong()
+        {
+            object kq = DataProvider.Instance.ExecuteScalar("select MAX(IDHopDong) from HopDong");
+            if (kq == null)
+            {
+                return 0;
+            }
+            else return int.Parse(kq.ToString());
+        }
+
+        public int GetIDHopDong(int idKH, string phong)
+        {
+            return int.Parse(DataProvider.Instance.ExecuteScalar(" select MAX(IDHopDong) from HopDong where IDKhachHang= @a and Phong= @b",new object[] {idKH,phong}).ToString());              
+        }
+
+
     }
 }

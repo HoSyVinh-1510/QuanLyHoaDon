@@ -25,15 +25,16 @@ namespace QuanLyHoaDon.DAL
         private PhongDAL() { }
         public DataTable FullPhong()
         {
-            return DataProvider.Instance.ExecuteQuery(" select * from Phong ");         
+            return DataProvider.Instance.ExecuteQuery(" select * from Phong");         
         }
         
+
         // "Đang SD" hoặc là "Trống"
         public List<Phong> TimPhongTheoTrangThai(string tt)
         {
             
             List<Phong> listPhong = new List<Phong>();
-            DataTable dataTable = DataProvider.Instance.ExecuteQuery("Tim_Phong @tt", new object[] {tt});
+            DataTable dataTable = DataProvider.Instance.ExecuteQuery("select Phong from Phong where TrangThai= @tt", new object[] {tt});
             foreach (DataRow row in dataTable.Rows)
             {
                 listPhong.Add(new Phong(row["Phong"].ToString(), row["TrangThai"].ToString()));
@@ -43,31 +44,42 @@ namespace QuanLyHoaDon.DAL
 
         public void ThemPhong(string p, string tt)
         {
-            string query = "Them_Phong @p , @tt ";
-            int k= DataProvider.Instance.ExecuteNonQuery(query, new object[] { p, tt });
-            if (k==0)
+            string query = "select * from Phong where Phong= @phong ";
+            DataTable dataTable= DataProvider.Instance.ExecuteQuery(query,new object[] { p });
+            if (dataTable.Rows.Count >0) 
             {
-                MessageBox.Show("Thêm phòng không thành công");
+                MessageBox.Show("Phòng đã tồn tại!");
+                return;
             }
-            else if (k > 0)
+            else
             {
-                MessageBox.Show("Thêm phòng thành công");
+                try 
+                {
+                    query = "insert into Phong (Phong,TrangThai) values ( @a , @b ) ";
+                    if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { p, tt }) == 0)
+                    {
+                        MessageBox.Show("Them phong that bai!");
+                        return;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Có lỗi xảy ra khi thêm phòng: "+ex.Message);
+                }                
             }
         }
 
-        public void SuaTrangThaiPhong(string sp, string tt)
-        {           
-            string query = "Sua_TrangThai_Phong @sp, @tt";
-            int k = DataProvider.Instance.ExecuteNonQuery(query, new object[] { sp, tt });
-            if (k == 0) 
-            {
-                MessageBox.Show("Sửa trạng thái phòng không thành công");
-            }
-            else if (k > 0)
-            {
-                MessageBox.Show("Sửa trạng thái phòng thành công");
-            }
-            return;
+        public bool KiemtraTrong(string p) 
+        {
+            DateTime dateTime = DateTime.Now.Date;
+            return (DataProvider.Instance.ExecuteNonQuery("select * from HopDong where (NgayKT IS null OR  NgayKT > @a ) and NgayBD < @a ", new object[] { dateTime, dateTime }) > 0);
+        }
+
+        public void UpdatePhong(string phong)
+        {
+            if (KiemtraTrong(phong))
+                DataProvider.Instance.ExecuteNonQuery("Update Phong set (TrangThai = N'Đang SD') where Phong = @p ",new object[] { phong });
+            else DataProvider.Instance.ExecuteNonQuery("Update Phong set (TrangThai = N'Trống') where Phong = @p ", new object[] { phong });
         }
 
       

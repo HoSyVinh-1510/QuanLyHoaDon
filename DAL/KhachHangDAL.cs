@@ -11,7 +11,7 @@ namespace QuanLyHoaDon.DAL
 {
     internal class KhachHangDAL
     {
-        public static KhachHangDAL instance;
+        private static KhachHangDAL instance;
         public static KhachHangDAL Instance
         {
             get
@@ -28,25 +28,36 @@ namespace QuanLyHoaDon.DAL
         { 
             return DataProvider.Instance.ExecuteQuery("Select * from KhachHang");
         }
-        public void ThemKhachHang(int id, string ten, string sdt)
+
+        public int GetMaxIDKhachHang()
         {
-            //string query = "Them_KhachHang @id,@ten,@sdt";
-             
-            
-            if ( DataProvider.Instance.ExecuteNonQuery(" select * from KhachHang where ID= @id ") > 0 )
+            object kq = DataProvider.Instance.ExecuteScalar("Select MAX(IDKhachHang) from KhachHang");
+            if (kq == null)
             {
-                MessageBox.Show("Khach hang da ton tai");
-                return;
+                return 0;
             }
-            DataProvider.Instance.ExecuteNonQuery("Them_KhachHang @id , @ten , @sdt ", new object[] { id, ten, sdt });
+            else return int.Parse(kq.ToString());
         }
 
-        public void SuaKhachHang(int id, string ten, string sdt)
+        public void ThemKhachHang(string ten, string sdt)
         {
-           
-            string query = "Sua_KhachHang @id , @ten , @sdt ";
-            DataProvider.Instance.ExecuteNonQuery(query, new object[] { id, ten,sdt });
+            try
+            {
+                if (DataProvider.Instance.ExecuteQuery("Select * from KhachHang where Ten= @a and SDT= @b ",new object[] {ten,sdt}).Rows.Count>0  )
+                {
+                    MessageBox.Show("Khách hàng đã tồn tại!");
+                    return;
+                }
+                int k = DataProvider.Instance.ExecuteNonQuery("insert into KhachHang (IDKhachHang,Ten,SDT) values( @a , @b , @c )", new object[] {GetMaxIDKhachHang()+1,ten,sdt });
+                if (k <= 0)
+                {
+                    MessageBox.Show("Thêm khách hàng mới thất bại");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra khi thêm khách hàng: " + ex.Message);
+            }
         }
-
     }
 }
