@@ -246,7 +246,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label10.ForeColor = System.Drawing.Color.Blue;
-            this.label10.Location = new System.Drawing.Point(36, 25);
+            this.label10.Location = new System.Drawing.Point(25, 81);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(624, 32);
             this.label10.TabIndex = 60;
@@ -536,6 +536,8 @@
             // 
             // dataGridViewSoDienNuoc
             // 
+            this.dataGridViewSoDienNuoc.AllowUserToAddRows = false;
+            this.dataGridViewSoDienNuoc.AllowUserToDeleteRows = false;
             this.dataGridViewSoDienNuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSoDienNuoc.Location = new System.Drawing.Point(19, 206);
             this.dataGridViewSoDienNuoc.MultiSelect = false;

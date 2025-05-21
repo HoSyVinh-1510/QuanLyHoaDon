@@ -60,6 +60,10 @@ namespace QuanLyHoaDon.DAL
             return result;
         }
 
+
+        // Chú ý: Hàm ExecuteScalar trả về giá trị null là giá trị NULL trong SQL khác với null trong C#.
+        // Vì vậy ta có thể dùng result==null để kiểm tra giá trị trả về. Hoặc là result == DBNull.Value.
+        // Ta dùng như sau: if (kq == DBNull.Value || kq==null) return value;
         public object ExecuteScalar(string query, object[] parameters = null)
         {
             object result = null;

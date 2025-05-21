@@ -39,7 +39,7 @@ namespace QuanLyHoaDon.DAL
         public int MaxIDLichSu()
         {
             object kq= DataProvider.Instance.ExecuteScalar("Select MAX(IDLichSuDien) from LichSuDien ");
-            if (kq == null)
+            if (kq.ToString() == "" || kq == DBNull.Value)
                 return 0;
             else return int.Parse(kq.ToString());
         }
@@ -57,7 +57,8 @@ namespace QuanLyHoaDon.DAL
         public string NgayThanhToanHD(int idHDD)
         {
             object kq= DataProvider.Instance.ExecuteScalar("Select NgayThanhToan from LichSuDien where IDHoaDonDien= @a", new object[] { idHDD });
-            if(kq == null) return null;
+            if(kq==null) 
+                return null;
             else return DateTime.Parse(kq.ToString()).Date.ToString("dd/MM/yyyy");
         }
 

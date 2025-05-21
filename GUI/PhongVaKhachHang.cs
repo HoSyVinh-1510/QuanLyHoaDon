@@ -31,6 +31,16 @@ namespace QuanLyHoaDon.GUI
     {
             InitializeComponent();
     }
+        
+        void CapNhatPhong() 
+        {
+            DataTable dataTable= DataProvider.Instance.ExecuteQuery("select Phong from Phong");
+            foreach(DataRow row in dataTable.Rows)
+            {
+                string phong = row["Phong"].ToString();
+                PhongDAL.Instance.UpdatePhong(phong);
+            }
+        }
 
         private void PhongVaKhachHang_Load(object sender, EventArgs e)
         {

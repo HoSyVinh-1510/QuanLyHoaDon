@@ -28,20 +28,6 @@ namespace QuanLyHoaDon.DAL
             return DataProvider.Instance.ExecuteQuery(" select * from Phong");         
         }
         
-
-        // "Đang SD" hoặc là "Trống"
-        public List<Phong> TimPhongTheoTrangThai(string tt)
-        {
-            
-            List<Phong> listPhong = new List<Phong>();
-            DataTable dataTable = DataProvider.Instance.ExecuteQuery("select Phong from Phong where TrangThai= @tt", new object[] {tt});
-            foreach (DataRow row in dataTable.Rows)
-            {
-                listPhong.Add(new Phong(row["Phong"].ToString(), row["TrangThai"].ToString()));
-            }
-            return listPhong;
-        }
-
         public void ThemPhong(string p, string tt)
         {
             string query = "select * from Phong where Phong= @phong ";

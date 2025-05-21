@@ -16,17 +16,17 @@ namespace QuanLyHoaDon.DTO
         public float SoNuocCu, SoNuocMoi, SoSuDung, DonGia, PhiDichVu, ThanhTien;
         public HoaDonNuocDTO() { }
 
-        public HoaDonNuocDTO(int idHD, int idKH, string sp, int thang, int nam, float SDC, float SDM, float DG)
+        public HoaDonNuocDTO(int idHD, int idKH, string sp, int thang, int nam, float SNC, float SNM, float DG)
         {
             this.IDHoaDonNuoc = idHD;
             this.SoPhong = sp;
             this.IDKhachHang = idKH;
             this.Thang = thang;
             this.Nam = nam;
-            this.SoNuocCu = SDC;
-            this.SoNuocMoi = SDM;
+            this.SoNuocCu = SNC;
+            this.SoNuocMoi = SNM;
             this.DonGia = DG;
-            float SoSuDung = SDM - SDC;
+            this.SoSuDung = SNM - SNC;
             this.PhiDichVu = (float)(SoSuDung * DonGia * 0.1);
             this.ThanhTien = this.SoSuDung * DG + this.PhiDichVu;
         }

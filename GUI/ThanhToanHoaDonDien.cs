@@ -1,0 +1,82 @@
+﻿using QuanLyHoaDon.DAL;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using QuanLyHoaDon.DTO;
+
+namespace QuanLyHoaDon.GUI
+{
+    public partial class ThanhToanHoaDonDien : Form
+    {
+        private int IDHoaDonDien;
+
+        private static ThanhToanHoaDonDien instance;
+        public static ThanhToanHoaDonDien Instance(int id)
+        {         
+                if (instance == null || instance.IsDisposed)
+                {
+                    instance = new ThanhToanHoaDonDien(id);
+                }
+                return instance;          
+        }
+
+        public ThanhToanHoaDonDien(int idHoaDonDien)
+        {
+            this.IDHoaDonDien = idHoaDonDien;
+            InitializeComponent();
+        }
+
+        private void SetUp()
+        {
+            dateTimePicker1.Value = DateTime.Now.Date;
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
+
+            DataRow dt = DataProvider.Instance.ExecuteQuery("Select * from HoaDonDien where IDHoaDonDien= @a ",new object[] {IDHoaDonDien}).Rows[0];
+            textBox4.Text = dt["IDHoaDonDien"].ToString();
+            textBox1.Text = dt["IDKhachHang"].ToString();
+            textBox5.Text = dt["Phong"].ToString();
+            textBox6.Text = dt["Nam"].ToString();
+            textBox7.Text = dt["Thang"].ToString();
+            textBox8.Text = dt["SoDienCu"].ToString();
+            textBox9.Text = dt["SoDienMoi"].ToString();
+            textBox10.Text = dt["DonGia"].ToString();
+            //int idHD,int idKH, string sp, int thang, int nam, float SDC, float SDM,float DG
+            HoaDonDienDTO hoaDonDienDTO = new HoaDonDienDTO(IDHoaDonDien,int.Parse(textBox1.Text),textBox5.Text,int.Parse(textBox7.Text),int.Parse(textBox6.Text),float.Parse(textBox8.Text),float.Parse(textBox9.Text),float.Parse(textBox10.Text));
+            textBox11.Text = hoaDonDienDTO.SoSuDung.ToString(); 
+            textBox12.Text = hoaDonDienDTO.PhiDichVu.ToString();
+            textBox13.Text = hoaDonDienDTO.ThanhTien.ToString();
+
+            DataRow dt1=DataProvider.Instance.ExecuteQuery("Select * from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(textBox1.Text) }).Rows[0];
+            textBox2.Text = dt1["TenKhachHang"].ToString();
+            textBox3.Text = dt1["SDT"].ToString();
+        }
+
+        private void ThanhToanHoaDonDien_Load(object sender, EventArgs e)
+        {
+            SetUp();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn đã chắc chắn thanh toán chưa?", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
+            {
+                try
+                {
+                    LichSuThanhToanHoaDonDienDAL.Instance.ThemLichSu(IDHoaDonDien, dateTimePicker1.Value);
+                    MessageBox.Show("Thanh toán thành công!");
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
+                }
+            }
+        }
+    }
+}

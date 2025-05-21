@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DevExpress.Xpo.Helpers.AssociatedCollectionCriteriaHelper;
 
 namespace QuanLyHoaDon.DAL
 {
@@ -39,7 +40,7 @@ namespace QuanLyHoaDon.DAL
         public int MaxIDLichSu()
         {
             object kq = DataProvider.Instance.ExecuteScalar("Select MAX(IDLichSuNuoc) from LichSuNuoc ");
-            if (kq == null)
+            if (kq.ToString() == "" || kq == DBNull.Value)
                 return 0;
             else return int.Parse(kq.ToString());
         }
@@ -56,7 +57,7 @@ namespace QuanLyHoaDon.DAL
         public DateTime? NgayThanhToanHD(int idHDN)
         {
             object kq = DataProvider.Instance.ExecuteScalar("Select NgayThanhToan from LichSuNuoc where IDHoaDonNuoc= @a", new object[] { idHDN });
-            if (kq == null) return null;
+            if ( kq == DBNull.Value || kq==null) return null;
             else return DateTime.Parse(kq.ToString()).Date;
         }
 

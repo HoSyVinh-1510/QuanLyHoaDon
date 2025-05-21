@@ -43,6 +43,7 @@
             this.prgrBarHome = new System.Windows.Forms.ProgressBar();
             this.panelHome = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnDonGia = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -50,6 +51,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnDonGia);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.btnHoaDonDien);
@@ -65,6 +67,7 @@
             // button1
             // 
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.button1.Location = new System.Drawing.Point(0, 334);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(166, 65);
@@ -76,6 +79,7 @@
             // button5
             // 
             this.button5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button5.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.button5.Location = new System.Drawing.Point(0, 269);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(166, 65);
@@ -87,6 +91,7 @@
             // btnHoaDonDien
             // 
             this.btnHoaDonDien.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHoaDonDien.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnHoaDonDien.Location = new System.Drawing.Point(0, 204);
             this.btnHoaDonDien.Name = "btnHoaDonDien";
             this.btnHoaDonDien.Size = new System.Drawing.Size(166, 65);
@@ -98,6 +103,7 @@
             // btnSoDienNuoc
             // 
             this.btnSoDienNuoc.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSoDienNuoc.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnSoDienNuoc.Location = new System.Drawing.Point(0, 130);
             this.btnSoDienNuoc.Name = "btnSoDienNuoc";
             this.btnSoDienNuoc.Size = new System.Drawing.Size(166, 74);
@@ -109,6 +115,7 @@
             // btnHopDong
             // 
             this.btnHopDong.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHopDong.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnHopDong.Location = new System.Drawing.Point(0, 65);
             this.btnHopDong.Name = "btnHopDong";
             this.btnHopDong.Size = new System.Drawing.Size(166, 65);
@@ -120,6 +127,7 @@
             // btnPhongAndKhachHang
             // 
             this.btnPhongAndKhachHang.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPhongAndKhachHang.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnPhongAndKhachHang.Location = new System.Drawing.Point(0, 0);
             this.btnPhongAndKhachHang.Name = "btnPhongAndKhachHang";
             this.btnPhongAndKhachHang.Size = new System.Drawing.Size(166, 65);
@@ -199,6 +207,18 @@
             this.timer1.Interval = 4;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // btnDonGia
+            // 
+            this.btnDonGia.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDonGia.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnDonGia.Location = new System.Drawing.Point(0, 399);
+            this.btnDonGia.Name = "btnDonGia";
+            this.btnDonGia.Size = new System.Drawing.Size(166, 65);
+            this.btnDonGia.TabIndex = 6;
+            this.btnDonGia.Text = "Đơn Giá Điện Nước";
+            this.btnDonGia.UseVisualStyleBackColor = true;
+            this.btnDonGia.Click += new System.EventHandler(this.btnDonGia_Click);
+            // 
             // HOME
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -238,5 +258,6 @@
         private System.Windows.Forms.Panel panel4;
         public System.Windows.Forms.Panel panelHome;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDonGia;
     }
 }

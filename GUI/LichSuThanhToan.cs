@@ -33,8 +33,7 @@ namespace QuanLyHoaDon.GUI
         }
         
         private void SetUp1()
-        {
-            dataGridViewLichSuDien.DataSource = DataProvider.Instance.ExecuteQuery("Select * from LichSuDien");
+        {           
             dataGridViewLichSuDien.Columns["NgayThanhToan"].DefaultCellStyle.Format = "dd/MM/yyyy";
             DataGridViewRow row = dataGridViewLichSuDien.CurrentRow;
             if (row == null) return; 
@@ -45,19 +44,19 @@ namespace QuanLyHoaDon.GUI
 
         }
         private void SetUp2()
-        {
-            dataGridViewLichSuDien.DataSource = DataProvider.Instance.ExecuteQuery("Select * from LichSuNuoc");
-            dataGridViewLichSuDien.Columns["NgayThanhToan"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            DataGridViewRow row1 = dataGridViewLichSuDien.CurrentRow;
+        {          
+            dataGridView1.Columns["NgayThanhToan"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            DataGridViewRow row1 = dataGridView1.CurrentRow;
             if (row1 == null) return;
             textBox6.Text = row1.Cells[0].Value.ToString(); // IDKhachHang
             textBox5.Text = row1.Cells[1].Value.ToString(); // SoPhong
             textBox4.Text = row1.Cells[2].Value.ToString(); // NgayThanhToan
         }
 
-
         private void LichSuDien_Load(object sender, EventArgs e)
         {
+            dataGridViewLichSuDien.DataSource = DataProvider.Instance.ExecuteQuery("Select * from LichSuDien");
+            dataGridView1.DataSource = DataProvider.Instance.ExecuteQuery("Select * from LichSuNuoc");
             SetUp1();
             SetUp2();
         }

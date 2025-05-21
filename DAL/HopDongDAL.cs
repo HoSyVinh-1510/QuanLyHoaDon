@@ -55,7 +55,7 @@ namespace QuanLyHoaDon.DAL
         public int GetMaxIDHopDong()
         {
             object kq = DataProvider.Instance.ExecuteScalar("select MAX(IDHopDong) from HopDong");
-            if (kq == null)
+            if (kq.ToString() == "" || kq == DBNull.Value)
             {
                 return 0;
             }
@@ -64,7 +64,12 @@ namespace QuanLyHoaDon.DAL
 
         public int GetIDHopDong(int idKH, string phong)
         {
-            return int.Parse(DataProvider.Instance.ExecuteScalar(" select MAX(IDHopDong) from HopDong where IDKhachHang= @a and Phong= @b",new object[] {idKH,phong}).ToString());              
+            object kq = DataProvider.Instance.ExecuteScalar(" select MAX(IDHopDong) from HopDong where IDKhachHang= @a and Phong= @b", new object[] { idKH, phong });
+            if (kq.ToString() == "" || kq == DBNull.Value)
+            {
+                return 0;
+            }
+            else return int.Parse(kq.ToString());
         }
 
 

@@ -66,14 +66,6 @@ namespace QuanLyHoaDon.DAL
             return int.Parse(DataProvider.Instance.ExecuteScalar("select IDSoDienNuoc from SoDienNuoc where Phong= @p and IDKhachHang= @b and Nam= @n and Thang= @t", new object[] { phong, idKhachHang, nam, thang }).ToString());
         }
 
-        public int IDSoDienNuocGanNhat(string phong, int nam, int thang)
-        {
-            object kq = DataProvider.Instance.ExecuteScalar("select IDSoDienNuoc from SoDienNuoc where Phong= @p and Nam= @n and Thang= @t", new object[] { phong, nam, thang });
-            if (kq == null)
-                return 0;
-            else return int.Parse(kq.ToString());
-        }
-
     }
 
 }

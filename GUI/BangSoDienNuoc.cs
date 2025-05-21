@@ -49,6 +49,10 @@ namespace QuanLyHoaDon.GUI
         private void SetUp()
         {
             dataGridViewSoDienNuoc.DataSource=DataProvider.Instance.ExecuteQuery("SELECT * FROM SoDienNuoc");
+            dataGridViewSoDienNuoc.Columns["SoDienMoi"].DefaultCellStyle.Format = "N2";
+            dataGridViewSoDienNuoc.Columns["SoNuocMoi"].DefaultCellStyle.Format = "N2";
+            dataGridViewSoDienNuoc.Columns["SoDienCu"].DefaultCellStyle.Format = "N2";
+            dataGridViewSoDienNuoc.Columns["SoNuocCu"].DefaultCellStyle.Format = "N2";
 
             Infor();
             textBox11.Text= SoDienNuocDAL.Instance.GetMaxIDSoDienNuoc().ToString();

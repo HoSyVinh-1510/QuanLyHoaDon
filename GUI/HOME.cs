@@ -115,5 +115,10 @@ namespace QuanLyHoaDon.GUI
         {
             OpenChildForm(BangSoDienNuoc.Instance);
         }
+
+        private void btnDonGia_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(DonGia.Instance);
+        }
     }
 }

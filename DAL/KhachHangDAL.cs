@@ -32,7 +32,7 @@ namespace QuanLyHoaDon.DAL
         public int GetMaxIDKhachHang()
         {
             object kq = DataProvider.Instance.ExecuteScalar("Select MAX(IDKhachHang) from KhachHang");
-            if (kq == null)
+            if (kq.ToString() == "" || kq == DBNull.Value)
             {
                 return 0;
             }

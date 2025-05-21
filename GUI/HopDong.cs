@@ -37,14 +37,7 @@ namespace QuanLyHoaDon.GUI
             dataGridViewHopDong.DataSource = DataProvider.Instance.ExecuteQuery("Select * from HopDong");
             dataGridViewHopDong.Columns["NgayBD"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridViewHopDong.Columns["NgayKT"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            DataGridViewRow row = dataGridViewHopDong.CurrentRow;
-            textBox1.Text = row.Cells[0].Value.ToString();
-            textBox2.Text = row.Cells[1].Value.ToString();
-            textBox3.Text = row.Cells[2].Value.ToString();
-            textBox4.Text = DateTime.Parse(row.Cells[3].Value.ToString()).Date.ToString(); //"dd/MM/yyyy"
-            if (row.Cells[4].Value.ToString() == "") textBox5.Text = "";
-            else textBox5.Text = DateTime.Parse(row.Cells[4].Value.ToString()).Date.ToString();//"dd/MM/yyyy"
-            txtIDHopDongMoi.Text=(HopDongDAL.Instance.GetMaxIDHopDong()+1).ToString();
+            infor();
 
             comboBox1.DataSource = DataProvider.Instance.ExecuteQuery("Select IDKhachHang from KhachHang");
             comboBox1.DisplayMember = "IDKhachHang";
@@ -59,7 +52,17 @@ namespace QuanLyHoaDon.GUI
             dateTimePicker2.Checked = false;
         }
 
-
+        private void infor()
+        {
+            DataGridViewRow row = dataGridViewHopDong.CurrentRow;
+            if (row == null) return;
+            textBox1.Text = row.Cells[0].Value.ToString();
+            textBox2.Text = row.Cells[1].Value.ToString();
+            textBox3.Text = row.Cells[2].Value.ToString();
+            textBox4.Text = DateTime.Parse(row.Cells[3].Value.ToString()).Date.ToString("dd/MM/yyyy");
+            if (row.Cells[4].Value.ToString() == "") textBox5.Text = "";
+            else textBox5.Text = DateTime.Parse(row.Cells[4].Value.ToString()).Date.ToString("dd/MM/yyyy");
+        }
         private void HopDong_Load(object sender, EventArgs e)
         {
             SetUp();

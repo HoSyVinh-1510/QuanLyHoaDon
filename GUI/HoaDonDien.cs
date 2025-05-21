@@ -33,10 +33,15 @@ namespace QuanLyHoaDon.GUI
             InitializeComponent();
         }
 
-        void Output()
+        void SetUp()
         {
             HoaDonDienDAL.Instance.DongBoHoaDonDien();
             dataGridViewHoaDonDien.DataSource = DataProvider.Instance.ExecuteQuery("Select * from HoaDonDien");
+            Output();
+        }
+
+        void Output()
+        {
             DataGridViewRow row = dataGridViewHoaDonDien.CurrentRow;
             if (row == null) return;
             //int idHD,int idKH, string sp, int thang, int nam, float SDC, float SDM,float DG
@@ -63,13 +68,11 @@ namespace QuanLyHoaDon.GUI
             textBox9.Text = hoaDonDienDTO.DonGia.ToString();
             textBox11.Text = hoaDonDienDTO.PhiDichVu.ToString();
             textBox12.Text = hoaDonDienDTO.ThanhTien.ToString();
-             if( LichSuThanhToanHoaDonDienDAL.Instance.NgayThanhToanHD(hoaDonDienDTO.IDHoaDonDien) ==null)
+            if (LichSuThanhToanHoaDonDienDAL.Instance.NgayThanhToanHD(hoaDonDienDTO.IDHoaDonDien) == null)
             {
-                textBox13.Text ="Chưa thanh toán";
+                textBox13.Text = "Chưa thanh toán";
             }
             else textBox13.Text = LichSuThanhToanHoaDonDienDAL.Instance.NgayThanhToanHD(hoaDonDienDTO.IDHoaDonDien);
-
-
         }
 
         private void dataGridViewHoaDonDien_SelectionChanged(object sender, EventArgs e)
@@ -79,7 +82,7 @@ namespace QuanLyHoaDon.GUI
 
         private void HoaDonDien_Load(object sender, EventArgs e)
         {
-            Output();
+            SetUp();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -87,6 +90,7 @@ namespace QuanLyHoaDon.GUI
             if(textBox13.Text== "Chưa thanh toán")
             {
                 // Chuyển đến trang thanh toán!
+                ThanhToanHoaDonDien.Instance(int.Parse(textBox1.Text)).ShowDialog();
             }
             else
             {
