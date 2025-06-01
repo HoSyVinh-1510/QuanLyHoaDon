@@ -53,7 +53,7 @@ namespace QuanLyHoaDon.DAL
                 connection.Open();
 
                 SqlCommand command = new SqlCommand(query, connection);
-                AddParameters(command, parameters);
+                AddParameters( command, parameters );
                 result = command.ExecuteNonQuery();
             }
 

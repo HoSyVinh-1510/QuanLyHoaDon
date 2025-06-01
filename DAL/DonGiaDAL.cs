@@ -43,6 +43,15 @@ namespace QuanLyHoaDon.DAL
             DataTable dataTable = DataProvider.Instance.ExecuteQuery("SELECT * FROM DonGia WHERE IDDonGia = @a", new object[] { id});
             int nam= Convert.ToInt32(dataTable.Rows[0]["Nam"]);
             int thang= Convert.ToInt32(dataTable.Rows[0]["Thang"]);
+
+            if(thang == 12)
+            {
+                thang = 1;
+                nam += 1;
+            }
+            else thang += 1;
+
+
             float donGiaDien = Convert.ToSingle(dataTable.Rows[0]["DonGiaDien"]);
             float donGiaNuoc = Convert.ToSingle(dataTable.Rows[0]["DonGiaNuoc"]);
             if(DataProvider.Instance.ExecuteNonQuery("Insert into DonGia (IDDonGia,Nam,Thang,DonGiaDien,DonGiaNuoc) values ( @a , @b , @c , @d , @e )",new object[] {id+1,nam,thang,donGiaDien,donGiaNuoc}) > 0)

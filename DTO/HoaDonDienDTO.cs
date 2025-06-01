@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 namespace QuanLyHoaDon.DTO
 {
-    internal class HoaDonDienDTO
+    public class HoaDonDienDTO
     {
         public int IDHoaDonDien;
         public int IDKhachHang;

@@ -1,5 +1,6 @@
-﻿using QuanLyHoaDon.DTO;
+﻿using DevExpress.Utils.ScrollAnnotations;
 using QuanLyHoaDon.DAL;
+using QuanLyHoaDon.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,52 @@ namespace QuanLyHoaDon.GUI
     {
             InitializeComponent();
     }
+    
+    private void TaoDanhSach()
+    {
+            DataTable dataTable = DataProvider.Instance.ExecuteQuery("Select * from Phong");
+            panelPhong.Controls.Clear();
+
+            int ngang = 70, rong = 60;
+            int x = 10, y = 10;
+            int khCach = 10;
+            int count = 0;
+
+            foreach(DataRow row in dataTable.Rows)
+            {
+                Button bt = new Button();
+                bt.Text = row["Phong"].ToString();
+
+
+                bt.Width = ngang;
+                bt.Height = rong;
+                if (row["TrangThai"].ToString()=="Đang SD")
+                    bt.BackColor= Color.Red;
+                else bt.BackColor= Color.Green; 
+
+                bt.FlatStyle = FlatStyle.Flat;
+                bt.ForeColor = Color.Black;
+
+                bt.Left = x+(count%5)*(ngang+khCach);
+                bt.Top = y+(count/5)*(rong+khCach);
+
+                panelPhong.Controls.Add(bt);
+                count++;
+                bt.Click += bt_click;
+            }            
+    }
+
+
+        private void bt_click(object sender, EventArgs e)
+        {
+            Button button = sender as Button;
+            if (button.BackColor==Color.Red)
+            MessageBox.Show("Bạn chọn phòng: " + button.Text + ". Trạng thái: Đang Sử Dụng");
+            if (button.BackColor == Color.Green)
+            {
+                MessageBox.Show("Bạn chọn phòng: " + button.Text + ". Trạng thái: Trống");
+            }
+        }
         
         void CapNhatPhong() 
         {
@@ -42,8 +89,12 @@ namespace QuanLyHoaDon.GUI
             }
         }
 
+        
+
         private void PhongVaKhachHang_Load(object sender, EventArgs e)
         {
+            CapNhatPhong();
+            TaoDanhSach();
             dataGridViewPhong.DataSource = DataProvider.Instance.ExecuteQuery("select * from Phong");
             dataGridViewKhachHang.DataSource = DataProvider.Instance.ExecuteQuery("select * from KhachHang");
             DataGridViewRow row1 = dataGridViewPhong.Rows[0];
@@ -55,6 +106,9 @@ namespace QuanLyHoaDon.GUI
             textBox4.Text = row2.Cells[2].Value.ToString();
             comboBox1.SelectedIndex = 0;
             textBox5.Text =(KhachHangDAL.Instance.GetMaxIDKhachHang()+1).ToString();
+
+            panel2.Visible = false; 
+            panel3.Visible = false;
         }
 
         private void dataGridViewPhong_SelectionChanged(object sender, EventArgs e)
@@ -136,6 +190,18 @@ namespace QuanLyHoaDon.GUI
         private void textBox6_Leave(object sender, EventArgs e)
         {
             textBox6.Text= FormatTextInput.Instance.FormatName(textBox6.Text);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = true;
+            FormatTextInput.Instance.SDT(textBox6);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            panel3.Visible = true;
+            FormatTextInput.Instance.SDT(textBox7);
         }
     }
 }

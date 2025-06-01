@@ -44,7 +44,7 @@ namespace QuanLyHoaDon.DAL
             int thang= int.Parse(row["Thang"].ToString()); 
 
             object kq= DataProvider.Instance.ExecuteScalar("select IDHoaDonDien from HoaDonDien where IDKhachHang= @id and Phong= @p and Nam= @n and Thang= @t", new object[] { idKh, phong, nam, thang });
-            if (kq.ToString() == "" || kq == DBNull.Value)
+            if (kq==null || kq == DBNull.Value)
                 return null;
             else return int.Parse(kq.ToString());
         }
@@ -53,19 +53,19 @@ namespace QuanLyHoaDon.DAL
         {
             try
             {
-                if (DonGiaDAL.Instance.GetDonGiaDien(nam,thang)==null)
+                if (DonGiaDAL.Instance.GetDonGiaDien(nam,thang)== null || DonGiaDAL.Instance.GetDonGiaDien(nam, thang) == DBNull.Value)
                 {                     
                     MessageBox.Show("Chưa có đơn giá điện cho tháng này. Vui lòng thêm đơn giá điện trước khi tạo hóa đơn.");
                     return;
                 }
-                float DonGia=  float.Parse(DonGiaDAL.Instance.GetDonGiaDien(thang,nam).ToString());
+                float DonGia=  float.Parse(DonGiaDAL.Instance.GetDonGiaDien(nam,thang).ToString());
                 int k= DataProvider.Instance.ExecuteNonQuery("insert into HoaDonDien (IDHoaDonDien,IDKhachHang,Phong,Thang,Nam,SoDienCu,SoDienMoi,DonGia)  values ( @id1 , @id2 , @p , @th , @n , @sdc , @sdm , @dg )", new object[] { GetMaxIDHoaDonDien() + 1, idKH, phong, thang, nam, sdc, sdm, DonGia });
                 if (k < 0) 
                 {
                     MessageBox.Show("Thêm Hóa Đơn Điện thất bại");
                 }
             }
-            catch(Exception ex) 
+            catch (Exception ex) 
             {
                 MessageBox.Show("Có lỗi xảy ra khi tạo hóa đơn điện: "+ ex.Message);
             }           

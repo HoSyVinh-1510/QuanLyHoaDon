@@ -117,4 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="richTextBox1.Text" xml:space="preserve">
+    <value>			
+			DỊCH VỤ ĐIỆN VINH - VINH	
+
+	* Địa chỉ: Số 236, Hoàng Quốc Việt, Cổ Nhuế 1, Bắc Từ Liêm, Hà Nội
+	* Liên hệ: 1. Zalo: 0865165424 ( Hồ Sỹ Vinh )    Facebook: Hồ Sỹ Vinh
+		     2. Zalo: 0947822475 ( Khang Vinh )   Facebook: Khang Vinh
+	* Tiếp nhận dịch vụ, phản hồi: 
+	   1. Hồ Sỹ Vinh - Lớp trưởng - Lớp Công Nghệ Thông Tin 1
+	   2. Nguyễn Tô Khang Vinh - Học viên - Lớp Công Nghệ Thông Tin 1
+		
+		   XIN CẢM ƠN QUÝ KHÁCH ĐÃ SỬ DỤNG DỊCH VỤ				</value>
+  </data>
 </root>

@@ -44,7 +44,7 @@ namespace QuanLyHoaDon.DAL
             int thang = int.Parse(row["Thang"].ToString());
 
             object kq = DataProvider.Instance.ExecuteScalar("select IDHoaDonNuoc from HoaDonNuoc where IDKhachHang= @id and Phong= @p and Nam= @n and Thang= @t", new object[] { idKh, phong, nam, thang });
-            if (kq.ToString() == "" || kq == DBNull.Value)
+            if (kq==null|| kq == DBNull.Value)
                 return null;
             else return int.Parse(kq.ToString());
         }
@@ -52,7 +52,7 @@ namespace QuanLyHoaDon.DAL
         public void NewHoaDonNuoc(string phong, int idKH, int nam, int thang, float snc, float snm)
         {            
             {
-                if (DonGiaDAL.Instance.GetDonGiaNuoc(nam,thang) == null)
+                if (DonGiaDAL.Instance.GetDonGiaNuoc(nam,thang) == null|| DonGiaDAL.Instance.GetDonGiaNuoc(nam,thang)==DBNull.Value)
                 {
                     MessageBox.Show("Chưa có đơn giá nước cho tháng này. Vui lòng thêm đơn giá nước trước khi tạo hóa đơn.");
                     return;

@@ -65,6 +65,10 @@ namespace QuanLyHoaDon.GUI
                 textBox13.Text = "Chưa thanh toán";
             }
             else textBox13.Text = LichSuThanhToanHoaDonNuocDAL.Instance.NgayThanhToanHD(hoaDonNuocDTO.IDHoaDonNuoc).ToString();
+
+            textBox10.Text = DataProvider.Instance.ExecuteScalar("Select Ten from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(textBox2.Text) }).ToString();
+            textBox14.Text = DataProvider.Instance.ExecuteScalar("Select SDT from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(textBox2.Text) }).ToString();
+
         }
 
 
@@ -73,6 +77,9 @@ namespace QuanLyHoaDon.GUI
             HoaDonNuocDAL.Instance.DongBoHoaDonNuoc();
             dataGridViewHoaDonNuoc.DataSource = DataProvider.Instance.ExecuteQuery("Select * from HoaDonNuoc");
             Output();
+            dataGridViewHoaDonNuoc.Columns["SoNuocCu"].DefaultCellStyle.Format = "N2";
+            dataGridViewHoaDonNuoc.Columns["SoNuocMoi"].DefaultCellStyle.Format = "N2";
+            dataGridViewHoaDonNuoc.Columns["DonGia"].DefaultCellStyle.Format = "N2";
         }
 
         private void dataGridViewHoaDonDien_SelectionChanged(object sender, EventArgs e)

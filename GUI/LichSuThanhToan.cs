@@ -34,41 +34,67 @@ namespace QuanLyHoaDon.GUI
         
         private void SetUp1()
         {           
-            dataGridViewLichSuDien.Columns["NgayThanhToan"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            DataGridViewRow row = dataGridViewLichSuDien.CurrentRow;
-            if (row == null) return; 
-            textBox1.Text = row.Cells[0].Value.ToString(); // IDKhachHang
-            textBox2.Text = row.Cells[1].Value.ToString(); // SoPhong
-            textBox3.Text = row.Cells[2].Value.ToString(); // NgayThanhToan
-
+            dG1.DataSource= DataProvider.Instance.ExecuteQuery("Select * from LichSuDien");   
+            dG1.Columns["NgayThanhToan"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            Infor1();
 
         }
+
+        private void Infor1()
+        {
+            DataGridViewRow row = dG1.CurrentRow;
+            if (row == null) return;
+            tB1.Text = row.Cells[0].Value.ToString(); // IDLichSuDien
+            tB2.Text = row.Cells[1].Value.ToString(); // IDKhachHang
+            tB3.Text = DateTime.Parse(row.Cells[2].Value.ToString()).ToString("dd/MM/yyyy");
+            DataRow row1 = DataProvider.Instance.ExecuteQuery("Select * from HoaDonDien where IDHoaDonDien = @a ", new object[] { int.Parse(tB2.Text) }).Rows[0];
+            tB4.Text = row1["Phong"].ToString(); // Phong
+            tB5.Text = row1["Nam"].ToString();
+            tB6.Text = row1["Thang"].ToString();
+            int id = int.Parse(row1["IDKhachHang"].ToString());
+            DataRow row2 = DataProvider.Instance.ExecuteQuery("Select * from KhachHang where IDKhachHang = @a ", new object[] { id }).Rows[0];
+            tB7.Text = row2["Ten"].ToString(); 
+            tB8.Text = row2["SDT"].ToString(); 
+        }
+
         private void SetUp2()
         {          
-            dataGridView1.Columns["NgayThanhToan"].DefaultCellStyle.Format = "dd/MM/yyyy";
-            DataGridViewRow row1 = dataGridView1.CurrentRow;
-            if (row1 == null) return;
-            textBox6.Text = row1.Cells[0].Value.ToString(); // IDKhachHang
-            textBox5.Text = row1.Cells[1].Value.ToString(); // SoPhong
-            textBox4.Text = row1.Cells[2].Value.ToString(); // NgayThanhToan
+            dG2.DataSource = DataProvider.Instance.ExecuteQuery("Select * from LichSuNuoc");
+            dG2.Columns["NgayThanhToan"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            Infor2();
+        }
+
+        private void Infor2()
+        {
+            DataGridViewRow row = dG2.CurrentRow;
+            if (row == null) return;
+            tB9.Text = row.Cells[0].Value.ToString(); // IDLichSu
+            tB10.Text = row.Cells[1].Value.ToString(); // IDHoaDon
+            tB11.Text = DateTime.Parse( row.Cells[2].Value.ToString()).ToString("dd/MM/yyyy"); 
+            DataRow row1 = DataProvider.Instance.ExecuteQuery("Select * from HoaDonNuoc where IDHoaDonNuoc = @a ", new object[] { int.Parse(tB10.Text) }).Rows[0];
+            tB12.Text = row1["Phong"].ToString();
+            tB13.Text = row1["Nam"].ToString();
+            tB14.Text = row1["Thang"].ToString();
+            int id = int.Parse(row1["IDKhachHang"].ToString());
+            DataRow row2 = DataProvider.Instance.ExecuteQuery("Select * from KhachHang where IDKhachHang = @a ", new object[] { id }).Rows[0];
+            tB15.Text = row2["Ten"].ToString();
+            tB16.Text = row2["SDT"].ToString();
         }
 
         private void LichSuDien_Load(object sender, EventArgs e)
         {
-            dataGridViewLichSuDien.DataSource = DataProvider.Instance.ExecuteQuery("Select * from LichSuDien");
-            dataGridView1.DataSource = DataProvider.Instance.ExecuteQuery("Select * from LichSuNuoc");
             SetUp1();
             SetUp2();
         }
 
-        private void dataGridViewLichSuDien_SelectionChanged(object sender, EventArgs e)
+        private void dG1_SelectionChanged(object sender, EventArgs e)
         {
-            SetUp1();
+            Infor1();
         }
 
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        private void dG2_SelectionChanged(object sender, EventArgs e)
         {
-            SetUp2();
+            Infor2();
         }
     }
 }

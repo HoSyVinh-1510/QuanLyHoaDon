@@ -39,7 +39,7 @@ namespace QuanLyHoaDon.GUI
             textBox3.Text = row.Cells[2].Value.ToString();
             textBox4.Text = row.Cells[3].Value.ToString();
             textBox5.Text = row.Cells[4].Value.ToString();
-            panel2.Visible = false;
+            
 
         }
 
@@ -53,6 +53,7 @@ namespace QuanLyHoaDon.GUI
 
         private void DonGia_Load(object sender, EventArgs e)
         {
+            panel2.Visible = false;
             SetUp();
         }
 
@@ -73,6 +74,6 @@ namespace QuanLyHoaDon.GUI
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             Infor();
-        }
+        }     
     }
 }

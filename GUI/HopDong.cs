@@ -1,4 +1,5 @@
-﻿using QuanLyHoaDon.DAL;
+﻿using DevExpress.Accessibility;
+using QuanLyHoaDon.DAL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,14 +18,15 @@ namespace QuanLyHoaDon.GUI
 
         public static HopDong Instance
         {
-            get {
+            get
+            {
                 if (instance == null)
                 {
                     instance = new HopDong();
                 }
-                return 
-                    instance; 
-                }
+                return
+                    instance;
+            }
         }
 
         private HopDong()
@@ -62,9 +64,13 @@ namespace QuanLyHoaDon.GUI
             textBox4.Text = DateTime.Parse(row.Cells[3].Value.ToString()).Date.ToString("dd/MM/yyyy");
             if (row.Cells[4].Value.ToString() == "") textBox5.Text = "";
             else textBox5.Text = DateTime.Parse(row.Cells[4].Value.ToString()).Date.ToString("dd/MM/yyyy");
+            textBox8.Text = DataProvider.Instance.ExecuteScalar(" Select Ten from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(textBox1.Text) }).ToString();
+            textBox9.Text = DataProvider.Instance.ExecuteScalar(" Select SDT from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(textBox1.Text) }).ToString();
+
         }
         private void HopDong_Load(object sender, EventArgs e)
         {
+            panel2.Visible = false;
             SetUp();
         }
 
@@ -154,14 +160,7 @@ namespace QuanLyHoaDon.GUI
 
         private void dataGridViewHopDong_SelectionChanged_1(object sender, EventArgs e)
         {
-            DataGridViewRow row = dataGridViewHopDong.CurrentRow;
-            if (row == null) return;
-            textBox1.Text = row.Cells[0].Value.ToString();
-            textBox2.Text = row.Cells[1].Value.ToString();
-            textBox3.Text = row.Cells[2].Value.ToString();
-            textBox4.Text = DateTime.Parse(row.Cells[3].Value.ToString()).Date.ToString("dd/MM/yyyy");
-            if (row.Cells[4].Value.ToString() == "") textBox5.Text = "";
-            else textBox5.Text = DateTime.Parse(row.Cells[4].Value.ToString()).Date.ToString("dd/MM/yyyy");
+            infor();
         }
 
         private void comboBox1_SelectionChangeCommitted_1(object sender, EventArgs e)
@@ -170,14 +169,35 @@ namespace QuanLyHoaDon.GUI
             textBox7.Text = DataProvider.Instance.ExecuteScalar(" Select SDT from KhachHang where IDKhachHang= @a ", new object[] { comboBox1.SelectedValue.ToString() }) .ToString();
         }
 
+        private bool KtraHopDongCoTheThayDoi(int idHD)
+        {
+            DataRow row= DataProvider.Instance.ExecuteQuery("Select * from HopDong where IDHopDong= @a ",new object[] { idHD }).Rows[0];
+            if (DateTime.Parse(row["NgayBD"].ToString()) > DateTime.Now.Date )
+            {
+                return true;
+            }
+            if (row["NgayKT"]==null || row["NgayKT"]==DBNull.Value)
+                return true;
+            DateTime dt= DateTime.Parse(row["NgayKT"].ToString());
+            return dt>DateTime.Now.Date;           
+        }
+
         private void button2_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show("Bạn chắc chắn thay đổi dịch vụ?", "Question?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes) 
             {
-                
+                if (KtraHopDongCoTheThayDoi(int.Parse(textBox1.Text)))
+                {
+                    ThayDoiHopDong.Instance(int.Parse(textBox1.Text)).ShowDialog();
+                }
             }
           
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = true;
         }
     }
 }

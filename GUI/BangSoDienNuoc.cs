@@ -45,6 +45,7 @@ namespace QuanLyHoaDon.GUI
             textBox7.Text = row.Cells[6].Value.ToString();
             textBox8.Text = row.Cells[7].Value.ToString();
             textBox9.Text = row.Cells[8].Value.ToString();
+
         }
         private void SetUp()
         {
@@ -70,6 +71,7 @@ namespace QuanLyHoaDon.GUI
 
         private void BangSoDienNuoc_Load(object sender, EventArgs e)
         {
+            panel2.Visible = false; 
             SetUp();
         }
 
@@ -158,7 +160,11 @@ namespace QuanLyHoaDon.GUI
             }
             dataGridViewSoDienNuoc.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM SoDienNuoc");
             Infor();
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            panel2.Visible = true;
         }
     }
 }

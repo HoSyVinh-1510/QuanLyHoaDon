@@ -55,17 +55,18 @@ namespace QuanLyHoaDon.DAL
             }
         }
 
-        public bool KiemtraTrong(string p) 
+        private bool KiemtraTrong(string p) 
         {
             DateTime dateTime = DateTime.Now.Date;
-            return (DataProvider.Instance.ExecuteNonQuery("select * from HopDong where (NgayKT IS null OR  NgayKT > @a ) and NgayBD < @a ", new object[] { dateTime, dateTime }) > 0);
+            return (DataProvider.Instance.ExecuteQuery(" select * from HopDong where ( NgayKT IS NULL OR  NgayKT > @a ) and NgayBD < @b and Phong = @c ", new object[] { dateTime , dateTime, p }).Rows.Count > 0);
         }
 
         public void UpdatePhong(string phong)
         {
-            if (KiemtraTrong(phong))
-                DataProvider.Instance.ExecuteNonQuery("Update Phong set (TrangThai = N'Đang SD') where Phong = @p ",new object[] { phong });
-            else DataProvider.Instance.ExecuteNonQuery("Update Phong set (TrangThai = N'Trống') where Phong = @p ", new object[] { phong });
+            if ( KiemtraTrong(phong) )
+                DataProvider.Instance.ExecuteNonQuery(" Update Phong set  TrangThai = N'Đang SD'  where Phong = @p ", new object[] { phong } );
+            if (!KiemtraTrong(phong)) 
+                DataProvider.Instance.ExecuteNonQuery(" Update Phong set  TrangThai = N'Trống'  where Phong = @p", new object[] { phong });
         }
 
       

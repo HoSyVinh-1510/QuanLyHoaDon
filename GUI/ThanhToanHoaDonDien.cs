@@ -26,7 +26,7 @@ namespace QuanLyHoaDon.GUI
                 return instance;          
         }
 
-        public ThanhToanHoaDonDien(int idHoaDonDien)
+        private ThanhToanHoaDonDien(int idHoaDonDien)
         {
             this.IDHoaDonDien = idHoaDonDien;
             InitializeComponent();
@@ -46,14 +46,17 @@ namespace QuanLyHoaDon.GUI
             textBox8.Text = dt["SoDienCu"].ToString();
             textBox9.Text = dt["SoDienMoi"].ToString();
             textBox10.Text = dt["DonGia"].ToString();
+            textBox10.Text = Convert.ToSingle(textBox10.Text).ToString("F2");
+            
             //int idHD,int idKH, string sp, int thang, int nam, float SDC, float SDM,float DG
+
             HoaDonDienDTO hoaDonDienDTO = new HoaDonDienDTO(IDHoaDonDien,int.Parse(textBox1.Text),textBox5.Text,int.Parse(textBox7.Text),int.Parse(textBox6.Text),float.Parse(textBox8.Text),float.Parse(textBox9.Text),float.Parse(textBox10.Text));
             textBox11.Text = hoaDonDienDTO.SoSuDung.ToString(); 
             textBox12.Text = hoaDonDienDTO.PhiDichVu.ToString();
             textBox13.Text = hoaDonDienDTO.ThanhTien.ToString();
 
             DataRow dt1=DataProvider.Instance.ExecuteQuery("Select * from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(textBox1.Text) }).Rows[0];
-            textBox2.Text = dt1["TenKhachHang"].ToString();
+            textBox2.Text = dt1["Ten"].ToString();
             textBox3.Text = dt1["SDT"].ToString();
         }
 
@@ -62,20 +65,24 @@ namespace QuanLyHoaDon.GUI
             SetUp();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click_1(object sender, EventArgs e)
         {
             if (MessageBox.Show("Bạn đã chắc chắn thanh toán chưa?", "Thông báo", MessageBoxButtons.OKCancel) == System.Windows.Forms.DialogResult.OK)
             {
-                try
+             
                 {
-                    LichSuThanhToanHoaDonDienDAL.Instance.ThemLichSu(IDHoaDonDien, dateTimePicker1.Value);
-                    MessageBox.Show("Thanh toán thành công!");
-                    this.Close();
+                    
+                    if (DialogResult.Yes==MessageBox.Show("Bạn muốn xuất hóa đơn không?","Thông báo!", MessageBoxButtons.YesNo))
+                    {
+                        KhachHang kh=new KhachHang(int.Parse(textBox1.Text),textBox2.Text,textBox3.Text);
+                        HoaDonDienDTO hoaDonDienDTO = new HoaDonDienDTO(int.Parse(textBox4.Text), int.Parse(textBox1.Text), textBox5.Text, int.Parse(textBox7.Text), int.Parse(textBox6.Text), float.Parse(textBox8.Text), float.Parse(textBox9.Text), float.Parse(textBox10.Text));
+                        BillDien.Instance(kh,hoaDonDienDTO,dateTimePicker1.Value.Date).ShowDialog();
+                        LichSuThanhToanHoaDonDienDAL.Instance.ThemLichSu(IDHoaDonDien, dateTimePicker1.Value.Date);
+                        MessageBox.Show("Thanh toán thành công!");
+                    }
+                    
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Có lỗi xảy ra: " + ex.Message);
-                }
+              
             }
         }
     }

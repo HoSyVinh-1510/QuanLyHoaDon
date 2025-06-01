@@ -124,8 +124,6 @@ namespace QuanLyHoaDon.DTO
             };
         }
 
-
-
         public void Interger(TextBox textBox) 
         {
             textBox.KeyPress += (sender, e) =>

@@ -38,7 +38,7 @@ namespace QuanLyHoaDon.DAL
        
         public int MaxIDLichSu()
         {
-            object kq= DataProvider.Instance.ExecuteScalar("Select MAX(IDLichSuDien) from LichSuDien ");
+            object kq= DataProvider.Instance.ExecuteScalar("Select MAX( IDLichSu ) from LichSuDien ");
             if (kq.ToString() == "" || kq == DBNull.Value)
                 return 0;
             else return int.Parse(kq.ToString());
@@ -47,8 +47,8 @@ namespace QuanLyHoaDon.DAL
         public void ThemLichSu(int idHD, DateTime dateTime)
         {
             int id= MaxIDLichSu();
-            string query = "insert into LichSuDien(IDLichSu,IDHoaDonDien,NgayThanhToan) values( @id  , @idHD , @dateTime)";
-            if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { id+1,idHD, dateTime }) == 0)
+            string query = "insert into LichSuDien (IDLichSu,IDHoaDonDien,NgayThanhToan) values ( @id , @idHD , @ngay )";
+            if ( DataProvider.Instance.ExecuteNonQuery(query, new object[] { id+1, idHD, dateTime }) == 0)
             {
                 MessageBox.Show("Thêm lịch sử thanh toán không thành công!");
             }
