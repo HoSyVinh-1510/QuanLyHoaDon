@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewHoaDonDien = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
@@ -70,8 +70,8 @@
             // 
             this.dataGridViewHoaDonDien.AllowUserToAddRows = false;
             this.dataGridViewHoaDonDien.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewHoaDonDien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.NullValue = null;
+            this.dataGridViewHoaDonDien.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewHoaDonDien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewHoaDonDien.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridViewHoaDonDien.BackgroundColor = System.Drawing.Color.White;
@@ -448,12 +448,13 @@
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Location = new System.Drawing.Point(546, 461);
+            this.button2.Location = new System.Drawing.Point(575, 461);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(114, 57);
             this.button2.TabIndex = 39;
-            this.button2.Text = "s";
+            this.button2.Text = "Xuất Hóa Đơn";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // HoaDonDien
             // 

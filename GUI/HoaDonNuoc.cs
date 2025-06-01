@@ -53,18 +53,15 @@ namespace QuanLyHoaDon.GUI
             textBox3.Text = hoaDonNuocDTO.SoPhong.ToString();
             textBox4.Text = hoaDonNuocDTO.Thang.ToString();
             textBox5.Text = hoaDonNuocDTO.Nam.ToString();
-            textBox6.Text = hoaDonNuocDTO.SoNuocCu.ToString();
-            textBox7.Text = hoaDonNuocDTO.SoNuocMoi.ToString();
-            textBox8.Text = hoaDonNuocDTO.SoSuDung.ToString();
-            textBox9.Text = hoaDonNuocDTO.DonGia.ToString();
-            textBox11.Text = hoaDonNuocDTO.PhiDichVu.ToString();
-            textBox12.Text = hoaDonNuocDTO.ThanhTien.ToString();
+            textBox6.Text = hoaDonNuocDTO.SoNuocCu.ToString("F2");
+            textBox7.Text = hoaDonNuocDTO.SoNuocMoi.ToString("F2");
+            textBox8.Text = hoaDonNuocDTO.SoSuDung.ToString("F2");
+            textBox9.Text = hoaDonNuocDTO.DonGia.ToString("F2");
+            textBox11.Text = hoaDonNuocDTO.PhiDichVu.ToString("F2");
+            textBox12.Text = hoaDonNuocDTO.ThanhTien.ToString("F2");
 
-            if (LichSuThanhToanHoaDonNuocDAL.Instance.NgayThanhToanHD(hoaDonNuocDTO.IDHoaDonNuoc) == null)
-            {
-                textBox13.Text = "Chưa thanh toán";
-            }
-            else textBox13.Text = LichSuThanhToanHoaDonNuocDAL.Instance.NgayThanhToanHD(hoaDonNuocDTO.IDHoaDonNuoc).ToString();
+            
+           textBox13.Text = LichSuThanhToanHoaDonNuocDAL.Instance.NgayThanhToanHD(hoaDonNuocDTO.IDHoaDonNuoc);
 
             textBox10.Text = DataProvider.Instance.ExecuteScalar("Select Ten from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(textBox2.Text) }).ToString();
             textBox14.Text = DataProvider.Instance.ExecuteScalar("Select SDT from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(textBox2.Text) }).ToString();
@@ -96,13 +93,41 @@ namespace QuanLyHoaDon.GUI
         {
             if (textBox13.Text== "Chưa thanh toán")
             {
-
+                ThanhToanHoaDonNuoc.Instance(int.Parse(textBox1.Text)).ShowDialog();
             }
             else
             {
                 MessageBox.Show("Hóa đơn đã thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox13.Text!="Chưa thanh toán")
+            {
+                HoaDonNuocDTO hoaDonNuocDTO = new HoaDonNuocDTO(
+                int.Parse(textBox1.Text),
+                int.Parse(textBox2.Text),
+                textBox3.Text,
+                int.Parse(textBox4.Text),
+                int.Parse(textBox5.Text),
+                float.Parse(textBox6.Text),
+                float.Parse(textBox7.Text),
+                float.Parse(textBox9.Text)
+                );
+
+                KhachHang khachHang = new KhachHang(int.Parse(textBox2.Text), textBox10.Text, textBox14.Text);
+                DateTime dateTime = DateTime.Parse(textBox13.Text).Date;
+                BillNuoc.Instance(khachHang, hoaDonNuocDTO, dateTime).ShowDialog(); 
+            }
+            else             
+            {
+                MessageBox.Show("Hóa đơn chưa thanh toán!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                ThanhToanHoaDonNuoc.Instance(int.Parse(textBox1.Text)).ShowDialog();
+                return;
+            }
+
         }
     }
 }

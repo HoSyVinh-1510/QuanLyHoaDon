@@ -2,23 +2,23 @@
 <Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="QuanLyHoaDonDataSet">
+    <DataSource Name="QuanLyHoaDonDataSet1">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>bc5357aa-ee13-4a6a-b52a-cdbfb96aedfd</rd:DataSourceID>
+      <rd:DataSourceID>6a6f8792-f0db-45b5-982c-7219cb5dc30d</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="DataSet">
+    <DataSet Name="DataSetNuoc">
       <Query>
-        <DataSourceName>QuanLyHoaDonDataSet</DataSourceName>
+        <DataSourceName>QuanLyHoaDonDataSet1</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
-        <Field Name="IDHoaDonDien">
-          <DataField>IDHoaDonDien</DataField>
+        <Field Name="IDHoaDonNuoc">
+          <DataField>IDHoaDonNuoc</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
         <Field Name="IDKhachHang">
@@ -37,12 +37,12 @@
           <DataField>Nam</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="SoDienCu">
-          <DataField>SoDienCu</DataField>
+        <Field Name="SoNuocCu">
+          <DataField>SoNuocCu</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
-        <Field Name="SoDienMoi">
-          <DataField>SoDienMoi</DataField>
+        <Field Name="SoNuocMoi">
+          <DataField>SoNuocMoi</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="DonGia">
@@ -51,12 +51,12 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>QuanLyHoaDonDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\babyv\OneDrive\Documents\APP code\QuanLyHoaDon\QuanLyHoaDonDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>HoaDonDien</rd:TableName>
+        <rd:DataSetName>QuanLyHoaDonDataSet1</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\babyv\OneDrive\Documents\APP code\QuanLyHoaDon\QuanLyHoaDonDataSet1.xsd</rd:SchemaPath>
+        <rd:TableName>HoaDonNuoc</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>HoaDonDienTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>HoaDonNuocTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -68,30 +68,30 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>3.86349cm</Width>
+                  <Width>4.72891cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.09325cm</Width>
+                  <Width>4.05394cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.38266cm</Width>
+                  <Width>4.34335cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.15219cm</Width>
+                  <Width>4.11288cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.30218cm</Width>
+                  <Width>4.26287cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.89797cm</Width>
+                  <Width>5.85866cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.88955cm</Width>
+                  <Width>5.85024cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>1.48609cm</Height>
+                  <Height>1.39728cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -155,7 +155,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>(kWh)</Value>
+                                  <Value>(m3)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>13pt</FontSize>
@@ -208,7 +208,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>(kWh)</Value>
+                                  <Value>(m3)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>13pt</FontSize>
@@ -261,7 +261,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>(nghìn VNĐ/kWh)</Value>
+                                  <Value>(nghìn VNĐ/m3)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>13pt</FontSize>
@@ -314,7 +314,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>(kWh)</Value>
+                                  <Value>(m3)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>13pt</FontSize>
@@ -420,7 +420,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>(nghìn VNĐ)</Value>
+                                  <Value>(Nghìn VNĐ)</Value>
                                   <Style>
                                     <FontFamily>Times New Roman</FontFamily>
                                     <FontSize>13pt</FontSize>
@@ -451,7 +451,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>1.48609cm</Height>
+                  <Height>1.22794cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -496,7 +496,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Parameters!SoDienCu.Value</Value>
+                                  <Value>=Parameters!SoNuocCu.Value</Value>
                                   <Style>
                                     <FontSize>12pt</FontSize>
                                   </Style>
@@ -530,7 +530,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Parameters!SoDienMoi.Value</Value>
+                                  <Value>=Parameters!SoNuocMoi.Value</Value>
                                   <Style>
                                     <FontSize>12pt</FontSize>
                                   </Style>
@@ -694,7 +694,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>1.48609cm</Height>
+                  <Height>1.22794cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -963,11 +963,11 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <DataSetName>DataSet</DataSetName>
-            <Top>6.85545cm</Top>
-            <Left>0.43322cm</Left>
-            <Height>4.45826cm</Height>
-            <Width>32.58128cm</Width>
+            <DataSetName>DataSetNuoc</DataSetName>
+            <Top>7.61008cm</Top>
+            <Left>0.28949cm</Left>
+            <Height>3.85316cm</Height>
+            <Width>33.21085cm</Width>
             <Style>
               <Border>
                 <Style>Solid</Style>
@@ -1054,8 +1054,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox23</rd:DefaultName>
-            <Top>3.62373cm</Top>
-            <Left>0.70839cm</Left>
+            <Top>4.02727cm</Top>
+            <Left>0.28949cm</Left>
             <Height>3.05533cm</Height>
             <Width>7.326cm</Width>
             <ZIndex>1</ZIndex>
@@ -1111,8 +1111,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>3.62373cm</Top>
-            <Left>10.25638cm</Left>
+            <Top>4.02727cm</Top>
+            <Left>9.83748cm</Left>
             <Height>0.57883cm</Height>
             <Width>3.3255cm</Width>
             <ZIndex>2</ZIndex>
@@ -1148,8 +1148,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>4.71762cm</Top>
-            <Left>10.25639cm</Left>
+            <Top>5.12116cm</Top>
+            <Left>9.83749cm</Left>
             <Height>0.57883cm</Height>
             <Width>3.3255cm</Width>
             <ZIndex>3</ZIndex>
@@ -1185,8 +1185,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>5.74828cm</Top>
-            <Left>10.25638cm</Left>
+            <Top>6.15182cm</Top>
+            <Left>9.83748cm</Left>
             <Height>0.57883cm</Height>
             <Width>3.3255cm</Width>
             <ZIndex>4</ZIndex>
@@ -1220,8 +1220,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>3.62373cm</Top>
-            <Left>14.27843cm</Left>
+            <Top>4.02727cm</Top>
+            <Left>13.85953cm</Left>
             <Height>0.57883cm</Height>
             <Width>5.95017cm</Width>
             <ZIndex>5</ZIndex>
@@ -1275,8 +1275,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>4.71762cm</Top>
-            <Left>14.27843cm</Left>
+            <Top>5.12116cm</Top>
+            <Left>13.85953cm</Left>
             <Height>0.57883cm</Height>
             <Width>5.95017cm</Width>
             <ZIndex>6</ZIndex>
@@ -1330,8 +1330,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>5.74828cm</Top>
-            <Left>14.27843cm</Left>
+            <Top>6.15182cm</Top>
+            <Left>13.85953cm</Left>
             <Height>0.57883cm</Height>
             <Width>5.95017cm</Width>
             <ZIndex>7</ZIndex>
@@ -1387,8 +1387,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>3.62373cm</Top>
-            <Left>23.98137cm</Left>
+            <Top>4.02727cm</Top>
+            <Left>23.56247cm</Left>
             <Height>0.57883cm</Height>
             <Width>3.3255cm</Width>
             <ZIndex>8</ZIndex>
@@ -1424,8 +1424,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>4.71762cm</Top>
-            <Left>23.98137cm</Left>
+            <Top>5.12116cm</Top>
+            <Left>23.56247cm</Left>
             <Height>0.57883cm</Height>
             <Width>3.3255cm</Width>
             <ZIndex>9</ZIndex>
@@ -1461,8 +1461,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>5.74828cm</Top>
-            <Left>23.98137cm</Left>
+            <Top>6.15182cm</Top>
+            <Left>23.56247cm</Left>
             <Height>0.57883cm</Height>
             <Width>3.3255cm</Width>
             <ZIndex>10</ZIndex>
@@ -1496,10 +1496,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>3.62373cm</Top>
-            <Left>27.85499cm</Left>
+            <Top>4.02727cm</Top>
+            <Left>27.43609cm</Left>
             <Height>0.57883cm</Height>
-            <Width>6.06427cm</Width>
+            <Width>6.06425cm</Width>
             <ZIndex>11</ZIndex>
             <Style>
               <Border>
@@ -1551,10 +1551,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>4.71762cm</Top>
-            <Left>27.85499cm</Left>
+            <Top>5.12116cm</Top>
+            <Left>27.43609cm</Left>
             <Height>0.57883cm</Height>
-            <Width>6.06427cm</Width>
+            <Width>6.06425cm</Width>
             <ZIndex>12</ZIndex>
             <Style>
               <Border>
@@ -1606,10 +1606,10 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>5.74828cm</Top>
-            <Left>27.85499cm</Left>
+            <Top>6.15182cm</Top>
+            <Left>27.43609cm</Left>
             <Height>0.57883cm</Height>
-            <Width>6.06427cm</Width>
+            <Width>6.06425cm</Width>
             <ZIndex>13</ZIndex>
             <Style>
               <Border>
@@ -1663,8 +1663,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>11.61401cm</Top>
-            <Left>1.93643cm</Left>
+            <Top>12.01755cm</Top>
+            <Left>1.51753cm</Left>
             <Height>0.6cm</Height>
             <Width>4.278cm</Width>
             <ZIndex>14</ZIndex>
@@ -1699,8 +1699,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>14.87367cm</Top>
-            <Left>2.41268cm</Left>
+            <Top>15.27721cm</Top>
+            <Left>1.99378cm</Left>
             <Height>0.6cm</Height>
             <Width>3.3255cm</Width>
             <ZIndex>15</ZIndex>
@@ -1736,8 +1736,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>13.15917cm</Top>
-            <Left>2.83602cm</Left>
+            <Top>13.56271cm</Top>
+            <Left>2.41712cm</Left>
             <Height>0.6cm</Height>
             <Width>2.47883cm</Width>
             <ZIndex>16</ZIndex>
@@ -1773,8 +1773,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>11.61402cm</Top>
-            <Left>15.38196cm</Left>
+            <Top>12.01756cm</Top>
+            <Left>14.96306cm</Left>
             <Height>0.6cm</Height>
             <Width>4.278cm</Width>
             <ZIndex>17</ZIndex>
@@ -1809,8 +1809,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>14.87368cm</Top>
-            <Left>14.81333cm</Left>
+            <Top>15.27722cm</Top>
+            <Left>14.39443cm</Left>
             <Height>0.6cm</Height>
             <Width>5.41527cm</Width>
             <ZIndex>18</ZIndex>
@@ -1846,8 +1846,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>13.15918cm</Top>
-            <Left>16.28155cm</Left>
+            <Top>13.56272cm</Top>
+            <Left>15.86265cm</Left>
             <Height>0.6cm</Height>
             <Width>2.47883cm</Width>
             <ZIndex>19</ZIndex>
@@ -1883,8 +1883,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>11.61401cm</Top>
-            <Left>27.60101cm</Left>
+            <Top>12.01755cm</Top>
+            <Left>27.18211cm</Left>
             <Height>0.6cm</Height>
             <Width>4.278cm</Width>
             <ZIndex>20</ZIndex>
@@ -1919,8 +1919,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>14.87368cm</Top>
-            <Left>27.03238cm</Left>
+            <Top>15.27722cm</Top>
+            <Left>26.61348cm</Left>
             <Height>0.6cm</Height>
             <Width>5.41527cm</Width>
             <ZIndex>21</ZIndex>
@@ -1945,6 +1945,7 @@
                     <Style>
                       <FontFamily>times New Roman</FontFamily>
                       <FontSize>12pt</FontSize>
+                      <Format>d</Format>
                     </Style>
                   </TextRun>
                 </TextRuns>
@@ -1954,35 +1955,15 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>2.51234cm</Top>
-            <Left>27.85499cm</Left>
+            <Top>2.91588cm</Top>
+            <Left>27.43609cm</Left>
             <Height>0.6cm</Height>
-            <Width>6.06427cm</Width>
+            <Width>6.06425cm</Width>
             <ZIndex>22</ZIndex>
             <Style>
               <Border>
                 <Style>Solid</Style>
               </Border>
-              <TopBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </TopBorder>
-              <BottomBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </BottomBorder>
-              <LeftBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </LeftBorder>
-              <RightBorder>
-                <Color>Black</Color>
-                <Style>Solid</Style>
-                <Width>1pt</Width>
-              </RightBorder>
               <PaddingLeft>2pt</PaddingLeft>
               <PaddingRight>2pt</PaddingRight>
               <PaddingTop>2pt</PaddingTop>
@@ -2011,8 +1992,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>2.51234cm</Top>
-            <Left>23.98137cm</Left>
+            <Top>2.91588cm</Top>
+            <Left>23.56247cm</Left>
             <Height>0.6cm</Height>
             <Width>3.3255cm</Width>
             <ZIndex>23</ZIndex>
@@ -2053,7 +2034,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>HÓA ĐƠN TIỀN GTGT (TIỀN ĐIỆN)</Value>
+                    <Value>HÓA ĐƠN TIỀN GTGT (TIỀN NƯỚC)</Value>
                     <Style>
                       <FontFamily>times New Roman</FontFamily>
                       <FontSize>20pt</FontSize>
@@ -2069,8 +2050,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox1</rd:DefaultName>
-            <Top>0.29071cm</Top>
-            <Left>9.95691cm</Left>
+            <Top>0.69425cm</Top>
+            <Left>9.53801cm</Left>
             <Height>1.22908cm</Height>
             <Width>14.66347cm</Width>
             <ZIndex>24</ZIndex>
@@ -2088,8 +2069,8 @@
             <Source>Embedded</Source>
             <Value>IDA3B7B40C1406442085E04433B1033A8E</Value>
             <Sizing>Fit</Sizing>
-            <Top>0.29071cm</Top>
-            <Left>0.8003cm</Left>
+            <Top>0.69425cm</Top>
+            <Left>0.3814cm</Left>
             <Height>1.5762cm</Height>
             <Width>1.82569cm</Width>
             <ZIndex>25</ZIndex>
@@ -2137,8 +2118,8 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox24</rd:DefaultName>
-            <Top>0.59974cm</Top>
-            <Left>4.47309cm</Left>
+            <Top>1.00328cm</Top>
+            <Left>4.05419cm</Left>
             <Height>1.26717cm</Height>
             <Width>2.71539cm</Width>
             <ZIndex>26</ZIndex>
@@ -2156,8 +2137,8 @@
             <Source>Embedded</Source>
             <Value>ID380648FBF5FE4389B4F6F4145C47C3FC</Value>
             <Sizing>FitProportional</Sizing>
-            <Top>0.59974cm</Top>
-            <Left>3.18193cm</Left>
+            <Top>1.00328cm</Top>
+            <Left>2.76303cm</Left>
             <Height>1.26717cm</Height>
             <Width>1.11478cm</Width>
             <ZIndex>27</ZIndex>
@@ -2168,14 +2149,10 @@
             </Style>
           </Image>
         </ReportItems>
-        <Height>6.59401in</Height>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
+        <Height>6.40921in</Height>
+        <Style />
       </Body>
-      <Width>13.49167in</Width>
+      <Width>13.53333in</Width>
       <Page>
         <PageHeight>29.7cm</PageHeight>
         <PageWidth>21cm</PageWidth>
@@ -2207,52 +2184,64 @@
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="NgayKhoiTao">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
     <ReportParameter Name="Phong">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="Nam">
       <DataType>String</DataType>
-      <Nullable>true</Nullable>
-      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="Thang">
-      <DataType>String</DataType>
-      <Nullable>true</Nullable>
-      <AllowBlank>true</AllowBlank>
-      <Prompt>ReportParameter1</Prompt>
-    </ReportParameter>
-    <ReportParameter Name="NgayKhoiTao">
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="MaHoaDon">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="SoDienCu">
+    <ReportParameter Name="SoNuocCu">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
-    <ReportParameter Name="SoDienMoi">
+    <ReportParameter Name="SoNuocMoi">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="DonGia">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="SoSuDung">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="PhiDichVu">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
     <ReportParameter Name="ThanhTien">
       <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
@@ -2279,22 +2268,22 @@
         <CellDefinition>
           <ColumnIndex>3</ColumnIndex>
           <RowIndex>0</RowIndex>
-          <ParameterName>Phong</ParameterName>
+          <ParameterName>NgayKhoiTao</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>1</RowIndex>
-          <ParameterName>Nam</ParameterName>
+          <ParameterName>Phong</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>1</RowIndex>
-          <ParameterName>Thang</ParameterName>
+          <ParameterName>Nam</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>2</ColumnIndex>
           <RowIndex>1</RowIndex>
-          <ParameterName>NgayKhoiTao</ParameterName>
+          <ParameterName>Thang</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>3</ColumnIndex>
@@ -2304,12 +2293,12 @@
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>2</RowIndex>
-          <ParameterName>SoDienCu</ParameterName>
+          <ParameterName>SoNuocCu</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>2</RowIndex>
-          <ParameterName>SoDienMoi</ParameterName>
+          <ParameterName>SoNuocMoi</ParameterName>
         </CellDefinition>
         <CellDefinition>
           <ColumnIndex>2</ColumnIndex>
@@ -2358,5 +2347,5 @@ CFVo2SkEUKaIt3iWk7s/YvfIGKMTi+R8jah62vvvY23fSlYkIwRU9fDXKOjrHiCI8fFKBXJz57kwMcFk
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>4e25539c-f65b-4775-946f-d8c593604196</rd:ReportID>
+  <rd:ReportID>0d172f14-ed18-431f-8ae9-0c00d02092f9</rd:ReportID>
 </Report>

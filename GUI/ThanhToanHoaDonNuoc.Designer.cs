@@ -73,7 +73,7 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.Blue;
-            this.label21.Location = new System.Drawing.Point(1212, 836);
+            this.label21.Location = new System.Drawing.Point(1294, 825);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(373, 23);
             this.label21.TabIndex = 70;
@@ -84,7 +84,7 @@
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.Color.Blue;
-            this.label20.Location = new System.Drawing.Point(1259, 798);
+            this.label20.Location = new System.Drawing.Point(1341, 787);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(278, 23);
             this.label20.TabIndex = 69;
@@ -93,12 +93,12 @@
             // richTextBox1
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.richTextBox1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.richTextBox1.ForeColor = System.Drawing.Color.Blue;
             this.richTextBox1.Location = new System.Drawing.Point(83, 459);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(630, 273);
+            this.richTextBox1.Size = new System.Drawing.Size(680, 324);
             this.richTextBox1.TabIndex = 106;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
@@ -135,13 +135,14 @@
             this.button1.TabIndex = 103;
             this.button1.Text = "THANH TOÁN";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Blue;
-            this.label17.Location = new System.Drawing.Point(1246, 411);
+            this.label17.Location = new System.Drawing.Point(1221, 410);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(204, 23);
             this.label17.TabIndex = 102;
@@ -152,9 +153,9 @@
             this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.dateTimePicker1.CustomFormat = "dd/MM/yyyy";
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(1484, 411);
+            this.dateTimePicker1.Location = new System.Drawing.Point(1435, 411);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(123, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(184, 22);
             this.dateTimePicker1.TabIndex = 101;
             // 
             // label16
@@ -467,7 +468,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1765, 931);
+            this.ClientSize = new System.Drawing.Size(1876, 1003);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);

@@ -67,8 +67,9 @@ namespace QuanLyHoaDon.GUI
             listHD.Columns.Add("PhiDichVu", typeof(float));
             listHD.Columns.Add("ThanhTien", typeof(float));
             listHD.Rows.Add(hoaDonDien.IDHoaDonDien, hoaDonDien.SoDienCu, hoaDonDien.SoDienMoi, hoaDonDien.SoSuDung, hoaDonDien.DonGia, hoaDonDien.PhiDichVu, hoaDonDien.ThanhTien);
-            reportViewerDien.LocalReport.SetParameters(list);
+            
             reportViewerDien.LocalReport.DataSources.Add(new ReportDataSource("DataSet", listHD));
+            reportViewerDien.LocalReport.SetParameters(list);
             reportViewerDien.RefreshReport();
         }
 

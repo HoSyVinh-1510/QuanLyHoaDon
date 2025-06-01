@@ -39,26 +39,29 @@ namespace QuanLyHoaDon.DAL
 
         public int MaxIDLichSu()
         {
-            object kq = DataProvider.Instance.ExecuteScalar("Select MAX(IDLichSuNuoc) from LichSuNuoc ");
+            object kq = DataProvider.Instance.ExecuteScalar("Select MAX( IDLichSu ) from LichSuNuoc ");
             if (kq.ToString() == "" || kq == DBNull.Value)
                 return 0;
             else return int.Parse(kq.ToString());
         }
 
-        public void ThemLichSu(int idHD, DateTime dateTime)
+        public int ThemLichSu(int idHD, DateTime dateTime)
         {
             int id = MaxIDLichSu();
             string query = "insert into LichSuNuoc(IDLichSu,IDHoaDonNuoc,NgayThanhToan) values ( @id  , @idHD , @dateTime )";
-            if (DataProvider.Instance.ExecuteNonQuery(query, new object[] { id + 1, idHD, dateTime.Date }) == 0)
+            int k= DataProvider.Instance.ExecuteNonQuery(query, new object[] { id + 1, idHD, dateTime.Date });
+            if (k == 0)
             {
                 MessageBox.Show("Thêm lịch sử thanh toán không thành công!");
+                return 0;
             }
+            else return k;
         }
-        public DateTime? NgayThanhToanHD(int idHDN)
+        public string NgayThanhToanHD(int idHDN)
         {
             object kq = DataProvider.Instance.ExecuteScalar("Select NgayThanhToan from LichSuNuoc where IDHoaDonNuoc= @a", new object[] { idHDN });
-            if ( kq == DBNull.Value || kq==null) return null;
-            else return DateTime.Parse(kq.ToString()).Date;
+            if ( kq == DBNull.Value || kq==null) return "Chưa thanh toán";
+            else return DateTime.Parse(kq.ToString()).ToString("dd/MM/yyyy");
         }
 
     }

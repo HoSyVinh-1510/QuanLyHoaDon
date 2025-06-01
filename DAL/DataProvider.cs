@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace QuanLyHoaDon.DAL
 {
-    internal class DataProvider
+    public class DataProvider
     {
         private static DataProvider instance;
         public static DataProvider Instance

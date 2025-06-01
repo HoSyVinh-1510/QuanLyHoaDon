@@ -1,6 +1,6 @@
 ﻿namespace QuanLyHoaDon.GUI
 {
-    partial class BillDien
+    partial class BillNuoc
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.reportViewerDien = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.reportViewerNuoc = new Microsoft.Reporting.WinForms.ReportViewer();
             this.SuspendLayout();
             // 
-            // reportViewerDien
+            // reportViewerNuoc
             // 
-            this.reportViewerDien.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewerDien.Location = new System.Drawing.Point(0, 0);
-            this.reportViewerDien.Name = "reportViewerDien";
-            this.reportViewerDien.ServerReport.BearerToken = null;
-            this.reportViewerDien.Size = new System.Drawing.Size(1829, 842);
-            this.reportViewerDien.TabIndex = 0;
-            this.reportViewerDien.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
+            this.reportViewerNuoc.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.reportViewerNuoc.Location = new System.Drawing.Point(0, 0);
+            this.reportViewerNuoc.Name = "reportViewerNuoc";
+            this.reportViewerNuoc.ServerReport.BearerToken = null;
+            this.reportViewerNuoc.Size = new System.Drawing.Size(1677, 904);
+            this.reportViewerNuoc.TabIndex = 0;
+            this.reportViewerNuoc.ZoomMode = Microsoft.Reporting.WinForms.ZoomMode.PageWidth;
             // 
-            // BillDien
+            // BillNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1829, 842);
-            this.Controls.Add(this.reportViewerDien);
-            this.Name = "BillDien";
-            this.Text = "BillDien";
-            this.Load += new System.EventHandler(this.BillDien_Load);
+            this.ClientSize = new System.Drawing.Size(1677, 904);
+            this.Controls.Add(this.reportViewerNuoc);
+            this.Name = "BillNuoc";
+            this.Text = "BillNuoc";
+            this.Load += new System.EventHandler(this.BillNuoc_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewerDien;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewerNuoc;
     }
 }
