@@ -52,8 +52,8 @@ namespace QuanLyHoaDon.GUI
             dataGridViewSoDienNuoc.DataSource=DataProvider.Instance.ExecuteQuery("SELECT * FROM SoDienNuoc");
             dataGridViewSoDienNuoc.Columns["SoDienMoi"].DefaultCellStyle.Format = "N2";
             dataGridViewSoDienNuoc.Columns["SoNuocMoi"].DefaultCellStyle.Format = "N2";
-            dataGridViewSoDienNuoc.Columns["SoDienCu"].DefaultCellStyle.Format = "N2";
-            dataGridViewSoDienNuoc.Columns["SoNuocCu"].DefaultCellStyle.Format = "N2";
+            dataGridViewSoDienNuoc.Columns["SoDienCu"].DefaultCellStyle.Format =  "N2";
+            dataGridViewSoDienNuoc.Columns["SoDienMoi"].DefaultCellStyle.Format = "N2";
 
             Infor();
             textBox11.Text= SoDienNuocDAL.Instance.GetMaxIDSoDienNuoc().ToString();
@@ -77,7 +77,7 @@ namespace QuanLyHoaDon.GUI
 
         private void dataGridViewSoDienNuoc_SelectionChanged(object sender, EventArgs e)
         {
-            Infor();
+            
         }
 
         private int NgayCuoiThang(int thang, int Nam)
@@ -202,6 +202,11 @@ namespace QuanLyHoaDon.GUI
         private void button2_Click(object sender, EventArgs e)
         {
             panel2.Visible = true;
+        }
+
+        private void dataGridViewSoDienNuoc_SelectionChanged_1(object sender, EventArgs e)
+        {
+            Infor();
         }
     }
 }

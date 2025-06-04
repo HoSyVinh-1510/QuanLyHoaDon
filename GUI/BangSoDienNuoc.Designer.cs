@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -79,6 +78,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dataGridViewSoDienNuoc);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.textBox9);
@@ -101,7 +101,6 @@
             this.panel1.Controls.Add(this.textBox3);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.dataGridViewSoDienNuoc);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -564,27 +563,17 @@
             // 
             this.dataGridViewSoDienNuoc.AllowUserToAddRows = false;
             this.dataGridViewSoDienNuoc.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Format = "N2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.dataGridViewSoDienNuoc.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewSoDienNuoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewSoDienNuoc.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridViewSoDienNuoc.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewSoDienNuoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSoDienNuoc.GridColor = System.Drawing.Color.White;
-            this.dataGridViewSoDienNuoc.Location = new System.Drawing.Point(916, 86);
-            this.dataGridViewSoDienNuoc.MultiSelect = false;
+            this.dataGridViewSoDienNuoc.Location = new System.Drawing.Point(943, 110);
             this.dataGridViewSoDienNuoc.Name = "dataGridViewSoDienNuoc";
-            this.dataGridViewSoDienNuoc.ReadOnly = true;
             this.dataGridViewSoDienNuoc.RowHeadersWidth = 51;
-            this.dataGridViewSoDienNuoc.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.dataGridViewSoDienNuoc.RowTemplate.DefaultCellStyle.Format = "N2";
-            this.dataGridViewSoDienNuoc.RowTemplate.DefaultCellStyle.NullValue = null;
             this.dataGridViewSoDienNuoc.RowTemplate.Height = 24;
             this.dataGridViewSoDienNuoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSoDienNuoc.Size = new System.Drawing.Size(928, 693);
-            this.dataGridViewSoDienNuoc.TabIndex = 31;
-            this.dataGridViewSoDienNuoc.SelectionChanged += new System.EventHandler(this.dataGridViewSoDienNuoc_SelectionChanged);
+            this.dataGridViewSoDienNuoc.Size = new System.Drawing.Size(903, 471);
+            this.dataGridViewSoDienNuoc.TabIndex = 74;
             // 
             // BangSoDienNuoc
             // 
@@ -636,7 +625,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.DataGridView dataGridViewSoDienNuoc;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
@@ -649,5 +637,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.DataGridView dataGridViewSoDienNuoc;
     }
 }
