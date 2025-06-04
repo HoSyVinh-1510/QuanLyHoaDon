@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
             this.panelPhong = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -63,7 +64,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtPhong1 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -103,13 +103,24 @@
             this.panel1.Size = new System.Drawing.Size(1924, 1055);
             this.panel1.TabIndex = 0;
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label16.ForeColor = System.Drawing.Color.Blue;
+            this.label16.Location = new System.Drawing.Point(718, 457);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(571, 25);
+            this.label16.TabIndex = 34;
+            this.label16.Text = "HỆ THỐNG PHÒNG TRONG CHUNG CƯ HIỆN NAY";
+            // 
             // panelPhong
             // 
             this.panelPhong.AutoScroll = true;
             this.panelPhong.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panelPhong.Location = new System.Drawing.Point(723, 499);
             this.panelPhong.Name = "panelPhong";
-            this.panelPhong.Size = new System.Drawing.Size(560, 369);
+            this.panelPhong.Size = new System.Drawing.Size(560, 368);
             this.panelPhong.TabIndex = 33;
             // 
             // button3
@@ -476,17 +487,6 @@
             this.txtPhong1.Size = new System.Drawing.Size(175, 30);
             this.txtPhong1.TabIndex = 9;
             this.txtPhong1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label16.ForeColor = System.Drawing.Color.Blue;
-            this.label16.Location = new System.Drawing.Point(718, 457);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(571, 25);
-            this.label16.TabIndex = 34;
-            this.label16.Text = "HỆ THỐNG PHÒNG TRONG CHUNG CƯ HIỆN NAY";
             // 
             // PhongVaKhachHang
             // 

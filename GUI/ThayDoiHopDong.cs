@@ -50,6 +50,7 @@ namespace QuanLyHoaDon.GUI
             else textBox5.Text = (DateTime.Parse(row["NgayKT"].ToString())).ToString("dd/MM/yyyy"); 
             dateTimePicker1.Value=DateTime.Now;
             dateTimePicker1.Checked = false;
+            dateTimePicker2.Value= DateTime.Parse(row["NgayBD"].ToString()).Date;
 
             dataGridViewHD.DataSource = DataProvider.Instance.ExecuteQuery("select * from SoDienNuoc where Phong= @p and IDKhachHang= @id ",new object[] {textBox3.Text, int.Parse(textBox2.Text) });
 
@@ -74,6 +75,7 @@ namespace QuanLyHoaDon.GUI
                     if (k > 0)
                     {
                         MessageBox.Show("Thay đổi hợp đồng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        HopDong.Instance.HopDong_Load(sender, e);
                         this.Close();
                     }
                     else
@@ -111,5 +113,6 @@ namespace QuanLyHoaDon.GUI
                 
             }
         }
+
     }
 }

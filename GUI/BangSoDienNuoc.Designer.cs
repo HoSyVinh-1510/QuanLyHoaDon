@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -105,7 +105,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1891, 841);
+            this.panel1.Size = new System.Drawing.Size(1858, 797);
             this.panel1.TabIndex = 0;
             // 
             // button2
@@ -564,9 +564,9 @@
             // 
             this.dataGridViewSoDienNuoc.AllowUserToAddRows = false;
             this.dataGridViewSoDienNuoc.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.Format = "N2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewSoDienNuoc.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewSoDienNuoc.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewSoDienNuoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewSoDienNuoc.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridViewSoDienNuoc.BackgroundColor = System.Drawing.Color.White;
@@ -590,7 +590,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1891, 841);
+            this.ClientSize = new System.Drawing.Size(1858, 797);
             this.Controls.Add(this.panel1);
             this.Name = "BangSoDienNuoc";
             this.Text = "BangSoDienNuoc";

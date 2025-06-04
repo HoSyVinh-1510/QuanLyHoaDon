@@ -80,12 +80,43 @@ namespace QuanLyHoaDon.GUI
             Infor();
         }
 
+        private int NgayCuoiThang(int thang, int Nam)
+        {
+            if (thang == 1 || thang == 3 || thang == 5 || thang == 7 || thang == 8 || thang == 10 || thang == 12) return 31;
+            if (thang == 4 || thang == 6 || thang == 9 || thang == 11 ) return 30;
+            if (Nam % 400 == 0 || (Nam % 100 != 0 && Nam % 4 == 0)) return 29;
+            else return 28;
+        }
+
+        private bool KtraHopDong()
+        {
+            string ngay2 = NgayCuoiThang(int.Parse(textBox13.Text),int.Parse(textBox12.Text)).ToString() + "/" + textBox13.Text + "/" + textBox12.Text;
+            DateTime ngayBD= DateTime.Parse("01/"+textBox13.Text+"/"+textBox12.Text);
+            DateTime ngayKT = DateTime.Parse(ngay2);
+            DataTable dt = DataProvider.Instance.ExecuteQuery("Select * from HopDong where Phong= @a and IDKhachHang= @b ",new object[] {comboBox1.SelectedValue.ToString(),comboBox2.SelectedValue.ToString()} );
+            foreach(DataRow dataRow in dt.Rows)
+            {
+                if (dataRow["NgayKT"]==null || dataRow["NgayKT"] == DBNull.Value)
+                {
+                    if (DateTime.Parse(dataRow["NgayBD"].ToString()) <= ngayKT)
+                        return true;
+                }
+                else
+                {
+                    if (DateTime.Parse(dataRow["NgayBD"].ToString()) <= ngayKT && DateTime.Parse(dataRow["NgayKT"].ToString()) >= ngayBD)
+                        return true;
+                }
+            }
+            return false;
+
+        }
+
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
             comboBox2.Enabled = true;
             
             comboBox2.DataSource = DataProvider.Instance.ExecuteQuery("SELECT DISTINCT IDKhachHang FROM SoDienNuoc where Phong= @p ", new object[] { comboBox1.SelectedValue.ToString()});
-            comboBox2.DisplayMember = "IDKhachHang";
+            comboBox2.DisplayMember = "IDKhachHang";    
             comboBox2.ValueMember = "IDKhachHang";
 
             object k= DataProvider.Instance.ExecuteScalar(" SELECT MAX(IDSoDienNuoc) FROM SoDienNuoc where Phong= @p ", new object[] { comboBox1.SelectedValue.ToString() });
@@ -133,7 +164,7 @@ namespace QuanLyHoaDon.GUI
             {
                 MessageBox.Show("Tháng không hợp lệ!");
                 textBox13.Text = null;
-                 textBox13.Focus();
+                textBox13.Focus();
                 return false;
             }
             if (float.Parse(textBox15.Text) < float.Parse(textBox14.Text)  || float.Parse(textBox17.Text) < float.Parse(textBox16.Text))
@@ -144,7 +175,13 @@ namespace QuanLyHoaDon.GUI
                 textBox15.Focus();
                 return false;
             }
-            return true;
+            if (KtraHopDong() == true)
+                return true;
+            else 
+            {
+                MessageBox.Show("Hợp đồng thuê không có tháng này!");
+                return false;
+            }  
         }
 
         private void button1_Click(object sender, EventArgs e)
