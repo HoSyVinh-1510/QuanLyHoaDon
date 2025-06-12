@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuanLyHoaDon.DTO;
 
 namespace QuanLyHoaDon.GUI
 {
@@ -39,8 +40,27 @@ namespace QuanLyHoaDon.GUI
             textBox3.Text = row.Cells[2].Value.ToString();
             textBox4.Text = row.Cells[3].Value.ToString();
             textBox5.Text = row.Cells[4].Value.ToString();
-            
+           
+        }
 
+
+        private void NewDonGia()
+        {
+            int maxID = int.Parse(DataProvider.Instance.ExecuteScalar("SELECT MAX(IDDonGia) FROM DonGia").ToString());
+            int thang = int.Parse(DataProvider.Instance.ExecuteScalar(" Select Thang From DonGia where IDDonGia= @a",new object[] {maxID}).ToString() );
+            int nam = int.Parse(DataProvider.Instance.ExecuteScalar(" Select Nam From DonGia where IDDonGia= @a", new object[] { maxID }).ToString());
+            if (thang == 12)
+            {
+                thang = 1;
+                nam++;
+            }
+            else
+            {
+                thang++;
+            }
+            textBox10.Text= (maxID + 1).ToString();
+            textBox8.Text = thang.ToString();
+            textBox9.Text = nam.ToString();
         }
 
         private void SetUp()
@@ -54,15 +74,19 @@ namespace QuanLyHoaDon.GUI
         private void DonGia_Load(object sender, EventArgs e)
         {
             panel2.Visible = false;
+            FormatTextInput.Instance.Float(textBox7);
+            FormatTextInput.Instance.Float(textBox6);
             SetUp();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            panel2.Visible = true;
+            NewDonGia();
             if (MessageBox.Show("Tháng mới có thay đổi đơn giá với tháng cũ không?","Câu hỏi?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                panel2.Visible = true;
+                     textBox7.Focus();
+
             }
             else
             {
@@ -74,6 +98,37 @@ namespace QuanLyHoaDon.GUI
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             Infor();
-        }     
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox6.Text == "" || textBox7.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            try
+            {
+                int k = DataProvider.Instance.ExecuteNonQuery("insert into DonGia (IDDonGia,Nam,Thang,DonGiaDien,DonGiaNuoc) values ( @a , @b , @c , @d , @e )"
+                    ,new object[] {int.Parse(textBox10.Text), int.Parse(textBox9.Text), int.Parse(textBox8.Text),float.Parse(textBox7.Text), float.Parse(textBox6.Text) });
+                if (k > 0)
+                {
+                    MessageBox.Show("Thêm đơn giá thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    DonGia_Load(sender, e);
+                }
+                else
+                {
+                    MessageBox.Show("Thêm đơn giá thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi:  " + ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+        }
     }
 }

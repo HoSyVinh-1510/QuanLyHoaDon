@@ -64,6 +64,8 @@ namespace QuanLyHoaDon.GUI
         private void HOME_Load(object sender, EventArgs e)
         {
             time=0;
+            timer2.Interval = 1000; // 100 milliseconds
+            timer2.Start();
         }
 
         private void btnPhongAndKhachHang_Click(object sender, EventArgs e)
@@ -119,6 +121,11 @@ namespace QuanLyHoaDon.GUI
         private void btnDonGia_Click(object sender, EventArgs e)
         {
             OpenChildForm(DonGia.Instance);
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            dateTimePicker1.Value = DateTime.Now;
         }
     }
 }

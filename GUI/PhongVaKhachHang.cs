@@ -203,5 +203,34 @@ namespace QuanLyHoaDon.GUI
             panel3.Visible = true;
             FormatTextInput.Instance.SDT(textBox7);
         }
+
+
+        private void textBox8_Leave(object sender, EventArgs e)
+        {
+            ((DataTable)dataGridViewKhachHang.DataSource).DefaultView.RowFilter = string.Empty;
+            if (textBox9.Text != null && textBox9.Text != "")
+                ((DataTable)dataGridViewKhachHang.DataSource).DefaultView.RowFilter = string.Format("SDT like '%{0}%'", textBox9.Text);
+            if (textBox8.Text != null && textBox8.Text != "")
+                ((DataTable)dataGridViewKhachHang.DataSource).DefaultView.RowFilter = string.Format("Ten like '%{0}%'", textBox8.Text);
+        }
+
+        private void textBox8_Enter(object sender, EventArgs e)
+        {
+            FormatTextInput.Instance.InputTextBox(textBox8); 
+        }
+
+        private void textBox9_Leave(object sender, EventArgs e)
+        {
+            ((DataTable)dataGridViewKhachHang.DataSource).DefaultView.RowFilter = string.Empty;
+            if (textBox9.Text != null && textBox9.Text != "")
+                ((DataTable)dataGridViewKhachHang.DataSource).DefaultView.RowFilter = string.Format("SDT like '%{0}%'", textBox9.Text);
+            if (textBox8.Text != null  && textBox8.Text != "")
+                ((DataTable)dataGridViewKhachHang.DataSource).DefaultView.RowFilter = string.Format("Ten like '%{0}%'", textBox8.Text);
+        }
+
+        private void textBox9_Enter(object sender, EventArgs e)
+        {
+            FormatTextInput.Instance.SDT(textBox9);
+        }
     }
 }

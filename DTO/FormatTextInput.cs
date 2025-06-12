@@ -111,7 +111,7 @@ namespace QuanLyHoaDon.DTO
             textBox.KeyPress += (sender, e) =>
             {
                 // Kiểm tra xem ký tự nhập vào có phải là số hay không
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.' && e.KeyChar.ToString() == "0")
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
                 {
                     e.Handled = true; // Nếu không phải số, không cho phép nhập
                 }

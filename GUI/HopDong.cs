@@ -1,5 +1,6 @@
 ﻿using DevExpress.Accessibility;
 using QuanLyHoaDon.DAL;
+using QuanLyHoaDon.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,14 +30,16 @@ namespace QuanLyHoaDon.GUI
             }
         }
 
+         private DataTable dt= DataProvider.Instance.ExecuteQuery("Select HopDong.IDHopDong,KhachHang.IDKhachHang,HopDong.Phong,HopDong.NgayBD,HopDong.NgayKT,KhachHang.Ten," +
+            "KhachHang.SDT from HopDong,KhachHang where HopDong.IDHopDong=KhachHang.IDKhachHang ");
         private HopDong()
         {
             InitializeComponent();
+            dataGridView1.DataSource = dt;
         }
 
         public void SetUp()
         {
-            dataGridView1.DataSource = DataProvider.Instance.ExecuteQuery("Select * from HopDong");
             dataGridView1.Columns["NgayBD"].DefaultCellStyle.Format = "dd/MM/yyyy";
             dataGridView1.Columns["NgayKT"].DefaultCellStyle.Format = "dd/MM/yyyy";
             infor();
@@ -68,7 +71,7 @@ namespace QuanLyHoaDon.GUI
         }
         public void HopDong_Load(object sender, EventArgs e)
         {
-            pn2.Visible = false;
+            pn2.Visible = false;       
             SetUp();
         }
 
@@ -177,6 +180,25 @@ namespace QuanLyHoaDon.GUI
                 if (dT2.Checked == true)
                     HopDongDAL.Instance.ThemHopDong(int.Parse(txtHD1.Text), int.Parse(cB1.SelectedValue.ToString()), cB2.SelectedValue.ToString(), dT1.Value.Date, dT2.Value.Date);
                 else HopDongDAL.Instance.ThemHopDong(int.Parse(txtHD1.Text), int.Parse(cB1.SelectedValue.ToString()), cB2.SelectedValue.ToString(), dT1.Value.Date, null);
+            }
+        }
+
+        // hàm cho người dùng tìm tên khách hàng.
+        private void timTenKH_Enter(object sender, EventArgs e)
+        {
+            FormatTextInput.Instance.InputTextBox(timTenKH);
+            
+        }
+
+        private void timTenKH_Leave(object sender, EventArgs e)
+        {
+            if (timTenKH.Text == "" && timTenKH.Text == null)
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter=string.Empty;
+            }
+            else
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("Ten LIKE '%{0}%'", timTenKH.Text);
             }
         }
     }

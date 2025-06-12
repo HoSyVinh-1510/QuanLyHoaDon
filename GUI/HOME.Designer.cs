@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.btnDonGia = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -45,6 +46,7 @@
             this.prgrBarHome = new System.Windows.Forms.ProgressBar();
             this.panelHome = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -53,6 +55,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.btnDonGia);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button5);
@@ -63,8 +66,21 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 79);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(166, 700);
+            this.panel1.Size = new System.Drawing.Size(166, 727);
             this.panel1.TabIndex = 0;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.button2.Location = new System.Drawing.Point(0, 567);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(166, 81);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "THỐNG KÊ DOANH THU";
+            this.button2.UseVisualStyleBackColor = false;
             // 
             // btnDonGia
             // 
@@ -172,11 +188,12 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1695, 79);
+            this.panel2.Size = new System.Drawing.Size(1765, 79);
             this.panel2.TabIndex = 1;
             // 
             // dateTimePicker1
             // 
+            this.dateTimePicker1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dateTimePicker1.CalendarTrailingForeColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dateTimePicker1.CustomFormat = "dd/MM/yyyy  hh:mm:ss";
             this.dateTimePicker1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -188,6 +205,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
@@ -203,9 +221,9 @@
             this.panel3.Controls.Add(this.lbLoading);
             this.panel3.Controls.Add(this.prgrBarHome);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 779);
+            this.panel3.Location = new System.Drawing.Point(0, 806);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1695, 68);
+            this.panel3.Size = new System.Drawing.Size(1765, 68);
             this.panel3.TabIndex = 2;
             // 
             // lbLoading
@@ -240,7 +258,7 @@
             this.panelHome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelHome.Location = new System.Drawing.Point(166, 79);
             this.panelHome.Name = "panelHome";
-            this.panelHome.Size = new System.Drawing.Size(1529, 700);
+            this.panelHome.Size = new System.Drawing.Size(1599, 727);
             this.panelHome.TabIndex = 3;
             // 
             // timer1
@@ -249,11 +267,17 @@
             this.timer1.Interval = 4;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // timer2
+            // 
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 4;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
             // HOME
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1695, 847);
+            this.ClientSize = new System.Drawing.Size(1765, 874);
             this.Controls.Add(this.panelHome);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -291,5 +315,7 @@
         private System.Windows.Forms.Button btnDonGia;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Timer timer2;
     }
 }

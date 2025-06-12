@@ -28,7 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.timSDT = new System.Windows.Forms.Panel();
+            this.label17 = new System.Windows.Forms.Label();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBox8 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.panelPhong = new System.Windows.Forms.Panel();
             this.button3 = new System.Windows.Forms.Button();
@@ -64,44 +68,90 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtPhong1 = new System.Windows.Forms.TextBox();
-            this.panel1.SuspendLayout();
+            this.timSDT.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKhachHang)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPhong)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // timSDT
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.panelPhong);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Controls.Add(this.button2);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.label12);
-            this.panel1.Controls.Add(this.label13);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.label10);
-            this.panel1.Controls.Add(this.label11);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label7);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.dataGridViewKhachHang);
-            this.panel1.Controls.Add(this.dataGridViewPhong);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.txtPhong1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1924, 1055);
-            this.panel1.TabIndex = 0;
+            this.timSDT.BackColor = System.Drawing.Color.White;
+            this.timSDT.Controls.Add(this.label17);
+            this.timSDT.Controls.Add(this.textBox9);
+            this.timSDT.Controls.Add(this.label18);
+            this.timSDT.Controls.Add(this.textBox8);
+            this.timSDT.Controls.Add(this.label16);
+            this.timSDT.Controls.Add(this.panelPhong);
+            this.timSDT.Controls.Add(this.button3);
+            this.timSDT.Controls.Add(this.button2);
+            this.timSDT.Controls.Add(this.label15);
+            this.timSDT.Controls.Add(this.panel3);
+            this.timSDT.Controls.Add(this.label14);
+            this.timSDT.Controls.Add(this.panel2);
+            this.timSDT.Controls.Add(this.label12);
+            this.timSDT.Controls.Add(this.label13);
+            this.timSDT.Controls.Add(this.label9);
+            this.timSDT.Controls.Add(this.label10);
+            this.timSDT.Controls.Add(this.label11);
+            this.timSDT.Controls.Add(this.label8);
+            this.timSDT.Controls.Add(this.label7);
+            this.timSDT.Controls.Add(this.label6);
+            this.timSDT.Controls.Add(this.dataGridViewKhachHang);
+            this.timSDT.Controls.Add(this.dataGridViewPhong);
+            this.timSDT.Controls.Add(this.textBox4);
+            this.timSDT.Controls.Add(this.textBox3);
+            this.timSDT.Controls.Add(this.textBox2);
+            this.timSDT.Controls.Add(this.textBox1);
+            this.timSDT.Controls.Add(this.txtPhong1);
+            this.timSDT.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.timSDT.Location = new System.Drawing.Point(0, 0);
+            this.timSDT.Name = "timSDT";
+            this.timSDT.Size = new System.Drawing.Size(1924, 1055);
+            this.timSDT.TabIndex = 0;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label17.Location = new System.Drawing.Point(922, 374);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(87, 23);
+            this.label17.TabIndex = 40;
+            this.label17.Text = "Tìm SĐT";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.textBox9.Location = new System.Drawing.Point(1066, 372);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(187, 30);
+            this.textBox9.TabIndex = 39;
+            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox9.Enter += new System.EventHandler(this.textBox9_Enter);
+            this.textBox9.Leave += new System.EventHandler(this.textBox9_Leave);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label18.Location = new System.Drawing.Point(928, 318);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(81, 23);
+            this.label18.TabIndex = 38;
+            this.label18.Text = "Tìm Tên";
+            // 
+            // textBox8
+            // 
+            this.textBox8.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.textBox8.Location = new System.Drawing.Point(1066, 316);
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(187, 30);
+            this.textBox8.TabIndex = 37;
+            this.textBox8.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox8.Enter += new System.EventHandler(this.textBox8_Enter);
+            this.textBox8.Leave += new System.EventHandler(this.textBox8_Leave);
             // 
             // label16
             // 
@@ -137,7 +187,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button2.Location = new System.Drawing.Point(300, 457);
+            this.button2.Location = new System.Drawing.Point(315, 457);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(96, 43);
             this.button2.TabIndex = 31;
@@ -150,7 +200,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label15.ForeColor = System.Drawing.Color.Blue;
-            this.label15.Location = new System.Drawing.Point(1448, 475);
+            this.label15.Location = new System.Drawing.Point(1428, 475);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(309, 25);
             this.label15.TabIndex = 30;
@@ -166,7 +216,7 @@
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.textBox5);
-            this.panel3.Location = new System.Drawing.Point(1418, 530);
+            this.panel3.Location = new System.Drawing.Point(1398, 530);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(490, 314);
             this.panel3.TabIndex = 29;
@@ -341,7 +391,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label9.Location = new System.Drawing.Point(946, 248);
+            this.label9.Location = new System.Drawing.Point(905, 240);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(128, 23);
             this.label9.TabIndex = 24;
@@ -351,7 +401,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label10.Location = new System.Drawing.Point(989, 193);
+            this.label10.Location = new System.Drawing.Point(953, 195);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(42, 23);
             this.label10.TabIndex = 23;
@@ -361,7 +411,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label11.Location = new System.Drawing.Point(941, 144);
+            this.label11.Location = new System.Drawing.Point(905, 146);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(139, 23);
             this.label11.TabIndex = 22;
@@ -372,7 +422,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label8.ForeColor = System.Drawing.Color.Blue;
-            this.label8.Location = new System.Drawing.Point(1107, 97);
+            this.label8.Location = new System.Drawing.Point(1071, 99);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(182, 25);
             this.label8.TabIndex = 21;
@@ -408,7 +458,7 @@
             this.dataGridViewKhachHang.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridViewKhachHang.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewKhachHang.Location = new System.Drawing.Point(1302, 99);
+            this.dataGridViewKhachHang.Location = new System.Drawing.Point(1266, 101);
             this.dataGridViewKhachHang.MultiSelect = false;
             this.dataGridViewKhachHang.Name = "dataGridViewKhachHang";
             this.dataGridViewKhachHang.ReadOnly = true;
@@ -441,7 +491,7 @@
             // textBox4
             // 
             this.textBox4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.textBox4.Location = new System.Drawing.Point(1102, 236);
+            this.textBox4.Location = new System.Drawing.Point(1066, 238);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(187, 30);
@@ -451,7 +501,7 @@
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.textBox3.Location = new System.Drawing.Point(1102, 186);
+            this.textBox3.Location = new System.Drawing.Point(1066, 188);
             this.textBox3.Name = "textBox3";
             this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(187, 30);
@@ -461,7 +511,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.textBox2.Location = new System.Drawing.Point(1102, 137);
+            this.textBox2.Location = new System.Drawing.Point(1066, 139);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(187, 30);
@@ -493,12 +543,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1924, 1055);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.timSDT);
             this.Name = "PhongVaKhachHang";
             this.Text = "PhongVaKhachHang4";
             this.Load += new System.EventHandler(this.PhongVaKhachHang_Load);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.timSDT.ResumeLayout(false);
+            this.timSDT.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -511,7 +561,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel timSDT;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox txtPhong1;
@@ -547,5 +597,9 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panelPhong;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox textBox9;
     }
 }

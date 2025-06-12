@@ -30,6 +30,7 @@ namespace QuanLyHoaDon.GUI
         private BangSoDienNuoc()
         {
             InitializeComponent();
+            dataGridViewSoDienNuoc.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM SoDienNuoc");
         }
 
         private void Infor()
@@ -45,11 +46,13 @@ namespace QuanLyHoaDon.GUI
             textBox7.Text = row.Cells[6].Value.ToString();
             textBox8.Text = row.Cells[7].Value.ToString();
             textBox9.Text = row.Cells[8].Value.ToString();
+            int id=int.Parse(textBox3.Text);
+            txtTenKH.Text = DataProvider.Instance.ExecuteScalar("select Ten from KhachHang where IDKhachHang= @a",new object[] { id }).ToString();
+            txtSDT.Text= DataProvider.Instance.ExecuteScalar("select SDT from KhachHang where IDKhachHang= @a", new object[] { id }).ToString();
 
         }
         private void SetUp()
         {
-            dataGridViewSoDienNuoc.DataSource=DataProvider.Instance.ExecuteQuery("SELECT * FROM SoDienNuoc");
             dataGridViewSoDienNuoc.Columns["SoDienMoi"].DefaultCellStyle.Format = "N2";
             dataGridViewSoDienNuoc.Columns["SoNuocMoi"].DefaultCellStyle.Format = "N2";
             dataGridViewSoDienNuoc.Columns["SoDienCu"].DefaultCellStyle.Format =  "N2";
@@ -66,6 +69,10 @@ namespace QuanLyHoaDon.GUI
             comboBox1.DataSource= DataProvider.Instance.ExecuteQuery("SELECT DISTINCT Phong FROM SoDienNuoc");
             comboBox1.DisplayMember = "Phong";
             comboBox1.ValueMember = "Phong";
+            comboBoxphong.DataSource = DataProvider.Instance.ExecuteQuery("SELECT DISTINCT Phong FROM SoDienNuoc");
+            comboBoxphong.DisplayMember = "Phong";
+            comboBoxphong.ValueMember = "Phong";
+
             comboBox2.Enabled = false;
         }
 
@@ -73,11 +80,6 @@ namespace QuanLyHoaDon.GUI
         {
             panel2.Visible = false; 
             SetUp();
-        }
-
-        private void dataGridViewSoDienNuoc_SelectionChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private int NgayCuoiThang(int thang, int Nam)
@@ -108,7 +110,6 @@ namespace QuanLyHoaDon.GUI
                 }
             }
             return false;
-
         }
 
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
@@ -120,7 +121,14 @@ namespace QuanLyHoaDon.GUI
             comboBox2.ValueMember = "IDKhachHang";
 
             object k= DataProvider.Instance.ExecuteScalar(" SELECT MAX(IDSoDienNuoc) FROM SoDienNuoc where Phong= @p ", new object[] { comboBox1.SelectedValue.ToString() });
-            if (k == null) return;
+            if (k == null || k==DBNull.Value)
+            {
+                MessageBox.Show("Chưa có hóa đơn nào cho phòng này!");
+                textBox14.Text = "0";
+                textBox16.Text = "0";
+                textBox12.Text = DateTime.Now.Year.ToString();
+                textBox13.Text = DateTime.Now.Month.ToString();
+            }
             DataTable dt = DataProvider.Instance.ExecuteQuery(" Select * from SoDienNuoc where IDSoDienNuoc= @a ",new object[] {Convert.ToInt32(k)});
 
             DataRow row = dt.Rows[0];
@@ -204,9 +212,37 @@ namespace QuanLyHoaDon.GUI
             panel2.Visible = true;
         }
 
-        private void dataGridViewSoDienNuoc_SelectionChanged_1(object sender, EventArgs e)
+        private void dataGridViewSoDienNuoc_SelectionChanged(object sender, EventArgs e)
         {
             Infor();
+        }
+
+        private void textBox18_Enter(object sender, EventArgs e)
+        {
+            FormatTextInput.Instance.Interger(textBox18);   
+        }
+
+        private void textBox10_Enter(object sender, EventArgs e)
+        {
+            FormatTextInput.Instance.Interger(textBox10);
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            ((DataTable)dataGridViewSoDienNuoc.DataSource).DefaultView.RowFilter=string.Empty;
+            
+            if (comboBoxphong.SelectedValue !=null && comboBoxphong.SelectedValue.ToString() != "")
+            ((DataTable)dataGridViewSoDienNuoc.DataSource).DefaultView.RowFilter= string.Format("Phong LIKE '%{0}%'",comboBoxphong.SelectedValue.ToString());
+
+            if (textBox18.Text!=null && textBox18.Text != "")
+            {
+                ((DataTable)dataGridViewSoDienNuoc.DataSource).DefaultView.RowFilter = $"Nam = {textBox18.Text} ";   
+            }
+            if (textBox10.Text != null && textBox10.Text != "")
+            {
+                ((DataTable)dataGridViewSoDienNuoc.DataSource).DefaultView.RowFilter = $"Thang = {textBox10.Text} ";
+            }
+
         }
     }
 }
