@@ -72,6 +72,7 @@ namespace QuanLyHoaDon.GUI
             comboBoxphong.DataSource = DataProvider.Instance.ExecuteQuery("SELECT DISTINCT Phong FROM SoDienNuoc");
             comboBoxphong.DisplayMember = "Phong";
             comboBoxphong.ValueMember = "Phong";
+            comboBoxphong.SelectedIndex=-1  ;
 
             comboBox2.Enabled = false;
         }

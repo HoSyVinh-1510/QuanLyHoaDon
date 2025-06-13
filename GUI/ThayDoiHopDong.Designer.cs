@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label18 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -62,7 +63,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewHD = new System.Windows.Forms.DataGridView();
-            this.label18 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHD)).BeginInit();
             this.SuspendLayout();
@@ -109,6 +109,18 @@
             this.panel1.Size = new System.Drawing.Size(1567, 783);
             this.panel1.TabIndex = 0;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.SystemColors.Control;
+            this.label18.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Red;
+            this.label18.Location = new System.Drawing.Point(997, 617);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(533, 19);
+            this.label18.TabIndex = 68;
+            this.label18.Text = "Gợi ý: Nếu bỏ chọn ngày kết thúc => Chưa xác định ngày dừng hợp đồng";
+            // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.CustomFormat = "dd/MM/yyyy";
@@ -149,7 +161,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(1045, 577);
+            this.label17.Location = new System.Drawing.Point(1046, 568);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(116, 19);
             this.label17.TabIndex = 64;
@@ -437,6 +449,8 @@
             // 
             // dataGridViewHD
             // 
+            this.dataGridViewHD.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewHD.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridViewHD.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewHD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewHD.Location = new System.Drawing.Point(25, 85);
@@ -447,18 +461,6 @@
             this.dataGridViewHD.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewHD.Size = new System.Drawing.Size(533, 522);
             this.dataGridViewHD.TabIndex = 0;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.SystemColors.Control;
-            this.label18.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Red;
-            this.label18.Location = new System.Drawing.Point(944, 622);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(527, 19);
-            this.label18.TabIndex = 68;
-            this.label18.Text = "Gợi ý: Nếu bỏ tick ngày kết thúc => Chưa xác định ngày dừng hợp đồng";
             // 
             // ThayDoiHopDong
             // 

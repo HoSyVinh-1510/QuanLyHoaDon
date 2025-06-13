@@ -47,7 +47,7 @@ namespace QuanLyHoaDon.GUI
             cB1.DataSource = DataProvider.Instance.ExecuteQuery("Select IDKhachHang from KhachHang");
             cB1.DisplayMember = "IDKhachHang";
             cB1.ValueMember = "IDKhachHang";
-            cB2.DataSource=DataProvider.Instance.ExecuteQuery("Select Phong from Phong");
+            cB2.DataSource=DataProvider.Instance.ExecuteQuery("Select distinct Phong from Phong");
             cB2.DisplayMember = "Phong";
             cB2.ValueMember = "Phong";
             dT1.Value = DateTime.Now;
