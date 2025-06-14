@@ -42,7 +42,7 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lbLoading = new DevExpress.XtraEditors.LabelControl();
+          
             this.prgrBarHome = new System.Windows.Forms.ProgressBar();
             this.panelHome = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
@@ -75,9 +75,9 @@
             this.btnThongKe.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnThongKe.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnThongKe.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnThongKe.Location = new System.Drawing.Point(0, 567);
+            this.btnThongKe.Location = new System.Drawing.Point(0, 630);
             this.btnThongKe.Name = "btnThongKe";
-            this.btnThongKe.Size = new System.Drawing.Size(166, 81);
+            this.btnThongKe.Size = new System.Drawing.Size(166, 90);
             this.btnThongKe.TabIndex = 7;
             this.btnThongKe.Text = "THỐNG KÊ DOANH THU";
             this.btnThongKe.UseVisualStyleBackColor = false;
@@ -89,9 +89,9 @@
             this.btnDonGia.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnDonGia.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnDonGia.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnDonGia.Location = new System.Drawing.Point(0, 486);
+            this.btnDonGia.Location = new System.Drawing.Point(0, 540);
             this.btnDonGia.Name = "btnDonGia";
-            this.btnDonGia.Size = new System.Drawing.Size(166, 81);
+            this.btnDonGia.Size = new System.Drawing.Size(166, 90);
             this.btnDonGia.TabIndex = 6;
             this.btnDonGia.Text = "Đơn Giá Điện Nước";
             this.btnDonGia.UseVisualStyleBackColor = false;
@@ -103,9 +103,9 @@
             this.button1.Dock = System.Windows.Forms.DockStyle.Top;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button1.Location = new System.Drawing.Point(0, 405);
+            this.button1.Location = new System.Drawing.Point(0, 450);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(166, 81);
+            this.button1.Size = new System.Drawing.Size(166, 90);
             this.button1.TabIndex = 5;
             this.button1.Text = "Lịch Sử Thanh Toán";
             this.button1.UseVisualStyleBackColor = false;
@@ -117,9 +117,9 @@
             this.button5.Dock = System.Windows.Forms.DockStyle.Top;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button5.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button5.Location = new System.Drawing.Point(0, 324);
+            this.button5.Location = new System.Drawing.Point(0, 360);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(166, 81);
+            this.button5.Size = new System.Drawing.Size(166, 90);
             this.button5.TabIndex = 4;
             this.button5.Text = "Hóa Đơn Nước";
             this.button5.UseVisualStyleBackColor = false;
@@ -131,9 +131,9 @@
             this.btnHoaDonDien.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHoaDonDien.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnHoaDonDien.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnHoaDonDien.Location = new System.Drawing.Point(0, 243);
+            this.btnHoaDonDien.Location = new System.Drawing.Point(0, 270);
             this.btnHoaDonDien.Name = "btnHoaDonDien";
-            this.btnHoaDonDien.Size = new System.Drawing.Size(166, 81);
+            this.btnHoaDonDien.Size = new System.Drawing.Size(166, 90);
             this.btnHoaDonDien.TabIndex = 3;
             this.btnHoaDonDien.Text = "Hóa Đơn Điện";
             this.btnHoaDonDien.UseVisualStyleBackColor = false;
@@ -145,9 +145,9 @@
             this.btnSoDienNuoc.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnSoDienNuoc.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSoDienNuoc.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnSoDienNuoc.Location = new System.Drawing.Point(0, 162);
+            this.btnSoDienNuoc.Location = new System.Drawing.Point(0, 180);
             this.btnSoDienNuoc.Name = "btnSoDienNuoc";
-            this.btnSoDienNuoc.Size = new System.Drawing.Size(166, 81);
+            this.btnSoDienNuoc.Size = new System.Drawing.Size(166, 90);
             this.btnSoDienNuoc.TabIndex = 2;
             this.btnSoDienNuoc.Text = "Bảng Ghi Điện Nước";
             this.btnSoDienNuoc.UseVisualStyleBackColor = false;
@@ -159,9 +159,9 @@
             this.btnHopDong.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHopDong.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnHopDong.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.btnHopDong.Location = new System.Drawing.Point(0, 81);
+            this.btnHopDong.Location = new System.Drawing.Point(0, 90);
             this.btnHopDong.Name = "btnHopDong";
-            this.btnHopDong.Size = new System.Drawing.Size(166, 81);
+            this.btnHopDong.Size = new System.Drawing.Size(166, 90);
             this.btnHopDong.TabIndex = 1;
             this.btnHopDong.Text = "Hợp Đồng";
             this.btnHopDong.UseVisualStyleBackColor = false;
@@ -175,7 +175,7 @@
             this.btnPhongAndKhachHang.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.btnPhongAndKhachHang.Location = new System.Drawing.Point(0, 0);
             this.btnPhongAndKhachHang.Name = "btnPhongAndKhachHang";
-            this.btnPhongAndKhachHang.Size = new System.Drawing.Size(166, 81);
+            this.btnPhongAndKhachHang.Size = new System.Drawing.Size(166, 90);
             this.btnPhongAndKhachHang.TabIndex = 0;
             this.btnPhongAndKhachHang.Text = "Phòng và Khách Hàng";
             this.btnPhongAndKhachHang.UseVisualStyleBackColor = false;
@@ -219,7 +219,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.lbLoading);
+   
             this.panel3.Controls.Add(this.prgrBarHome);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(0, 806);
@@ -229,18 +229,7 @@
             // 
             // lbLoading
             // 
-            this.lbLoading.Appearance.BackColor = System.Drawing.Color.Lime;
-            this.lbLoading.Appearance.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbLoading.Appearance.ForeColor = System.Drawing.Color.Yellow;
-            this.lbLoading.Appearance.Options.UseBackColor = true;
-            this.lbLoading.Appearance.Options.UseFont = true;
-            this.lbLoading.Appearance.Options.UseForeColor = true;
-            this.lbLoading.Location = new System.Drawing.Point(28, 25);
-            this.lbLoading.Margin = new System.Windows.Forms.Padding(4);
-            this.lbLoading.Name = "lbLoading";
-            this.lbLoading.Size = new System.Drawing.Size(67, 19);
-            this.lbLoading.TabIndex = 1;
-            this.lbLoading.Text = "Loading:";
+          
             // 
             // prgrBarHome
             // 
@@ -310,7 +299,7 @@
         private System.Windows.Forms.Button btnPhongAndKhachHang;
         private System.Windows.Forms.ProgressBar prgrBarHome;
         private System.Windows.Forms.Timer timer1;
-        private DevExpress.XtraEditors.LabelControl lbLoading;
+
         public System.Windows.Forms.Panel panelHome;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnDonGia;

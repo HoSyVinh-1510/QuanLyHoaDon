@@ -87,14 +87,12 @@ namespace QuanLyHoaDon.GUI
                 this.Enabled = false;
                 prgrBarHome.Visible = true;
                 prgrBarHome.Value = time;
-                lbLoading.Text = "Loading: " + time.ToString() + "%";
             }
             else
             {
                 this.Enabled = true;
                 prgrBarHome.Visible = false;
-                lbLoading.Text = null;
-                lbLoading.Enabled = false;
+ 
             }
         }
 
