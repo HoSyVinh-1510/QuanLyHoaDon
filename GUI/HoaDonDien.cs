@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyHoaDon.DTO;
+using DevExpress.Utils.Extensions;
 
 namespace QuanLyHoaDon.GUI
 {
@@ -31,16 +32,19 @@ namespace QuanLyHoaDon.GUI
         private HoaDonDien()
         {
             InitializeComponent();
-        }
-
-        void SetUp()
-        {
-            HoaDonDienDAL.Instance.DongBoHoaDonDien();
-            Output();
             dataGridViewHoaDonDien.DataSource = DataProvider.Instance.ExecuteQuery("Select * from HoaDonDien");
             dataGridViewHoaDonDien.Columns["SoDienCu"].DefaultCellStyle.Format = "N2";
             dataGridViewHoaDonDien.Columns["SoDienMoi"].DefaultCellStyle.Format = "N2";
             dataGridViewHoaDonDien.Columns["DonGia"].DefaultCellStyle.Format = "N2";
+        }
+
+        void SetUp()
+        {
+           
+            HoaDonDienDAL.Instance.DongBoHoaDonDien();
+            
+            Output();
+            comboBox1.SelectedIndex = 0;
         }
 
         void Output()
@@ -80,9 +84,7 @@ namespace QuanLyHoaDon.GUI
             textBox10.Text = DataProvider.Instance.ExecuteScalar("Select Ten from KhachHang where IDKhachHang= @a ", new object[] {int.Parse(textBox2.Text) }).ToString();
             textBox14.Text = DataProvider.Instance.ExecuteScalar("Select SDT from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(textBox2.Text) }).ToString();
 
-        }
-
-        
+        }        
 
         private void dataGridViewHoaDonDien_SelectionChanged(object sender, EventArgs e)
         {
@@ -134,6 +136,46 @@ namespace QuanLyHoaDon.GUI
                 button1_Click(sender, e);
                 return;
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            DataTable temp = DataProvider.Instance.ExecuteQuery("Select * from HoaDonDien");
+            dataGridViewHoaDonDien.DataSource = null;
+            if (comboBox1.SelectedIndex == 0)
+            {
+                dataGridViewHoaDonDien.DataSource = temp;
+               
+            }
+            DataTable dt1 = temp.Clone();
+            DataTable dt2 = temp.Clone();
+            foreach (DataRow row in temp.Rows)
+            {
+                if (LichSuThanhToanHoaDonDienDAL.Instance.NgayThanhToanHD(int.Parse(row["IDHoaDonDien"].ToString())) == null)
+                {
+                    dt2.ImportRow(row);
+                }
+                else
+                {
+                   dt1.ImportRow(row);
+                }
+            }
+            if (comboBox1.SelectedIndex == 2)
+            {
+                dataGridViewHoaDonDien.DataSource = null;
+                dataGridViewHoaDonDien.DataSource = dt1;
+              
+            }
+            if (comboBox1.SelectedIndex == 1)
+            {
+                dataGridViewHoaDonDien.DataSource = null;
+                dataGridViewHoaDonDien.DataSource = dt2;
+                
+            }
+            dataGridViewHoaDonDien.Columns["SoDienCu"].DefaultCellStyle.Format = "N2";
+            dataGridViewHoaDonDien.Columns["SoDienMoi"].DefaultCellStyle.Format = "N2";
+            dataGridViewHoaDonDien.Columns["DonGia"].DefaultCellStyle.Format = "N2";
         }
     }
 }
