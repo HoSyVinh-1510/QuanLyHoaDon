@@ -31,12 +31,18 @@ namespace QuanLyHoaDon.GUI
         private HoaDonNuoc()
         {
             InitializeComponent();
+            dataGridViewHoaDonNuoc.DataSource = DataProvider.Instance.ExecuteQuery("Select * from HoaDonNuoc");
+        
         }
 
         private void Output()
-        {
+        { 
+            dataGridViewHoaDonNuoc.Columns["SoNuocCu"].DefaultCellStyle.Format = "N2";
+            dataGridViewHoaDonNuoc.Columns["SoNuocMoi"].DefaultCellStyle.Format = "N2";
+            dataGridViewHoaDonNuoc.Columns["DonGia"].DefaultCellStyle.Format = "N2";
             DataGridViewRow row = dataGridViewHoaDonNuoc.CurrentRow;
             if (row == null) return;
+
             HoaDonNuocDTO hoaDonNuocDTO = new HoaDonNuocDTO(
                 int.Parse(row.Cells[0].Value.ToString()),
                 int.Parse(row.Cells[1].Value.ToString()),
@@ -59,9 +65,7 @@ namespace QuanLyHoaDon.GUI
             textBox9.Text = hoaDonNuocDTO.DonGia.ToString("F2");
             textBox11.Text = hoaDonNuocDTO.PhiDichVu.ToString("F2");
             textBox12.Text = hoaDonNuocDTO.ThanhTien.ToString("F2");
-
-            
-           textBox13.Text = LichSuThanhToanHoaDonNuocDAL.Instance.NgayThanhToanHD(hoaDonNuocDTO.IDHoaDonNuoc);
+            textBox13.Text = LichSuThanhToanHoaDonNuocDAL.Instance.NgayThanhToanHD(hoaDonNuocDTO.IDHoaDonNuoc);
 
             textBox10.Text = DataProvider.Instance.ExecuteScalar("Select Ten from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(textBox2.Text) }).ToString();
             textBox14.Text = DataProvider.Instance.ExecuteScalar("Select SDT from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(textBox2.Text) }).ToString();
@@ -72,11 +76,8 @@ namespace QuanLyHoaDon.GUI
         private void SetUp()
         {
             HoaDonNuocDAL.Instance.DongBoHoaDonNuoc();
-            dataGridViewHoaDonNuoc.DataSource = DataProvider.Instance.ExecuteQuery("Select * from HoaDonNuoc");
             Output();
-            dataGridViewHoaDonNuoc.Columns["SoNuocCu"].DefaultCellStyle.Format = "N2";
-            dataGridViewHoaDonNuoc.Columns["SoNuocMoi"].DefaultCellStyle.Format = "N2";
-            dataGridViewHoaDonNuoc.Columns["DonGia"].DefaultCellStyle.Format = "N2";
+            comboBox1.SelectedIndex = 0;
         }
 
         private void dataGridViewHoaDonDien_SelectionChanged(object sender, EventArgs e)
@@ -127,7 +128,38 @@ namespace QuanLyHoaDon.GUI
                 ThanhToanHoaDonNuoc.Instance(int.Parse(textBox1.Text)).ShowDialog();
                 return;
             }
+        }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataTable dataTable = DataProvider.Instance.ExecuteQuery("Select * from HoaDonNuoc");
+            dataGridViewHoaDonNuoc.DataSource = null;
+            if (comboBox1.SelectedIndex==0) dataGridViewHoaDonNuoc.DataSource=dataTable;
+            DataTable temp1= dataTable.Clone();
+            DataTable temp2 = dataTable.Clone();
+            foreach (DataRow row in dataTable.Rows)
+            {
+                object kq = DataProvider.Instance.ExecuteScalar("Select NgayThanhToan from LichSuNuoc where IDHoaDonNuoc= @a", new object[] { row["IDHoaDonNuoc"].ToString() });
+                if (kq ==null || kq == DBNull.Value) // Hóa đơn chưa thanh toán
+                {
+                    temp1.ImportRow(row);
+                }
+                else
+                {
+                    temp2.ImportRow(row);
+                }
+            }
+            if (comboBox1.SelectedIndex == 1)
+            {
+                dataGridViewHoaDonNuoc.DataSource=null;
+                dataGridViewHoaDonNuoc.DataSource = temp1;
+            }
+            else
+            {
+                dataGridViewHoaDonNuoc.DataSource = null;
+                dataGridViewHoaDonNuoc.DataSource = dataTable;
+            }
+            Output();
         }
     }
 }

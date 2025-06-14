@@ -48,6 +48,7 @@ namespace QuanLyHoaDon.GUI
             dataGridViewHoaDonDien.Columns["DonGia"].DefaultCellStyle.Format = "N2";
             DataGridViewRow row = dataGridViewHoaDonDien.CurrentRow;
             if (row == null) return;
+
             //int idHD,int idKH, string sp, int thang, int nam, float SDC, float SDM,float DG
             HoaDonDienDTO hoaDonDienDTO = new HoaDonDienDTO
             (

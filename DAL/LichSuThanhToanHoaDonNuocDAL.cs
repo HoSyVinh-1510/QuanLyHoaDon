@@ -28,14 +28,6 @@ namespace QuanLyHoaDon.DAL
         {
             return DataProvider.Instance.ExecuteNonQuery("Select * from LichSuNuoc where IDHoaDonNuoc= @a", new object[] { idHD }) > 0;
         }
-        public DateTime? NgayThanhToan(int IdHoaDonNuoc)
-        {
-            if (KiemTraThanhToan(IdHoaDonNuoc) == false)
-            {
-                return null;
-            }
-            else return DateTime.Parse(DataProvider.Instance.ExecuteScalar("Select NgayThanhToan from LichSuNuoc where IDHoaDonNuoc= @a", new object[] { IdHoaDonNuoc }).ToString());
-        }
 
         public int MaxIDLichSu()
         {
