@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnThongKe = new System.Windows.Forms.Button();
             this.btnDonGia = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
@@ -55,7 +55,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.btnThongKe);
             this.panel1.Controls.Add(this.btnDonGia);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.button5);
@@ -69,18 +69,19 @@
             this.panel1.Size = new System.Drawing.Size(166, 727);
             this.panel1.TabIndex = 0;
             // 
-            // button2
+            // btnThongKe
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.button2.Location = new System.Drawing.Point(0, 567);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(166, 81);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "THỐNG KÊ DOANH THU";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnThongKe.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnThongKe.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnThongKe.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.btnThongKe.Location = new System.Drawing.Point(0, 567);
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.Size = new System.Drawing.Size(166, 81);
+            this.btnThongKe.TabIndex = 7;
+            this.btnThongKe.Text = "THỐNG KÊ DOANH THU";
+            this.btnThongKe.UseVisualStyleBackColor = false;
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
             // btnDonGia
             // 
@@ -315,7 +316,7 @@
         private System.Windows.Forms.Button btnDonGia;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Timer timer2;
     }
 }

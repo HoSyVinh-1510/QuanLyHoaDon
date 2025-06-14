@@ -127,5 +127,10 @@ namespace QuanLyHoaDon.GUI
         {
             dateTimePicker1.Value = DateTime.Now;
         }
+
+        private void btnThongKe_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(ThongKe.Instance);    
+        }
     }
 }
