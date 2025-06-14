@@ -84,7 +84,7 @@
             this.dataGridViewHoaDonDien.RowHeadersWidth = 51;
             this.dataGridViewHoaDonDien.RowTemplate.Height = 24;
             this.dataGridViewHoaDonDien.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewHoaDonDien.Size = new System.Drawing.Size(962, 692);
+            this.dataGridViewHoaDonDien.Size = new System.Drawing.Size(962, 679);
             this.dataGridViewHoaDonDien.TabIndex = 0;
             this.dataGridViewHoaDonDien.SelectionChanged += new System.EventHandler(this.dataGridViewHoaDonDien_SelectionChanged);
             // 

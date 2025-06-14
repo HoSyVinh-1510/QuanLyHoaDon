@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyHoaDon.DAL;
+using QuanLyHoaDon.DTO;
 
 namespace QuanLyHoaDon.GUI
 {
@@ -30,8 +31,8 @@ namespace QuanLyHoaDon.GUI
         private LichSuThanhToan()
         {
             InitializeComponent();
-            dG1.DataSource = DataProvider.Instance.ExecuteQuery("Select * from LichSuDien");
-            dG2.DataSource = DataProvider.Instance.ExecuteQuery("Select * from LichSuNuoc");
+            dG1.DataSource = DataProvider.Instance.ExecuteQuery("Select LichSuDien.IDLichSu,LichSuDien.IDHoaDonDien,HoaDonDien.Phong,HoaDonDien.Thang,HoaDonDien.Nam,LichSuDien.NgayThanhToan from LichSuDien,HoaDonDien where HoaDonDien.IDHoaDonDien=LichSuDien.IDHoaDonDien");
+            dG2.DataSource = DataProvider.Instance.ExecuteQuery("Select LichSuNuoc.IDLichSu,LichSuNuoc.IDHoaDonNuoc,HoaDonNuoc.Phong,HoaDonNuoc.Thang,HoaDonNuoc.Nam,LichSuNuoc.NgayThanhToan from LichSuNuoc,HoaDonNuoc where HoaDonNuoc.IDHoaDonNuoc=LichSuNuoc.IDHoaDonNuoc");
         }
         
         private void SetUp1()
@@ -51,7 +52,7 @@ namespace QuanLyHoaDon.GUI
             if (row == null) return;
             tB1.Text = row.Cells[0].Value.ToString(); // IDLichSuDien
             tB2.Text = row.Cells[1].Value.ToString(); // IDKhachHang
-            tB3.Text = DateTime.Parse(row.Cells[2].Value.ToString()).ToString("dd/MM/yyyy");
+            tB3.Text = DateTime.Parse(row.Cells["NgayThanhToan"].Value.ToString()).ToString("dd/MM/yyyy");
             DataRow row1 = DataProvider.Instance.ExecuteQuery("Select * from HoaDonDien where IDHoaDonDien = @a ", new object[] { int.Parse(tB2.Text) }).Rows[0];
             tB4.Text = row1["Phong"].ToString(); // Phong
             tB5.Text = row1["Nam"].ToString();
@@ -80,7 +81,7 @@ namespace QuanLyHoaDon.GUI
             if (row == null) return;
             tB9.Text = row.Cells[0].Value.ToString(); // IDLichSu
             tB10.Text = row.Cells[1].Value.ToString(); // IDHoaDon
-            tB11.Text = DateTime.Parse( row.Cells[2].Value.ToString()).ToString("dd/MM/yyyy"); 
+            tB11.Text = DateTime.Parse( row.Cells["NgayThanhToan"].Value.ToString()).ToString("dd/MM/yyyy"); 
             DataRow row1 = DataProvider.Instance.ExecuteQuery("Select * from HoaDonNuoc where IDHoaDonNuoc = @a ", new object[] { int.Parse(tB10.Text) }).Rows[0];
             tB12.Text = row1["Phong"].ToString();
             tB13.Text = row1["Nam"].ToString();
@@ -111,19 +112,57 @@ namespace QuanLyHoaDon.GUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
+            ((DataTable)dG1.DataSource).DefaultView.RowFilter = string.Empty;
+            if (comboBox1.Text !="")
+            {
+                ((DataTable)dG1.DataSource).DefaultView.RowFilter = string.Format("Phong = '{0}'", comboBox1.Text);
+            }
+            if(textBox1.Text != "")
+            {
+                ((DataTable)dG1.DataSource).DefaultView.RowFilter = $"Nam= {textBox1.Text}";
+            }
+            if (textBox2.Text != "")
+            {
+                ((DataTable)dG1.DataSource).DefaultView.RowFilter = $"Thang= {textBox2.Text}";
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            ((DataTable)dG2.DataSource).DefaultView.RowFilter = string.Empty;
+            if (comboBox2.Text != "")
+            {
+                ((DataTable)dG2.DataSource).DefaultView.RowFilter = string.Format("Phong = '{0}'", comboBox2.Text);
+            }
+            if (textBox4.Text != "")
+            {
+                ((DataTable)dG2.DataSource).DefaultView.RowFilter = $"Nam= {textBox4.Text}";
+            }
+            if (textBox5.Text != "")
+            {
+                ((DataTable)dG2.DataSource).DefaultView.RowFilter = $"Thang= {textBox5.Text}";
+            }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void textBox1_Enter(object sender, EventArgs e)
         {
-            ((DataTable)dG1.DataSource).DefaultView.RowFilter= string.Empty;
-            ((DataTable)dG2.DataSource).DefaultView.RowFilter = string.Empty;
-            comboBox1.SelectedValue = null;
+            FormatTextInput.Instance.Interger(textBox1);
+        }
+
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            FormatTextInput.Instance.Interger(textBox2);
+        }
+
+        private void textBox4_Enter(object sender, EventArgs e)
+        {
+            FormatTextInput.Instance.Interger(textBox4);
+        }
+
+        private void textBox5_Enter(object sender, EventArgs e)
+        {
+            FormatTextInput.Instance.Interger(textBox5);
         }
     }
 }

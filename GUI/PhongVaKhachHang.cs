@@ -1,5 +1,4 @@
-﻿using DevExpress.Utils.ScrollAnnotations;
-using QuanLyHoaDon.DAL;
+﻿using QuanLyHoaDon.DAL;
 using QuanLyHoaDon.DTO;
 using System;
 using System.Collections.Generic;
@@ -31,6 +30,9 @@ namespace QuanLyHoaDon.GUI
     private PhongVaKhachHang()
     {
             InitializeComponent();
+           
+            dataGridViewPhong.DataSource = DataProvider.Instance.ExecuteQuery("select * from Phong");
+            dataGridViewKhachHang.DataSource = DataProvider.Instance.ExecuteQuery("select * from KhachHang");
     }
     
     private void TaoDanhSach()
@@ -86,7 +88,7 @@ namespace QuanLyHoaDon.GUI
             {
                 string phong = row["Phong"].ToString();
                 PhongDAL.Instance.UpdatePhong(phong);
-            }
+            }          
         }
 
         
@@ -94,9 +96,7 @@ namespace QuanLyHoaDon.GUI
         private void PhongVaKhachHang_Load(object sender, EventArgs e)
         {
             CapNhatPhong();
-            TaoDanhSach();
-            dataGridViewPhong.DataSource = DataProvider.Instance.ExecuteQuery("select * from Phong");
-            dataGridViewKhachHang.DataSource = DataProvider.Instance.ExecuteQuery("select * from KhachHang");
+            TaoDanhSach();           
             DataGridViewRow row1 = dataGridViewPhong.Rows[0];
             DataGridViewRow row2 = dataGridViewKhachHang.Rows[0];
             txtPhong1.Text = row1.Cells[0].Value.ToString();
@@ -105,7 +105,13 @@ namespace QuanLyHoaDon.GUI
             textBox3.Text=row2.Cells[1].Value.ToString();
             textBox4.Text = row2.Cells[2].Value.ToString();
             comboBox1.SelectedIndex = 0;
+            
+            comboBox2.DataSource = DataProvider.Instance.ExecuteQuery("select Phong from Phong");
+            comboBox2.DisplayMember = "Phong";
+            comboBox2.ValueMember = "Phong";
+            comboBox2.SelectedIndex = -1;
             textBox5.Text =(KhachHangDAL.Instance.GetMaxIDKhachHang()+1).ToString();
+
 
             panel2.Visible = false; 
             panel3.Visible = false;
@@ -119,10 +125,7 @@ namespace QuanLyHoaDon.GUI
             {
                 txtPhong1.Text = row.Cells[0].Value.ToString();
                 textBox1.Text = row.Cells[1].Value.ToString();
-            }
-            
-            
-          
+            }           
         }
 
         private void dataGridViewKhachHang_SelectionChanged(object sender, EventArgs e)
@@ -231,6 +234,25 @@ namespace QuanLyHoaDon.GUI
         private void textBox9_Enter(object sender, EventArgs e)
         {
             FormatTextInput.Instance.SDT(textBox9);
+        }
+
+        private void comboBox2_SelectedValueChanged(object sender, EventArgs e)
+        {
+            ((DataTable)dataGridViewPhong.DataSource).DefaultView.RowFilter = string.Empty;
+            if (comboBox2.Text!="")
+            {
+                ((DataTable)dataGridViewPhong.DataSource).DefaultView.RowFilter = string.Format("Phong like '%{0}%'", comboBox2.Text);
+            }
+        }
+
+        private void comboBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                comboBox2_SelectedValueChanged(sender, e);
+                comboBox2_SelectedValueChanged(sender, e);
+            }
         }
     }
 }

@@ -30,6 +30,10 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.textBox12 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -56,10 +60,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -89,14 +89,56 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1840, 688);
+            this.panel1.Size = new System.Drawing.Size(1750, 688);
             this.panel1.TabIndex = 0;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label13.Location = new System.Drawing.Point(490, 427);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(117, 19);
+            this.label13.TabIndex = 25;
+            this.label13.Text = "Tìm Theo Năm";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label14.Location = new System.Drawing.Point(488, 483);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(128, 19);
+            this.label14.TabIndex = 24;
+            this.label14.Text = "Tìm Theo Tháng";
+            // 
+            // textBox11
+            // 
+            this.textBox11.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.textBox11.Location = new System.Drawing.Point(628, 480);
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(202, 27);
+            this.textBox11.TabIndex = 23;
+            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox11.Enter += new System.EventHandler(this.textBox11_Enter);
+            this.textBox11.Leave += new System.EventHandler(this.textBox11_Leave);
+            // 
+            // textBox12
+            // 
+            this.textBox12.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.textBox12.Location = new System.Drawing.Point(628, 424);
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(202, 27);
+            this.textBox12.TabIndex = 22;
+            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox12.Enter += new System.EventHandler(this.textBox12_Enter);
+            this.textBox12.Leave += new System.EventHandler(this.textBox12_Leave);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label12.Location = new System.Drawing.Point(1077, 15);
+            this.label12.Location = new System.Drawing.Point(1057, 12);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(517, 32);
             this.label12.TabIndex = 21;
@@ -115,10 +157,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label6.Location = new System.Drawing.Point(12, 23);
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label6.Location = new System.Drawing.Point(29, 24);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(315, 32);
+            this.label6.Size = new System.Drawing.Size(280, 29);
             this.label6.TabIndex = 16;
             this.label6.Text = "Đơn Giá Của Tháng Mới";
             // 
@@ -372,53 +414,15 @@
             this.dataGridView1.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(966, 548);
+            this.dataGridView1.Size = new System.Drawing.Size(870, 456);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label13.Location = new System.Drawing.Point(490, 427);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(117, 19);
-            this.label13.TabIndex = 25;
-            this.label13.Text = "Tìm Theo Năm";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label14.Location = new System.Drawing.Point(488, 483);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(128, 19);
-            this.label14.TabIndex = 24;
-            this.label14.Text = "Tìm Theo Tháng";
-            // 
-            // textBox11
-            // 
-            this.textBox11.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.textBox11.Location = new System.Drawing.Point(628, 480);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(202, 27);
-            this.textBox11.TabIndex = 23;
-            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBox12
-            // 
-            this.textBox12.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.textBox12.Location = new System.Drawing.Point(628, 424);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(202, 27);
-            this.textBox12.TabIndex = 22;
-            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // DonGia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1840, 688);
+            this.ClientSize = new System.Drawing.Size(1750, 688);
             this.Controls.Add(this.panel1);
             this.Name = "DonGia";
             this.Text = "DonGia";

@@ -68,6 +68,8 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtPhong1 = new System.Windows.Forms.TextBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.timSDT.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -78,6 +80,8 @@
             // timSDT
             // 
             this.timSDT.BackColor = System.Drawing.Color.White;
+            this.timSDT.Controls.Add(this.label19);
+            this.timSDT.Controls.Add(this.comboBox2);
             this.timSDT.Controls.Add(this.label17);
             this.timSDT.Controls.Add(this.textBox9);
             this.timSDT.Controls.Add(this.label18);
@@ -538,6 +542,27 @@
             this.txtPhong1.TabIndex = 9;
             this.txtPhong1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(140, 313);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(167, 27);
+            this.comboBox2.TabIndex = 41;
+            this.comboBox2.SelectedValueChanged += new System.EventHandler(this.comboBox2_SelectedValueChanged);
+            this.comboBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox2_KeyPress);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label19.Location = new System.Drawing.Point(13, 314);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(101, 23);
+            this.label19.TabIndex = 42;
+            this.label19.Text = "Tìm Phòng";
+            // 
             // PhongVaKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -601,5 +626,7 @@
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

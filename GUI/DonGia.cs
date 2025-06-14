@@ -130,5 +130,41 @@ namespace QuanLyHoaDon.GUI
             }
 
         }
+
+        private void textBox12_Enter(object sender, EventArgs e)
+        {
+            FormatTextInput.Instance.Interger(textBox12);
+        }
+
+        private void textBox11_Enter(object sender, EventArgs e)
+        {
+            FormatTextInput.Instance.Interger(textBox11);
+        }
+
+        private void textBox12_Leave(object sender, EventArgs e)
+        {
+            ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Empty;
+            if (!string.IsNullOrEmpty(textBox12.Text))
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("Nam = {0}", textBox12.Text);
+            }
+            if(!string.IsNullOrEmpty(textBox11.Text))
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("Thang = {0}", textBox11.Text);
+            }
+        }
+
+        private void textBox11_Leave(object sender, EventArgs e)
+        {
+            ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Empty;
+            if (!string.IsNullOrEmpty(textBox12.Text))
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("Nam = {0}", textBox12.Text);
+            }
+            if(!string.IsNullOrEmpty(textBox11.Text))
+            {
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("Thang = {0}", textBox11.Text);
+            }
+        }
     }
 }
