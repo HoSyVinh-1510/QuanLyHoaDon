@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyHoaDon.DTO;
-using DevExpress.Utils.Extensions;
 
 namespace QuanLyHoaDon.GUI
 {
@@ -33,22 +32,20 @@ namespace QuanLyHoaDon.GUI
         {
             InitializeComponent();
             dataGridViewHoaDonDien.DataSource = DataProvider.Instance.ExecuteQuery("Select * from HoaDonDien");
-            dataGridViewHoaDonDien.Columns["SoDienCu"].DefaultCellStyle.Format = "N2";
-            dataGridViewHoaDonDien.Columns["SoDienMoi"].DefaultCellStyle.Format = "N2";
-            dataGridViewHoaDonDien.Columns["DonGia"].DefaultCellStyle.Format = "N2";
         }
 
         void SetUp()
-        {
-           
-            HoaDonDienDAL.Instance.DongBoHoaDonDien();
-            
-            Output();
+        {      
+            HoaDonDienDAL.Instance.DongBoHoaDonDien();         
+            Output(); 
             comboBox1.SelectedIndex = 0;
         }
 
         void Output()
-        {
+        {         
+            dataGridViewHoaDonDien.Columns["SoDienCu"].DefaultCellStyle.Format = "N2";
+            dataGridViewHoaDonDien.Columns["SoDienMoi"].DefaultCellStyle.Format = "N2";
+            dataGridViewHoaDonDien.Columns["DonGia"].DefaultCellStyle.Format = "N2";
             DataGridViewRow row = dataGridViewHoaDonDien.CurrentRow;
             if (row == null) return;
             //int idHD,int idKH, string sp, int thang, int nam, float SDC, float SDM,float DG
@@ -63,7 +60,6 @@ namespace QuanLyHoaDon.GUI
                 float.Parse(row.Cells[6].Value.ToString()),
                 float.Parse(row.Cells[7].Value.ToString())
             );
-
             textBox1.Text = hoaDonDienDTO.IDHoaDonDien.ToString();
             textBox2.Text = hoaDonDienDTO.IDKhachHang.ToString();
             textBox3.Text = hoaDonDienDTO.SoPhong.ToString();
@@ -173,9 +169,7 @@ namespace QuanLyHoaDon.GUI
                 dataGridViewHoaDonDien.DataSource = dt2;
                 
             }
-            dataGridViewHoaDonDien.Columns["SoDienCu"].DefaultCellStyle.Format = "N2";
-            dataGridViewHoaDonDien.Columns["SoDienMoi"].DefaultCellStyle.Format = "N2";
-            dataGridViewHoaDonDien.Columns["DonGia"].DefaultCellStyle.Format = "N2";
+            Output();
         }
     }
 }

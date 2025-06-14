@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox13 = new System.Windows.Forms.TextBox();
@@ -61,6 +61,8 @@
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.textBox10 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewHoaDonNuoc)).BeginInit();
             this.SuspendLayout();
             // 
@@ -332,8 +334,8 @@
             // 
             this.dataGridViewHoaDonNuoc.AllowUserToAddRows = false;
             this.dataGridViewHoaDonNuoc.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewHoaDonNuoc.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewHoaDonNuoc.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewHoaDonNuoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewHoaDonNuoc.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridViewHoaDonNuoc.BackgroundColor = System.Drawing.Color.White;
@@ -346,7 +348,7 @@
             this.dataGridViewHoaDonNuoc.RowHeadersWidth = 51;
             this.dataGridViewHoaDonNuoc.RowTemplate.Height = 24;
             this.dataGridViewHoaDonNuoc.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewHoaDonNuoc.Size = new System.Drawing.Size(942, 719);
+            this.dataGridViewHoaDonNuoc.Size = new System.Drawing.Size(942, 680);
             this.dataGridViewHoaDonNuoc.TabIndex = 28;
             this.dataGridViewHoaDonNuoc.SelectionChanged += new System.EventHandler(this.dataGridViewHoaDonDien_SelectionChanged);
             // 
@@ -414,11 +416,36 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label15.Location = new System.Drawing.Point(496, 479);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(145, 23);
+            this.label15.TabIndex = 61;
+            this.label15.Text = "Lọc Trạng Thái ";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Tất cả",
+            "Chưa Thanh Toán",
+            "Đã Thanh Toán"});
+            this.comboBox1.Location = new System.Drawing.Point(663, 479);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(163, 24);
+            this.comboBox1.TabIndex = 60;
+            // 
             // HoaDonNuoc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1823, 838);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.label14);
@@ -494,5 +521,7 @@
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

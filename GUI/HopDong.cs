@@ -1,5 +1,4 @@
-﻿using DevExpress.Accessibility;
-using QuanLyHoaDon.DAL;
+﻿using QuanLyHoaDon.DAL;
 using QuanLyHoaDon.DTO;
 using System;
 using System.Collections.Generic;

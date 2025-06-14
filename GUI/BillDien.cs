@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.CodeParser;
 using Microsoft.Reporting.WinForms;
 using QuanLyHoaDon.DTO;
 
