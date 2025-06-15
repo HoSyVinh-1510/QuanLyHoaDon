@@ -92,13 +92,14 @@ namespace QuanLyHoaDon.GUI
                 cB2.Focus();
                 return false;
             }
-            else if (dT1.Checked == false)
+            if (dT1.Checked == false)
             {
                 MessageBox.Show("Bạn hãy chọn Ngày Bắt Đầu:");
                 dT1.Focus();
                 return false;
             }
-            if (dT1.Checked == true && dT1.Value >= dT2.Value)
+
+            if (dT1.Checked == true && dT1.Value > dT2.Value &&dT2.Checked)
             {
                 MessageBox.Show("Ngày Kết Thúc phải lớn hơn Ngày Bắt Đầu:");
                 dT2.Focus();
@@ -110,16 +111,19 @@ namespace QuanLyHoaDon.GUI
             if (dT2.Checked == false)
             {
                 DataTable dt = DataProvider.Instance.ExecuteQuery(" Select * from HopDong  where Phong= @a and NgayKT IS NULL ", new object[] { cB2.SelectedValue.ToString() });
-                if (dt.Rows.Count > 0) return false;
+                if (dt.Rows.Count > 0) return false;  //Hợp đồng vô thời hạn đã có người thuê!
+
                 dt = DataProvider.Instance.ExecuteQuery("Select * from HopDong  where Phong= @a and NgayKT> @b ", new object[] { cB2.SelectedValue.ToString(), dT1.Value.Date });
                 if (dt.Rows.Count > 0) return false;
                 else return true;
             }
+
             else
             {                
                     DataTable dt1= DataProvider.Instance.ExecuteQuery("Select * from HopDong  where Phong= @a and NgayKT IS NULL and NgayBD< @b ", new object[] { phong, dT2.Value.Date });                             
-                    DataTable dt2= DataProvider.Instance.ExecuteQuery("Select * from HopDong  where Phong= @a and  NgayKT> @d1 and NgayBD< @d2 ", new object[] { phong, dT1.Value.Date,dT2.Value.Date });
-                    if (dt1.Rows.Count+dt2.Rows.Count > 0) return false;
+                    DataTable dt2= DataProvider.Instance.ExecuteQuery("Select * from HopDong  where Phong= @a and  NgayKT> @d1 and NgayBD< @d2 ", new object[] { phong, dT1.Value.Date,dT1.Value.Date });
+                    DataTable dt3 = DataProvider.Instance.ExecuteQuery("Select * from HopDong  where Phong= @a and  NgayKT> @d1 and NgayBD< @d2 ", new object[] { phong, dT2.Value.Date, dT2.Value.Date });
+                if (dt1.Rows.Count+dt2.Rows.Count+dt3.Rows.Count > 0) return false;
                     else return true;                
             }  
             
@@ -175,7 +179,7 @@ namespace QuanLyHoaDon.GUI
         {
             if (!Check())
             {
-                MessageBox.Show("Bạn nhập sai thông tin đầu vào hoặc hợp đồng bị trùng ngày! ", "Thông báo LỖI");
+                MessageBox.Show("Lỗi logic hợp đồng (Do bị trùng ngày hoặc nhập dữ liệu thiếu) ! ", "Thông báo LỖI");
                 return;
             }
             else

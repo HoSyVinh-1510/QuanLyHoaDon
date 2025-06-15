@@ -30,11 +30,11 @@ namespace QuanLyHoaDon.DAL
             try
             {
                 int k;
-                if (ngayKT!=null)
+                if (ngayKT != null)
                   k = DataProvider.Instance.ExecuteNonQuery("insert into HopDong (IDHopDong,IDKhachHang,Phong,NgayBD,NgayKT) values ( @a , @b , @c , @d , @e ) ", new object[] { idHD, idKH, phong, ngayBD.Date, ((DateTime)ngayKT).Date });
                 else
                 {
-                    k = DataProvider.Instance.ExecuteNonQuery("insert into HopDong (IDHopDong,IDKhachHang,Phong,NgayBD,NgayKT) values ( @a , @b , @c , @d , @e ) ", new object[] { idHD, idKH, phong, ngayBD.Date, null });
+                    k = DataProvider.Instance.ExecuteNonQuery("insert into HopDong (IDHopDong,IDKhachHang,Phong,NgayBD,NgayKT) values ( @a , @b , @c , @d , @e ) ", new object[] { idHD, idKH, phong, ngayBD.Date, DBNull.Value });
                 }
                 if (k == 0)
                 {

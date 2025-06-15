@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QuanLyHoaDon.GUI
-{
+{ 
      
     public partial class HOME : Form
     {
