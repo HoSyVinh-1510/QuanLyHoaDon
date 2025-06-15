@@ -167,15 +167,22 @@ namespace QuanLyHoaDon.GUI
 
         private void textBox12_Leave(object sender, EventArgs e)
         {
-            ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Empty;
+            string chuoiLoc= string.Empty;
             if (!string.IsNullOrEmpty(textBox12.Text))
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("Nam = {0}", textBox12.Text);
+                chuoiLoc = $"Nam = {textBox12.Text}";
             }
+
             if (!string.IsNullOrEmpty(textBox11.Text))
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("Thang = {0}", textBox11.Text);
+                if (!string.IsNullOrEmpty(chuoiLoc))
+                {
+                    chuoiLoc += " AND ";
+                }
+                chuoiLoc += $"Thang = {textBox11.Text}";
             }
+
+            ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = chuoiLoc;
         }
 
         private void textBox11_Leave(object sender, EventArgs e)

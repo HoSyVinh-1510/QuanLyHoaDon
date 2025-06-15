@@ -157,6 +157,7 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(1248, 630);
@@ -245,6 +246,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(137, 638);
@@ -631,14 +633,14 @@
             this.dG2.BackgroundColor = System.Drawing.Color.White;
             this.dG2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dG2.GridColor = System.Drawing.Color.White;
-            this.dG2.Location = new System.Drawing.Point(1251, 154);
+            this.dG2.Location = new System.Drawing.Point(1248, 154);
             this.dG2.MultiSelect = false;
             this.dG2.Name = "dG2";
             this.dG2.ReadOnly = true;
             this.dG2.RowHeadersWidth = 51;
             this.dG2.RowTemplate.Height = 24;
             this.dG2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dG2.Size = new System.Drawing.Size(619, 459);
+            this.dG2.Size = new System.Drawing.Size(622, 459);
             this.dG2.TabIndex = 5;
             // 
             // tB3
@@ -725,7 +727,6 @@
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label50;
@@ -771,5 +772,6 @@
         private System.Windows.Forms.TextBox tB1;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.DataGridView dG1;
+        private System.Windows.Forms.TextBox textBox4;
     }
 }

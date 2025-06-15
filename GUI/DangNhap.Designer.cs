@@ -142,7 +142,7 @@
             this.textBox1.Size = new System.Drawing.Size(221, 30);
             this.textBox1.TabIndex = 1;
             this.textBox1.UseSystemPasswordChar = true;
-            this.textBox1.Click += new System.EventHandler(this.textBox1_Click);
+            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
             // 
             // textBox2
             // 
@@ -151,7 +151,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(221, 30);
             this.textBox2.TabIndex = 0;
-            this.textBox2.Click += new System.EventHandler(this.textBox2_Click);
+            this.textBox2.Enter += new System.EventHandler(this.textBox2_Enter);
             // 
             // label2
             // 

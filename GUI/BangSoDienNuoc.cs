@@ -69,6 +69,7 @@ namespace QuanLyHoaDon.GUI
             comboBox1.DataSource= DataProvider.Instance.ExecuteQuery("SELECT DISTINCT Phong FROM SoDienNuoc");
             comboBox1.DisplayMember = "Phong";
             comboBox1.ValueMember = "Phong";
+
             comboBoxphong.DataSource = DataProvider.Instance.ExecuteQuery("SELECT DISTINCT Phong FROM SoDienNuoc");
             comboBoxphong.DisplayMember = "Phong";
             comboBoxphong.ValueMember = "Phong";
@@ -230,20 +231,30 @@ namespace QuanLyHoaDon.GUI
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            ((DataTable)dataGridViewSoDienNuoc.DataSource).DefaultView.RowFilter=string.Empty;
+            string chuoiLoc = string.Empty;
+            ((DataTable)dataGridViewSoDienNuoc.DataSource).DefaultView.RowFilter = string.Empty; 
             
-            if (comboBoxphong.SelectedValue !=null && comboBoxphong.SelectedValue.ToString() != "")
-            ((DataTable)dataGridViewSoDienNuoc.DataSource).DefaultView.RowFilter= string.Format("Phong LIKE '%{0}%'",comboBoxphong.SelectedValue.ToString());
-
-            if (textBox18.Text!=null && textBox18.Text != "")
+            if (comboBox1.SelectedValue!=null)
             {
-                ((DataTable)dataGridViewSoDienNuoc.DataSource).DefaultView.RowFilter = $"Nam = {textBox18.Text} ";   
-            }
-            if (textBox10.Text != null && textBox10.Text != "")
-            {
-                ((DataTable)dataGridViewSoDienNuoc.DataSource).DefaultView.RowFilter = $"Thang = {textBox10.Text} ";
+                chuoiLoc += $"Phong = '{comboBoxphong.SelectedValue.ToString()}' ";
             }
 
+            if (!string.IsNullOrEmpty(textBox18.Text))
+            {
+                if (!string.IsNullOrEmpty(chuoiLoc)) 
+                    chuoiLoc += " AND ";
+                chuoiLoc += $"Nam = {textBox18.Text} ";
+            }
+
+            if (!string.IsNullOrEmpty(textBox10.Text))
+            {
+                if (!string.IsNullOrEmpty(chuoiLoc))
+                    chuoiLoc+=" AND ";
+                chuoiLoc += $"Thang = {textBox10.Text} ";
+            }
+
+            ((DataTable)dataGridViewSoDienNuoc.DataSource).DefaultView.RowFilter = chuoiLoc;
         }
+
     }
 }

@@ -69,7 +69,6 @@ namespace QuanLyHoaDon.GUI
             }            
     }
 
-
         private void bt_click(object sender, EventArgs e)
         {
             Button button = sender as Button;
@@ -90,8 +89,6 @@ namespace QuanLyHoaDon.GUI
                 PhongDAL.Instance.UpdatePhong(phong);
             }          
         }
-
-        
 
         private void PhongVaKhachHang_Load(object sender, EventArgs e)
         {
@@ -151,6 +148,7 @@ namespace QuanLyHoaDon.GUI
             }
             PhongDAL.Instance.ThemPhong("P"+txtPhong.Text,comboBox1.SelectedItem.ToString());
             dataGridViewPhong.DataSource = DataProvider.Instance.ExecuteQuery("select * from Phong");
+            TaoDanhSach();
         }
 
         private void txtPhong_Enter(object sender, EventArgs e)
@@ -210,11 +208,20 @@ namespace QuanLyHoaDon.GUI
 
         private void textBox8_Leave(object sender, EventArgs e)
         {
-            ((DataTable)dataGridViewKhachHang.DataSource).DefaultView.RowFilter = string.Empty;
-            if (textBox9.Text != null && textBox9.Text != "")
-                ((DataTable)dataGridViewKhachHang.DataSource).DefaultView.RowFilter = string.Format("SDT like '%{0}%'", textBox9.Text);
-            if (textBox8.Text != null && textBox8.Text != "")
-                ((DataTable)dataGridViewKhachHang.DataSource).DefaultView.RowFilter = string.Format("Ten like '%{0}%'", textBox8.Text);
+            
+             string chuoiLoc  = string.Empty;
+            if (!string.IsNullOrEmpty(textBox8.Text) && !string.IsNullOrEmpty(textBox9.Text))
+            {
+                chuoiLoc +=$"Ten like {textBox8.Text}'";
+            }
+            if (!string.IsNullOrEmpty(textBox9.Text))
+            {
+                if (!string.IsNullOrEmpty(chuoiLoc))
+                    chuoiLoc += " AND ";
+                chuoiLoc += string.Format("SDT like '%{0}%'", textBox9.Text);
+           }
+
+            ((DataTable)dataGridViewKhachHang.DataSource).DefaultView.RowFilter = chuoiLoc;
         }
 
         private void textBox8_Enter(object sender, EventArgs e)

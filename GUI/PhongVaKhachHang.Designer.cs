@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.timSDT = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.textBox9 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -68,8 +70,6 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.txtPhong1 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
             this.timSDT.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -114,6 +114,28 @@
             this.timSDT.Name = "timSDT";
             this.timSDT.Size = new System.Drawing.Size(1924, 1055);
             this.timSDT.TabIndex = 0;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label19.Location = new System.Drawing.Point(13, 314);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(101, 23);
+            this.label19.TabIndex = 42;
+            this.label19.Text = "Tìm Phòng";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(140, 313);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(167, 27);
+            this.comboBox2.TabIndex = 41;
+            this.comboBox2.SelectedValueChanged += new System.EventHandler(this.comboBox2_SelectedValueChanged);
+            this.comboBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox2_KeyPress);
             // 
             // label17
             // 
@@ -227,9 +249,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(306, 169);
+            this.button1.Location = new System.Drawing.Point(282, 190);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 61);
+            this.button1.Size = new System.Drawing.Size(133, 46);
             this.button1.TabIndex = 8;
             this.button1.Text = "Thêm Khách Hàng";
             this.button1.UseVisualStyleBackColor = true;
@@ -541,27 +563,6 @@
             this.txtPhong1.Size = new System.Drawing.Size(175, 30);
             this.txtPhong1.TabIndex = 9;
             this.txtPhong1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(140, 313);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(167, 27);
-            this.comboBox2.TabIndex = 41;
-            this.comboBox2.SelectedValueChanged += new System.EventHandler(this.comboBox2_SelectedValueChanged);
-            this.comboBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox2_KeyPress);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label19.Location = new System.Drawing.Point(13, 314);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(101, 23);
-            this.label19.TabIndex = 42;
-            this.label19.Text = "Tìm Phòng";
             // 
             // PhongVaKhachHang
             // 

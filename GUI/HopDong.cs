@@ -43,12 +43,16 @@ namespace QuanLyHoaDon.GUI
             dataGridView1.Columns["NgayKT"].DefaultCellStyle.Format = "dd/MM/yyyy";
             infor();
 
-            cB1.DataSource = DataProvider.Instance.ExecuteQuery("Select IDKhachHang from KhachHang");
+            cB1.DataSource = DataProvider.Instance.ExecuteQuery("Select distinct IDKhachHang from KhachHang order by IDKhachHang ASC");
             cB1.DisplayMember = "IDKhachHang";
             cB1.ValueMember = "IDKhachHang";
+            cB1.SelectedIndex = -1;
+
             cB2.DataSource=DataProvider.Instance.ExecuteQuery("Select distinct Phong from Phong");
             cB2.DisplayMember = "Phong";
             cB2.ValueMember = "Phong";
+            cB2.SelectedIndex = -1;
+
             dT1.Value = DateTime.Now;
             dT1.Checked = true;
             dT2.Checked = false;
@@ -76,13 +80,13 @@ namespace QuanLyHoaDon.GUI
 
         private bool Check()
         {
-            if (cB1.SelectedValue == null)
+            if (cB1.SelectedValue==null)
             {
                 MessageBox.Show("Bạn hãy chọn ID Khách Hàng:");
                 cB1.Focus();
                 return false;
             }
-            else if (cB2.SelectedValue == null)
+            if (cB2.SelectedValue == null)
             {
                 MessageBox.Show("Bạn hãy chọn Phòng:");
                 cB2.Focus();
@@ -180,6 +184,8 @@ namespace QuanLyHoaDon.GUI
                     HopDongDAL.Instance.ThemHopDong(int.Parse(txtHD1.Text), int.Parse(cB1.SelectedValue.ToString()), cB2.SelectedValue.ToString(), dT1.Value.Date, dT2.Value.Date);
                 else HopDongDAL.Instance.ThemHopDong(int.Parse(txtHD1.Text), int.Parse(cB1.SelectedValue.ToString()), cB2.SelectedValue.ToString(), dT1.Value.Date, null);
             }
+            dataGridView1.DataSource = dt;
+
         }
 
         // hàm cho người dùng tìm tên khách hàng.

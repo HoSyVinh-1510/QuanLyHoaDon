@@ -74,19 +74,19 @@ namespace QuanLyHoaDon.GUI
             }
         }
 
-        private void textBox2_Click(object sender, EventArgs e)
-        {
-                
-        }
-
-        private void textBox1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void DangNhap_Load(object sender, EventArgs e)
         {
             FormatTextInput.Instance.InputTextBox(textBox2);
+            FormatTextInput.Instance.InputTextBox(textBox1);
+        }
+
+        private void textBox2_Enter(object sender, EventArgs e)
+        {
+            FormatTextInput.Instance.InputTextBox(textBox2);
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
             FormatTextInput.Instance.InputTextBox(textBox1);
         }
     }

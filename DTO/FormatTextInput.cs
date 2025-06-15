@@ -33,7 +33,7 @@ namespace QuanLyHoaDon.DTO
                 "char", "nchar", "varchar", "nvarchar","%","-", "+", "=",
                 "alter", "begin", "cast", "create", "cursor",
                 "declare", "delete", "drop", "exec", "execute",
-                "fetch", "insert", "kill", "open", "select",
+                "fetch", "insert", "kill", "open", 
                 "sys", "sysobjects", "syscolumns", "table", "update"  };
 
                 foreach (string s in blocklist)
@@ -93,7 +93,7 @@ namespace QuanLyHoaDon.DTO
             textBox.KeyPress += (sender, e) =>
             {
                 // Kiểm tra xem ký tự nhập vào có phải là số hay không
-                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+                if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
                 {
                     e.Handled = true; // Nếu không phải số, không cho phép nhập
                 }

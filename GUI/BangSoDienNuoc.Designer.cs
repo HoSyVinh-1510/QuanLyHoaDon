@@ -29,6 +29,17 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnTimKiem = new System.Windows.Forms.Button();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.comboBoxphong = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtSDT = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txtTenKH = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.dataGridViewSoDienNuoc = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
@@ -72,17 +83,6 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.txtTenKH = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txtSDT = new System.Windows.Forms.TextBox();
-            this.comboBoxphong = new System.Windows.Forms.ComboBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
-            this.btnTimKiem = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSoDienNuoc)).BeginInit();
             this.panel2.SuspendLayout();
@@ -130,6 +130,123 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1858, 797);
             this.panel1.TabIndex = 0;
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTimKiem.Location = new System.Drawing.Point(1625, 645);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(109, 41);
+            this.btnTimKiem.TabIndex = 86;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label25.ForeColor = System.Drawing.Color.Black;
+            this.label25.Location = new System.Drawing.Point(1232, 628);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(49, 23);
+            this.label25.TabIndex = 85;
+            this.label25.Text = "Năm";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label26.ForeColor = System.Drawing.Color.Black;
+            this.label26.Location = new System.Drawing.Point(1439, 626);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(63, 23);
+            this.label26.TabIndex = 84;
+            this.label26.Text = "Tháng";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.textBox10.Location = new System.Drawing.Point(1436, 656);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(140, 30);
+            this.textBox10.TabIndex = 83;
+            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox10.Enter += new System.EventHandler(this.textBox10_Enter);
+            // 
+            // textBox18
+            // 
+            this.textBox18.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.textBox18.Location = new System.Drawing.Point(1236, 658);
+            this.textBox18.Name = "textBox18";
+            this.textBox18.Size = new System.Drawing.Size(140, 30);
+            this.textBox18.TabIndex = 82;
+            this.textBox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox18.Enter += new System.EventHandler(this.textBox18_Enter);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label24.ForeColor = System.Drawing.Color.Black;
+            this.label24.Location = new System.Drawing.Point(1054, 631);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(62, 23);
+            this.label24.TabIndex = 81;
+            this.label24.Text = "Phòng";
+            // 
+            // comboBoxphong
+            // 
+            this.comboBoxphong.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxphong.FormattingEnabled = true;
+            this.comboBoxphong.Location = new System.Drawing.Point(1052, 662);
+            this.comboBoxphong.Name = "comboBoxphong";
+            this.comboBoxphong.Size = new System.Drawing.Size(121, 24);
+            this.comboBoxphong.TabIndex = 80;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label23.ForeColor = System.Drawing.Color.Black;
+            this.label23.Location = new System.Drawing.Point(541, 313);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(128, 23);
+            this.label23.TabIndex = 79;
+            this.label23.Text = "Số Điện Thoại";
+            // 
+            // txtSDT
+            // 
+            this.txtSDT.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtSDT.Location = new System.Drawing.Point(695, 308);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.ReadOnly = true;
+            this.txtSDT.Size = new System.Drawing.Size(194, 30);
+            this.txtSDT.TabIndex = 78;
+            this.txtSDT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label22.ForeColor = System.Drawing.Color.Black;
+            this.label22.Location = new System.Drawing.Point(530, 258);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(150, 23);
+            this.label22.TabIndex = 77;
+            this.label22.Text = "Tên Khách Hàng";
+            // 
+            // txtTenKH
+            // 
+            this.txtTenKH.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtTenKH.Location = new System.Drawing.Point(695, 253);
+            this.txtTenKH.Name = "txtTenKH";
+            this.txtTenKH.ReadOnly = true;
+            this.txtTenKH.Size = new System.Drawing.Size(194, 30);
+            this.txtTenKH.TabIndex = 76;
+            this.txtTenKH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label21
             // 
@@ -194,7 +311,7 @@
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(12, 76);
+            this.panel2.Location = new System.Drawing.Point(12, 103);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(423, 569);
             this.panel2.TabIndex = 72;
@@ -611,122 +728,6 @@
             this.textBox1.Size = new System.Drawing.Size(194, 30);
             this.textBox1.TabIndex = 32;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(530, 258);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(150, 23);
-            this.label22.TabIndex = 77;
-            this.label22.Text = "Tên Khách Hàng";
-            // 
-            // txtTenKH
-            // 
-            this.txtTenKH.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtTenKH.Location = new System.Drawing.Point(695, 253);
-            this.txtTenKH.Name = "txtTenKH";
-            this.txtTenKH.ReadOnly = true;
-            this.txtTenKH.Size = new System.Drawing.Size(194, 30);
-            this.txtTenKH.TabIndex = 76;
-            this.txtTenKH.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label23.ForeColor = System.Drawing.Color.Black;
-            this.label23.Location = new System.Drawing.Point(541, 313);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(128, 23);
-            this.label23.TabIndex = 79;
-            this.label23.Text = "Số Điện Thoại";
-            // 
-            // txtSDT
-            // 
-            this.txtSDT.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.txtSDT.Location = new System.Drawing.Point(695, 308);
-            this.txtSDT.Name = "txtSDT";
-            this.txtSDT.ReadOnly = true;
-            this.txtSDT.Size = new System.Drawing.Size(194, 30);
-            this.txtSDT.TabIndex = 78;
-            this.txtSDT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // comboBoxphong
-            // 
-            this.comboBoxphong.FormattingEnabled = true;
-            this.comboBoxphong.Location = new System.Drawing.Point(1019, 664);
-            this.comboBoxphong.Name = "comboBoxphong";
-            this.comboBoxphong.Size = new System.Drawing.Size(121, 24);
-            this.comboBoxphong.TabIndex = 80;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label24.ForeColor = System.Drawing.Color.Black;
-            this.label24.Location = new System.Drawing.Point(1021, 633);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(62, 23);
-            this.label24.TabIndex = 81;
-            this.label24.Text = "Phòng";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(1199, 630);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(49, 23);
-            this.label25.TabIndex = 85;
-            this.label25.Text = "Năm";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label26.ForeColor = System.Drawing.Color.Black;
-            this.label26.Location = new System.Drawing.Point(1406, 628);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(63, 23);
-            this.label26.TabIndex = 84;
-            this.label26.Text = "Tháng";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.textBox10.Location = new System.Drawing.Point(1403, 658);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(140, 30);
-            this.textBox10.TabIndex = 83;
-            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox10.Enter += new System.EventHandler(this.textBox10_Enter);
-            // 
-            // textBox18
-            // 
-            this.textBox18.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.textBox18.Location = new System.Drawing.Point(1203, 660);
-            this.textBox18.Name = "textBox18";
-            this.textBox18.Size = new System.Drawing.Size(140, 30);
-            this.textBox18.TabIndex = 82;
-            this.textBox18.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox18.Enter += new System.EventHandler(this.textBox18_Enter);
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnTimKiem.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTimKiem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTimKiem.Location = new System.Drawing.Point(1592, 647);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(109, 41);
-            this.btnTimKiem.TabIndex = 86;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = false;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // BangSoDienNuoc
             // 

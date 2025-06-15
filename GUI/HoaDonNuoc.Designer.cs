@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button1 = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.textBox13 = new System.Windows.Forms.TextBox();
@@ -334,8 +334,8 @@
             // 
             this.dataGridViewHoaDonNuoc.AllowUserToAddRows = false;
             this.dataGridViewHoaDonNuoc.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.NullValue = null;
-            this.dataGridViewHoaDonNuoc.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.NullValue = null;
+            this.dataGridViewHoaDonNuoc.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewHoaDonNuoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewHoaDonNuoc.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridViewHoaDonNuoc.BackgroundColor = System.Drawing.Color.White;
@@ -429,6 +429,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {

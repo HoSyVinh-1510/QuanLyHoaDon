@@ -24,7 +24,7 @@ namespace QuanLyHoaDon.DAL
         public AccountDAL() { }
         public bool CheckLogin(string tk, string mk)
         {
-             DataTable dataTable= DataProvider.Instance.ExecuteQuery("select * from Account where TaiKhoan= @a and MatKhau= @b", new Object[] { tk, mk });
+             DataTable dataTable= DataProvider.Instance.ExecuteQuery("select * from Account where TaiKhoan= @a COLLATE Latin1_General_CS_AS and MatKhau= @b COLLATE Latin1_General_CS_AS ", new Object[] { tk, mk });
              if (dataTable.Rows.Count > 0 )  return true; 
              return false;
         }

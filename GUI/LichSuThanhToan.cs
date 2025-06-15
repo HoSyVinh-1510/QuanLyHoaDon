@@ -113,36 +113,62 @@ namespace QuanLyHoaDon.GUI
         private void button1_Click(object sender, EventArgs e)
         {
 
-            ((DataTable)dG1.DataSource).DefaultView.RowFilter = string.Empty;
-            if (comboBox1.Text !="")
+            string chuoiLoc= string.Empty;
+            
+           
+            if (!string.IsNullOrEmpty(comboBox1.Text))
             {
-                ((DataTable)dG1.DataSource).DefaultView.RowFilter = string.Format("Phong = '{0}'", comboBox1.Text);
+                chuoiLoc = $"Phong = '{comboBox1.Text}'";
             }
-            if(textBox1.Text != "")
+
+            if(!string.IsNullOrEmpty(textBox1.Text))
             {
+                if (!string.IsNullOrEmpty(chuoiLoc))
+                {
+                    chuoiLoc += " AND ";
+                }
                 ((DataTable)dG1.DataSource).DefaultView.RowFilter = $"Nam= {textBox1.Text}";
             }
-            if (textBox2.Text != "")
+            if (!string.IsNullOrEmpty(textBox2.Text))
             {
+                if (!string.IsNullOrEmpty(chuoiLoc))
+                {
+                    chuoiLoc += " AND ";
+                }
                 ((DataTable)dG1.DataSource).DefaultView.RowFilter = $"Thang= {textBox2.Text}";
             }
+
+            ((DataTable)dG1.DataSource).DefaultView.RowFilter = chuoiLoc;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ((DataTable)dG2.DataSource).DefaultView.RowFilter = string.Empty;
-            if (comboBox2.Text != "")
+            string chuoiLoc = string.Empty;
+
+
+            if (!string.IsNullOrEmpty(comboBox2.Text))
             {
-                ((DataTable)dG2.DataSource).DefaultView.RowFilter = string.Format("Phong = '{0}'", comboBox2.Text);
+                chuoiLoc = $"Phong = '{comboBox2.Text}'";
             }
-            if (textBox4.Text != "")
+
+            if (!string.IsNullOrEmpty(textBox4.Text))
             {
-                ((DataTable)dG2.DataSource).DefaultView.RowFilter = $"Nam= {textBox4.Text}";
+                if (!string.IsNullOrEmpty(chuoiLoc))
+                {
+                    chuoiLoc += " AND ";
+                }
+                ((DataTable)dG1.DataSource).DefaultView.RowFilter = $"Nam= {textBox4.Text}";
             }
-            if (textBox5.Text != "")
+            if (!string.IsNullOrEmpty(textBox5.Text))
             {
-                ((DataTable)dG2.DataSource).DefaultView.RowFilter = $"Thang= {textBox5.Text}";
+                if (!string.IsNullOrEmpty(chuoiLoc))
+                {
+                    chuoiLoc += " AND ";
+                }
+                ((DataTable)dG1.DataSource).DefaultView.RowFilter = $"Thang= {textBox5.Text}";
             }
+            ((DataTable)dG2.DataSource).DefaultView.RowFilter = chuoiLoc;
+
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
