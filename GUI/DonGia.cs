@@ -29,6 +29,7 @@ namespace QuanLyHoaDon.GUI
         private DonGia()
         {
             InitializeComponent();
+            dataGridView1.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.DonGia");
         }
 
         private void Infor()
@@ -40,14 +41,14 @@ namespace QuanLyHoaDon.GUI
             textBox3.Text = row.Cells[2].Value.ToString();
             textBox4.Text = row.Cells[3].Value.ToString();
             textBox5.Text = row.Cells[4].Value.ToString();
-           
+
         }
 
 
         private void NewDonGia()
         {
             int maxID = int.Parse(DataProvider.Instance.ExecuteScalar("SELECT MAX(IDDonGia) FROM DonGia").ToString());
-            int thang = int.Parse(DataProvider.Instance.ExecuteScalar(" Select Thang From DonGia where IDDonGia= @a",new object[] {maxID}).ToString() );
+            int thang = int.Parse(DataProvider.Instance.ExecuteScalar(" Select Thang From DonGia where IDDonGia= @a", new object[] { maxID }).ToString());
             int nam = int.Parse(DataProvider.Instance.ExecuteScalar(" Select Nam From DonGia where IDDonGia= @a", new object[] { maxID }).ToString());
             if (thang == 12)
             {
@@ -58,17 +59,22 @@ namespace QuanLyHoaDon.GUI
             {
                 thang++;
             }
-            textBox10.Text= (maxID + 1).ToString();
+            textBox10.Text = (maxID + 1).ToString();
             textBox8.Text = thang.ToString();
             textBox9.Text = nam.ToString();
         }
 
         private void SetUp()
         {
-            dataGridView1.DataSource=DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.DonGia");
+
             dataGridView1.Columns["DonGiaDien"].DefaultCellStyle.Format = "N2";
             dataGridView1.Columns["DonGiaNuoc"].DefaultCellStyle.Format = "N2";
             Infor();
+
+            comboBox1.DataSource = DataProvider.Instance.ExecuteQuery("SELECT DISTINCT Nam FROM DonGia");
+            comboBox1.DisplayMember = "Nam";
+            comboBox1.ValueMember = "Nam";
+            comboBox1.SelectedIndex = -1;
         }
 
         private void DonGia_Load(object sender, EventArgs e)
@@ -79,13 +85,31 @@ namespace QuanLyHoaDon.GUI
             SetUp();
         }
 
+        private void VeBieuDo()
+        {
+            chart1.Series[0].LabelFormat = "F2";
+            chart1.Series[1].LabelFormat = "F2";
+
+            var row = comboBox1.SelectedItem as DataRowView;
+            if (row == null) return;
+
+            int nam = Convert.ToInt32(row["Nam"]);
+            DataTable dt = DataProvider.Instance.ExecuteQuery("Select DonGiaDien, DonGiaNuoc from DonGia where Nam = @a", new object[] { nam });
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                chart1.Series[0].Points.AddXY("Thang " + (i + 1).ToString(), float.Parse(dt.Rows[i][0].ToString()));
+                chart1.Series[1].Points.AddXY("Thang " + (i + 1).ToString(), float.Parse(dt.Rows[i][1].ToString()));
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             panel2.Visible = true;
             NewDonGia();
-            if (MessageBox.Show("Tháng mới có thay đổi đơn giá với tháng cũ không?","Câu hỏi?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Tháng mới có thay đổi đơn giá với tháng cũ không?", "Câu hỏi?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                     textBox7.Focus();
+                textBox7.Focus();
 
             }
             else
@@ -110,7 +134,7 @@ namespace QuanLyHoaDon.GUI
             try
             {
                 int k = DataProvider.Instance.ExecuteNonQuery("insert into DonGia (IDDonGia,Nam,Thang,DonGiaDien,DonGiaNuoc) values ( @a , @b , @c , @d , @e )"
-                    ,new object[] {int.Parse(textBox10.Text), int.Parse(textBox9.Text), int.Parse(textBox8.Text),float.Parse(textBox7.Text), float.Parse(textBox6.Text) });
+                    , new object[] { int.Parse(textBox10.Text), int.Parse(textBox9.Text), int.Parse(textBox8.Text), float.Parse(textBox7.Text), float.Parse(textBox6.Text) });
                 if (k > 0)
                 {
                     MessageBox.Show("Thêm đơn giá thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -148,7 +172,7 @@ namespace QuanLyHoaDon.GUI
             {
                 ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("Nam = {0}", textBox12.Text);
             }
-            if(!string.IsNullOrEmpty(textBox11.Text))
+            if (!string.IsNullOrEmpty(textBox11.Text))
             {
                 ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("Thang = {0}", textBox11.Text);
             }
@@ -161,10 +185,26 @@ namespace QuanLyHoaDon.GUI
             {
                 ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("Nam = {0}", textBox12.Text);
             }
-            if(!string.IsNullOrEmpty(textBox11.Text))
+            if (!string.IsNullOrEmpty(textBox11.Text))
             {
                 ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("Thang = {0}", textBox11.Text);
             }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            chart1.Series[0].Points.Clear();
+            chart1.Series[1].Points.Clear();
+            if (comboBox1.SelectedIndex != -1)
+            {
+                VeBieuDo();
+            }
+           
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
