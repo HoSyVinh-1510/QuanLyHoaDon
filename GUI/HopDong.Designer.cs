@@ -288,7 +288,7 @@
             this.cB1.Name = "cB1";
             this.cB1.Size = new System.Drawing.Size(161, 31);
             this.cB1.TabIndex = 7;
-            this.cB1.SelectionChangeCommitted += new System.EventHandler(this.cB1_SelectionChangeCommitted);
+            this.cB1.SelectionChangeCommitted += new System.EventHandler(this.cB1_SelectionChangeCommitted_1);
             // 
             // label28
             // 
@@ -406,9 +406,9 @@
             // button6
             // 
             this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.button6.Location = new System.Drawing.Point(443, 292);
+            this.button6.Location = new System.Drawing.Point(443, 294);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(114, 65);
+            this.button6.Size = new System.Drawing.Size(114, 63);
             this.button6.TabIndex = 12;
             this.button6.Text = "Thêm Hợp Đồng";
             this.button6.UseVisualStyleBackColor = false;

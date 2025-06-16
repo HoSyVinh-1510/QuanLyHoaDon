@@ -30,8 +30,8 @@ namespace QuanLyHoaDon.GUI
             }
         }
 
-         private DataTable dt= DataProvider.Instance.ExecuteQuery("Select HopDong.IDHopDong,KhachHang.IDKhachHang,HopDong.Phong,HopDong.NgayBD,HopDong.NgayKT,KhachHang.Ten," +
-            "KhachHang.SDT from HopDong,KhachHang where HopDong.IDHopDong=KhachHang.IDKhachHang ");
+        private DataTable dt = DataProvider.Instance.ExecuteQuery("Select HopDong.IDHopDong,KhachHang.IDKhachHang,HopDong.Phong,HopDong.NgayBD,HopDong.NgayKT,KhachHang.Ten," +
+           "KhachHang.SDT from HopDong,KhachHang where HopDong.IDHopDong=KhachHang.IDKhachHang ");
         private HopDong()
         {
             InitializeComponent();
@@ -47,12 +47,12 @@ namespace QuanLyHoaDon.GUI
             cB1.DataSource = DataProvider.Instance.ExecuteQuery("Select distinct IDKhachHang from KhachHang order by IDKhachHang ASC");
             cB1.DisplayMember = "IDKhachHang";
             cB1.ValueMember = "IDKhachHang";
-            cB1.SelectedIndex = -1;
+            cB1.SelectedIndex = 0;
 
-            cB2.DataSource=DataProvider.Instance.ExecuteQuery("Select distinct Phong from Phong");
+            cB2.DataSource = DataProvider.Instance.ExecuteQuery("Select distinct Phong from Phong");
             cB2.DisplayMember = "Phong";
             cB2.ValueMember = "Phong";
-            cB2.SelectedIndex = -1;
+            cB2.SelectedIndex = 0;
 
             dT1.Value = DateTime.Now;
             dT1.Checked = true;
@@ -72,27 +72,30 @@ namespace QuanLyHoaDon.GUI
             txtTenKH.Text = DataProvider.Instance.ExecuteScalar(" Select Ten from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(txtHD.Text) }).ToString();
             txtSDT.Text = DataProvider.Instance.ExecuteScalar(" Select SDT from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(txtHD.Text) }).ToString();
 
+            txtHD1.Text = (HopDongDAL.Instance.GetMaxIDHopDong()+1).ToString();
+
         }
         public void HopDong_Load(object sender, EventArgs e)
         {
-            pn2.Visible = false;       
+            pn2.Visible = false;
             SetUp();
         }
 
         private bool Check()
         {
-            if (cB1.SelectedValue==null)
+            if (cB1.SelectedIndex < 0)
             {
                 MessageBox.Show("Bạn hãy chọn ID Khách Hàng:");
                 cB1.Focus();
                 return false;
             }
-            if (cB2.SelectedValue == null)
+            if (cB2.SelectedIndex<0)
             {
                 MessageBox.Show("Bạn hãy chọn Phòng:");
                 cB2.Focus();
                 return false;
             }
+
             if (dT1.Checked == false)
             {
                 MessageBox.Show("Bạn hãy chọn Ngày Bắt Đầu:");
@@ -100,47 +103,47 @@ namespace QuanLyHoaDon.GUI
                 return false;
             }
 
-            if (dT1.Checked == true && dT1.Value > dT2.Value &&dT2.Checked)
-            {
-                MessageBox.Show("Ngày Kết Thúc phải lớn hơn Ngày Bắt Đầu:");
-                dT2.Focus();
-                return false;
-            }
-             
             string phong = cB2.SelectedValue.ToString();
 
             if (dT2.Checked == false)
             {
-                DataTable dt = DataProvider.Instance.ExecuteQuery(" Select * from HopDong  where Phong= @a and NgayKT IS NULL ", new object[] { cB2.SelectedValue.ToString() });
-                if (dt.Rows.Count > 0) return false;  //Hợp đồng vô thời hạn đã có người thuê!
+                DataTable dt1 = DataProvider.Instance.ExecuteQuery(" Select * from HopDong  where Phong= @a and NgayKT IS NULL ", new object[] { phong });
+                if (dt1.Rows.Count > 0) return false;  
+                
+                DataTable dt2 = DataProvider.Instance.ExecuteQuery("Select * from HopDong  where Phong= @a and NgayKT> @b  ", new object[] { phong, dT1.Value.Date });
+                if (dt2.Rows.Count > 0) return false;
+                else return true;
+            }
+            else
+            {
 
-                dt = DataProvider.Instance.ExecuteQuery("Select * from HopDong  where Phong= @a and NgayKT> @b ", new object[] { cB2.SelectedValue.ToString(), dT1.Value.Date });
-                if (dt.Rows.Count > 0) return false;
+                if (dT1.Value.Date > dT2.Value.Date)
+                {
+                    MessageBox.Show("Ngày Kết Thúc phải lớn hơn Ngày Bắt Đầu:");
+                    dT2.Focus();
+                    return false;
+                }
+
+                DataTable dt1 = DataProvider.Instance.ExecuteQuery("Select * from HopDong  where Phong= @a and NgayKT IS NULL and NgayBD< @b ", new object[] { phong, dT2.Value.Date });
+                DataTable dt2 = DataProvider.Instance.ExecuteQuery("Select * from HopDong  where Phong= @a and  NgayKT> @d1 and NgayBD< @d2 ", new object[] { phong, dT1.Value.Date, dT1.Value.Date });
+                DataTable dt3 = DataProvider.Instance.ExecuteQuery("Select * from HopDong  where Phong= @a and  NgayKT> @d1 and NgayBD< @d2 ", new object[] { phong, dT2.Value.Date, dT2.Value.Date });
+                if (dt1.Rows.Count + dt2.Rows.Count + dt3.Rows.Count > 0) return false;
                 else return true;
             }
 
-            else
-            {                
-                    DataTable dt1= DataProvider.Instance.ExecuteQuery("Select * from HopDong  where Phong= @a and NgayKT IS NULL and NgayBD< @b ", new object[] { phong, dT2.Value.Date });                             
-                    DataTable dt2= DataProvider.Instance.ExecuteQuery("Select * from HopDong  where Phong= @a and  NgayKT> @d1 and NgayBD< @d2 ", new object[] { phong, dT1.Value.Date,dT1.Value.Date });
-                    DataTable dt3 = DataProvider.Instance.ExecuteQuery("Select * from HopDong  where Phong= @a and  NgayKT> @d1 and NgayBD< @d2 ", new object[] { phong, dT2.Value.Date, dT2.Value.Date });
-                if (dt1.Rows.Count+dt2.Rows.Count+dt3.Rows.Count > 0) return false;
-                    else return true;                
-            }  
-            
         }
 
         private bool KtraHopDongCoTheThayDoi(int idHD)
         {
-            DataRow row= DataProvider.Instance.ExecuteQuery("Select * from HopDong where IDHopDong= @a ",new object[] { idHD }).Rows[0];
-            if (DateTime.Parse(row["NgayBD"].ToString()) > DateTime.Now.Date )
+            DataRow row = DataProvider.Instance.ExecuteQuery("Select * from HopDong where IDHopDong= @a ", new object[] { idHD }).Rows[0];
+            if (DateTime.Parse(row["NgayBD"].ToString()) > DateTime.Now.Date)
             {
                 return true;
             }
-            if (row["NgayKT"]==null || row["NgayKT"]==DBNull.Value)
+            if (row["NgayKT"] == null || row["NgayKT"] == DBNull.Value)
                 return true;
-            DateTime dt= DateTime.Parse(row["NgayKT"].ToString());
-            return dt>DateTime.Now.Date;           
+            DateTime dt = DateTime.Parse(row["NgayKT"].ToString());
+            return dt > DateTime.Now.Date;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -153,11 +156,6 @@ namespace QuanLyHoaDon.GUI
             infor();
         }
 
-        private void cB1_SelectionChangeCommitted(object sender, EventArgs e)
-        {
-            txtTenKH1.Text = DataProvider.Instance.ExecuteScalar("Select Ten from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(cB1.SelectedValue.ToString()) }).ToString();
-            txtSDT1.Text = DataProvider.Instance.ExecuteScalar("Select SDT from KhachHang where IDKhachHang= @a ", new object[] { int.Parse(cB1.SelectedValue.ToString()) }).ToString();
-        }
 
         private void button7_Click(object sender, EventArgs e)
         {
@@ -178,33 +176,32 @@ namespace QuanLyHoaDon.GUI
 
         private void button6_Click(object sender, EventArgs e)
         {
+
             if (!Check())
             {
                 MessageBox.Show("Lỗi logic hợp đồng (Do bị trùng ngày hoặc nhập dữ liệu thiếu) ! ", "Thông báo LỖI");
                 return;
             }
-            else
-            {
+            
                 int k = 0;
+                int IDHopDong = HopDongDAL.Instance.GetMaxIDHopDong()+1;
                 if (dT2.Checked == true)
+                    k = DataProvider.Instance.ExecuteNonQuery("insert into HopDong (IDHopDong,IDKhachHang,Phong,NgayBD,NgayKT) values ( @a , @b , @c , @d , @e ) ",
+                        new object[] { IDHopDong, (int)cB1.SelectedValue, cB2.SelectedValue.ToString(), (DateTime)dT1.Value.Date, (DateTime)dT2.Value.Date });
+                else
                 {
-                    DateTime dt=dT2.Value.Date;
-                    HopDongDAL.Instance.ThemHopDong(txtHD1.Text, cB1.SelectedValue.ToString(), cB2.SelectedValue.ToString(), dT1.Value.Date, dt);
+                    k = DataProvider.Instance.ExecuteNonQuery("insert into HopDong (IDHopDong,IDKhachHang,Phong,NgayBD,NgayKT) values ( @a , @b , @c , @d , NULL ) ",
+                        new object[] { IDHopDong, (int)cB1.SelectedValue, cB2.SelectedValue.ToString(), (DateTime)dT1.Value });
                 }
 
+                if (k == 0)
+                {
+                    MessageBox.Show("Thêm hợp đồng thất bại");
+                }
                 else
-                { 
-                    k = DataProvider.Instance.ExecuteNonQuery("insert into HopDong (IDHopDong,IDKhachHang,Phong,NgayBD,NgayKT) values ( @a , @b , @c , @d , NULL ) ", new object[] { txtHD1.Text, cB1.SelectedValue.ToString(), cB2.SelectedValue.ToString() , dT1.Value.ToString() });
-                    if (k == 0)
-                    {
-                        MessageBox.Show("Thêm hợp đồng thất bại!");
-                    }
-
+                {
                     PhongDAL.Instance.UpdatePhong(cB2.SelectedValue.ToString());
                 }
-
-            }
-
             dataGridView1.DataSource = dt;
 
         }
@@ -213,19 +210,26 @@ namespace QuanLyHoaDon.GUI
         private void timTenKH_Enter(object sender, EventArgs e)
         {
             FormatTextInput.Instance.InputTextBox(timTenKH);
-            
+
         }
 
         private void timTenKH_Leave(object sender, EventArgs e)
         {
             if (timTenKH.Text == "" && timTenKH.Text == null)
             {
-                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter=string.Empty;
+                ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Empty;
             }
             else
             {
                 ((DataTable)dataGridView1.DataSource).DefaultView.RowFilter = string.Format("Ten LIKE '%{0}%'", timTenKH.Text);
             }
+        }
+
+        private void cB1_SelectionChangeCommitted_1(object sender, EventArgs e)
+        {
+            int id = (int)cB1.SelectedValue;
+            txtTenKH1.Text = DataProvider.Instance.ExecuteScalar("Select Ten from KhachHang where IDKhachHang= @a ", new object[] { id }).ToString();
+            txtSDT1.Text = DataProvider.Instance.ExecuteScalar("Select SDT from KhachHang where IDKhachHang= @a ", new object[] { id }).ToString();
         }
     }
 }

@@ -135,7 +135,6 @@
             this.comboBox2.Size = new System.Drawing.Size(167, 27);
             this.comboBox2.TabIndex = 41;
             this.comboBox2.SelectedValueChanged += new System.EventHandler(this.comboBox2_SelectedValueChanged);
-            this.comboBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox2_KeyPress);
             // 
             // label17
             // 

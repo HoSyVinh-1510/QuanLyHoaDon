@@ -14,19 +14,9 @@ namespace QuanLyHoaDon.GUI
 {
     public partial class ThanhToanHoaDonDien : Form
     {
-        private int IDHoaDonDien;
+        private int IDHoaDonDien=0;
 
-        private static ThanhToanHoaDonDien instance;
-        public static ThanhToanHoaDonDien Instance(int id)
-        {         
-                if (instance == null || instance.IsDisposed)
-                {
-                    instance = new ThanhToanHoaDonDien(id);
-                }
-                return instance;          
-        }
-
-        private ThanhToanHoaDonDien(int idHoaDonDien)
+        public ThanhToanHoaDonDien(int idHoaDonDien)
         {
             this.IDHoaDonDien = idHoaDonDien;
             InitializeComponent();
@@ -76,9 +66,9 @@ namespace QuanLyHoaDon.GUI
                     {
                         KhachHang kh=new KhachHang(int.Parse(textBox1.Text),textBox2.Text,textBox3.Text);
                         HoaDonDienDTO hoaDonDienDTO = new HoaDonDienDTO(int.Parse(textBox4.Text), int.Parse(textBox1.Text), textBox5.Text, int.Parse(textBox7.Text), int.Parse(textBox6.Text), float.Parse(textBox8.Text), float.Parse(textBox9.Text), float.Parse(textBox10.Text));
-                        BillDien.Instance(kh,hoaDonDienDTO,dateTimePicker1.Value.Date).ShowDialog();
-                        LichSuThanhToanHoaDonDienDAL.Instance.ThemLichSu(IDHoaDonDien, dateTimePicker1.Value.Date);
+                        BillDien.Instance(kh,hoaDonDienDTO,dateTimePicker1.Value.Date).ShowDialog();                     
                         MessageBox.Show("Thanh toán thành công!");
+                        LichSuThanhToanHoaDonDienDAL.Instance.ThemLichSu(IDHoaDonDien, dateTimePicker1.Value.Date);
                     }
                     
                 }

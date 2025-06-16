@@ -206,6 +206,7 @@ namespace QuanLyHoaDon.GUI
                 return;
             }
             dataGridViewSoDienNuoc.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM SoDienNuoc");
+            comboBox1.SelectedIndex = -1;
             Infor();
         }
 

@@ -39,8 +39,8 @@ namespace QuanLyHoaDon.GUI
             textBox1.Text = row.Cells[0].Value.ToString();
             textBox2.Text = row.Cells[1].Value.ToString();
             textBox3.Text = row.Cells[2].Value.ToString();
-            textBox4.Text = row.Cells[3].Value.ToString();
-            textBox5.Text = row.Cells[4].Value.ToString();
+            textBox4.Text = float.Parse(row.Cells[3].Value.ToString()).ToString("F2");
+            textBox5.Text = float.Parse(row.Cells[4].Value.ToString()).ToString("F2");
 
         }
 
@@ -117,6 +117,8 @@ namespace QuanLyHoaDon.GUI
                 DonGiaDAL.Instance.NewDonGiaKhongDoi();
                 DonGia_Load(sender, e);
             }
+            
+           
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -209,9 +211,76 @@ namespace QuanLyHoaDon.GUI
            
         }
 
-        private void label16_Click(object sender, EventArgs e)
+       
+        private void textBox12_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+ 
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+        private bool CoTheSua()
+        {
+            DateTime dt = DateTime.Now;
+            if (int.Parse(textBox2.Text) != dt.Year) return int.Parse(textBox2.Text) > dt.Year;
+            if (int.Parse(textBox3.Text) != dt.Month) return int.Parse(textBox3.Text) > dt.Month;
+            else return true;
+        
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (CoTheSua())
+            {
+                int k= DataProvider.Instance.ExecuteNonQuery("UPDATE DonGia SET DonGiaDien = @a , DonGiaNuoc = @b WHERE Thang= @c and Nam= @d", 
+                    new object[] { float.Parse(textBox4.Text), float.Parse(textBox5.Text), int.Parse(textBox3.Text),int.Parse(textBox2.Text) });
+                if (k > 0)
+                {
+                    MessageBox.Show("Cập nhật đơn giá thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridView1.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.DonGia");
+                }
+            }
+            else 
+            {
+                MessageBox.Show("Không thể sửa đơn giá của thời điểm trong quá khứ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
+        private void textBox3_Enter(object sender, EventArgs e)
+        {
+            FormatTextInput.Instance.Float(textBox3);   
+        }
+
+        private void textBox4_Enter(object sender, EventArgs e)
+        {
+            FormatTextInput.Instance.Float(textBox4);   
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (CoTheSua())
+            {
+                int k = DataProvider.Instance.ExecuteNonQuery("DELETE FROM DonGia WHERE Thang= @a and Nam= @b", new object[] { int.Parse(textBox3.Text), int.Parse(textBox2.Text) });
+                if (k > 0)
+                {
+                    MessageBox.Show("Xóa đơn giá thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    dataGridView1.DataSource = DataProvider.Instance.ExecuteQuery("SELECT * FROM dbo.DonGia");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Không thể xóa đơn giá của thời điểm trong quá khứ", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 }

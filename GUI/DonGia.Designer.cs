@@ -34,6 +34,7 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -68,6 +69,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -76,6 +78,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.button4);
+            this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.label15);
@@ -105,13 +109,23 @@
             this.panel1.Size = new System.Drawing.Size(1750, 819);
             this.panel1.TabIndex = 0;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(713, 310);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(113, 45);
+            this.button3.TabIndex = 18;
+            this.button3.Text = "Sửa Đơn Giá";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
             // comboBox1
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comboBox1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(942, 424);
+            this.comboBox1.Location = new System.Drawing.Point(1336, 604);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(140, 27);
             this.comboBox1.TabIndex = 30;
@@ -122,7 +136,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label16.ForeColor = System.Drawing.Color.Blue;
-            this.label16.Location = new System.Drawing.Point(1106, 419);
+            this.label16.Location = new System.Drawing.Point(1277, 548);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(457, 23);
             this.label16.TabIndex = 29;
@@ -132,7 +146,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label15.Location = new System.Drawing.Point(882, 427);
+            this.label15.Location = new System.Drawing.Point(1277, 607);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(43, 19);
             this.label15.TabIndex = 28;
@@ -145,7 +159,7 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(473, 457);
+            this.chart1.Location = new System.Drawing.Point(12, 481);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -161,7 +175,7 @@
             series2.Name = "Đơn giá nước";
             this.chart1.Series.Add(series1);
             this.chart1.Series.Add(series2);
-            this.chart1.Size = new System.Drawing.Size(1253, 350);
+            this.chart1.Size = new System.Drawing.Size(1253, 326);
             this.chart1.TabIndex = 26;
             this.chart1.Text = "chart1";
             // 
@@ -169,26 +183,28 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label13.Location = new System.Drawing.Point(486, 327);
+            this.label13.Location = new System.Drawing.Point(486, 378);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(117, 19);
             this.label13.TabIndex = 25;
             this.label13.Text = "Tìm Theo Năm";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label14.Location = new System.Drawing.Point(484, 383);
+            this.label14.Location = new System.Drawing.Point(484, 434);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(128, 19);
             this.label14.TabIndex = 24;
             this.label14.Text = "Tìm Theo Tháng";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
             // textBox11
             // 
             this.textBox11.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.textBox11.Location = new System.Drawing.Point(624, 380);
+            this.textBox11.Location = new System.Drawing.Point(624, 431);
             this.textBox11.Name = "textBox11";
             this.textBox11.Size = new System.Drawing.Size(202, 27);
             this.textBox11.TabIndex = 23;
@@ -199,11 +215,12 @@
             // textBox12
             // 
             this.textBox12.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.textBox12.Location = new System.Drawing.Point(624, 324);
+            this.textBox12.Location = new System.Drawing.Point(624, 375);
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(202, 27);
             this.textBox12.TabIndex = 22;
             this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox12.TextChanged += new System.EventHandler(this.textBox12_TextChanged);
             this.textBox12.Enter += new System.EventHandler(this.textBox12_Enter);
             this.textBox12.Leave += new System.EventHandler(this.textBox12_Leave);
             // 
@@ -283,7 +300,7 @@
             this.button1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(333, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(115, 60);
+            this.button1.Size = new System.Drawing.Size(115, 64);
             this.button1.TabIndex = 7;
             this.button1.Text = "Thêm Đơn Giá Tháng";
             this.button1.UseVisualStyleBackColor = false;
@@ -424,7 +441,6 @@
             this.textBox5.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.textBox5.Location = new System.Drawing.Point(624, 266);
             this.textBox5.Name = "textBox5";
-            this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(202, 27);
             this.textBox5.TabIndex = 5;
             this.textBox5.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -434,10 +450,10 @@
             this.textBox4.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.textBox4.Location = new System.Drawing.Point(624, 203);
             this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(202, 27);
             this.textBox4.TabIndex = 4;
             this.textBox4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox4.Enter += new System.EventHandler(this.textBox4_Enter);
             // 
             // textBox3
             // 
@@ -448,6 +464,7 @@
             this.textBox3.Size = new System.Drawing.Size(202, 27);
             this.textBox3.TabIndex = 3;
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox3.Enter += new System.EventHandler(this.textBox3_Enter);
             // 
             // textBox2
             // 
@@ -490,6 +507,16 @@
             this.dataGridView1.Size = new System.Drawing.Size(870, 342);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(582, 310);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(113, 45);
+            this.button4.TabIndex = 31;
+            this.button4.Text = "Xóa Đơn Giá";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // DonGia
             // 
@@ -547,5 +574,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }

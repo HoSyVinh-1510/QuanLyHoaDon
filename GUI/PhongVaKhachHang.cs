@@ -252,14 +252,5 @@ namespace QuanLyHoaDon.GUI
             }
         }
 
-        private void comboBox2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                e.Handled = true;
-                comboBox2_SelectedValueChanged(sender, e);
-                comboBox2_SelectedValueChanged(sender, e);
-            }
-        }
     }
 }

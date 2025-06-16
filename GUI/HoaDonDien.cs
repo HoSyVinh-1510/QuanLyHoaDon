@@ -97,8 +97,8 @@ namespace QuanLyHoaDon.GUI
         {
             if(textBox13.Text== "Chưa thanh toán")
             {
-                
-                ThanhToanHoaDonDien.Instance(int.Parse(textBox1.Text)).ShowDialog();
+                ThanhToanHoaDonDien tt = new ThanhToanHoaDonDien(int.Parse(textBox1.Text));
+                tt.ShowDialog();
             }
             else
             {
@@ -123,14 +123,15 @@ namespace QuanLyHoaDon.GUI
                     float.Parse(textBox7.Text),
                     float.Parse(textBox9.Text)
                 );
+
                 DateTime dt=DateTime.Parse(textBox13.Text).Date;
                 BillDien.Instance(khachHang, hoaDonDienDTO, dt).ShowDialog();
             }
             else
             {
                 MessageBox.Show("Hóa đơn chưa thanh toán. Chuyển đến trang thanh toán","Thông báo");
-                ThanhToanHoaDonDien.Instance(int.Parse(textBox1.Text)).ShowDialog();
-                button1_Click(sender, e);
+                ThanhToanHoaDonDien tt = new ThanhToanHoaDonDien(int.Parse(textBox1.Text));
+                tt.ShowDialog();
                 return;
             }
         }
@@ -167,8 +168,7 @@ namespace QuanLyHoaDon.GUI
             if (comboBox1.SelectedIndex == 1)
             {
                 dataGridViewHoaDonDien.DataSource = null;
-                dataGridViewHoaDonDien.DataSource = dt2;
-                
+                dataGridViewHoaDonDien.DataSource = dt2;           
             }
             Output();
         }
