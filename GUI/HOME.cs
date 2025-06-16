@@ -12,6 +12,7 @@ using System.Windows.Forms;
 namespace QuanLyHoaDon.GUI
 { 
      
+    // Yêu cầu ở đây
     public partial class HOME : Form
     {
         private static HOME instance;
