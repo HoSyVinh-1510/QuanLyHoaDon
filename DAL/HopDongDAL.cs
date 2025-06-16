@@ -25,17 +25,14 @@ namespace QuanLyHoaDon.DAL
         }
         private HopDongDAL() { }
         
-        public void ThemHopDong(int idHD,int idKH, string phong,DateTime ngayBD, DateTime? ngayKT)
+        public void ThemHopDong(string idHD,string idKH, string phong,DateTime ngayBD, DateTime ngayKT)
         {
             try
             {
-                int k;
-                if (ngayKT != null)
-                  k = DataProvider.Instance.ExecuteNonQuery("insert into HopDong (IDHopDong,IDKhachHang,Phong,NgayBD,NgayKT) values ( @a , @b , @c , @d , @e ) ", new object[] { idHD, idKH, phong, ngayBD.Date, ((DateTime)ngayKT).Date });
-                else
-                {
-                    k = DataProvider.Instance.ExecuteNonQuery("insert into HopDong (IDHopDong,IDKhachHang,Phong,NgayBD,NgayKT) values ( @a , @b , @c , @d , @e ) ", new object[] { idHD, idKH, phong, ngayBD.Date, DBNull.Value });
-                }
+                int k=0;
+               
+                k = DataProvider.Instance.ExecuteNonQuery("insert into HopDong (IDHopDong,IDKhachHang,Phong,NgayBD,NgayKT) values ( @a , @b , @c , @d , @e ) ", new object[] { idHD, idKH, phong, ngayBD.Date, ngayKT.Date });
+                
                 if (k == 0)
                 {
                     MessageBox.Show("Thêm hợp đồng thất bại");

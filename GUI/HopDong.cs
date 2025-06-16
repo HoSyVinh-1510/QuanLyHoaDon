@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -184,10 +185,26 @@ namespace QuanLyHoaDon.GUI
             }
             else
             {
+                int k = 0;
                 if (dT2.Checked == true)
-                    HopDongDAL.Instance.ThemHopDong(int.Parse(txtHD1.Text), int.Parse(cB1.SelectedValue.ToString()), cB2.SelectedValue.ToString(), dT1.Value.Date, dT2.Value.Date);
-                else HopDongDAL.Instance.ThemHopDong(int.Parse(txtHD1.Text), int.Parse(cB1.SelectedValue.ToString()), cB2.SelectedValue.ToString(), dT1.Value.Date, null);
+                {
+                    DateTime dt=dT2.Value.Date;
+                    HopDongDAL.Instance.ThemHopDong(txtHD1.Text, cB1.SelectedValue.ToString(), cB2.SelectedValue.ToString(), dT1.Value.Date, dt);
+                }
+
+                else
+                { 
+                    k = DataProvider.Instance.ExecuteNonQuery("insert into HopDong (IDHopDong,IDKhachHang,Phong,NgayBD,NgayKT) values ( @a , @b , @c , @d , NULL ) ", new object[] { txtHD1.Text, cB1.SelectedValue.ToString(), cB2.SelectedValue.ToString() , dT1.Value.ToString() });
+                    if (k == 0)
+                    {
+                        MessageBox.Show("Thêm hợp đồng thất bại!");
+                    }
+
+                    PhongDAL.Instance.UpdatePhong(cB2.SelectedValue.ToString());
+                }
+
             }
+
             dataGridView1.DataSource = dt;
 
         }

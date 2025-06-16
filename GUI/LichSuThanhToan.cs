@@ -1,4 +1,6 @@
-﻿using System;
+﻿using QuanLyHoaDon.DAL;
+using QuanLyHoaDon.DTO;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using QuanLyHoaDon.DAL;
-using QuanLyHoaDon.DTO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace QuanLyHoaDon.GUI
 {
@@ -113,29 +114,26 @@ namespace QuanLyHoaDon.GUI
         private void button1_Click(object sender, EventArgs e)
         {
 
-            string chuoiLoc= string.Empty;
-            
-           
-            if (!string.IsNullOrEmpty(comboBox1.Text))
+            string chuoiLoc = string.Empty;
+            ((DataTable)dG1.DataSource).DefaultView.RowFilter = string.Empty;
+
+            if (comboBox1.SelectedValue != null)
             {
-                chuoiLoc = $"Phong = '{comboBox1.Text}'";
+                chuoiLoc += $"Phong = '{comboBox1.SelectedValue.ToString()}' ";
             }
 
-            if(!string.IsNullOrEmpty(textBox1.Text))
+            if (!string.IsNullOrEmpty(textBox1.Text))
             {
                 if (!string.IsNullOrEmpty(chuoiLoc))
-                {
                     chuoiLoc += " AND ";
-                }
-                ((DataTable)dG1.DataSource).DefaultView.RowFilter = $"Nam= {textBox1.Text}";
+                chuoiLoc += $"Nam = {textBox1.Text} ";
             }
+
             if (!string.IsNullOrEmpty(textBox2.Text))
             {
                 if (!string.IsNullOrEmpty(chuoiLoc))
-                {
                     chuoiLoc += " AND ";
-                }
-                ((DataTable)dG1.DataSource).DefaultView.RowFilter = $"Thang= {textBox2.Text}";
+                chuoiLoc += $"Thang = {textBox2.Text} ";
             }
 
             ((DataTable)dG1.DataSource).DefaultView.RowFilter = chuoiLoc;
@@ -144,29 +142,27 @@ namespace QuanLyHoaDon.GUI
         private void button2_Click(object sender, EventArgs e)
         {
             string chuoiLoc = string.Empty;
+            ((DataTable)dG2.DataSource).DefaultView.RowFilter = string.Empty;
 
-
-            if (!string.IsNullOrEmpty(comboBox2.Text))
+            if (comboBox2.SelectedValue != null)
             {
-                chuoiLoc = $"Phong = '{comboBox2.Text}'";
+                chuoiLoc += $"Phong = '{comboBox2.SelectedValue.ToString()}' ";
             }
 
             if (!string.IsNullOrEmpty(textBox4.Text))
             {
                 if (!string.IsNullOrEmpty(chuoiLoc))
-                {
                     chuoiLoc += " AND ";
-                }
-                ((DataTable)dG1.DataSource).DefaultView.RowFilter = $"Nam= {textBox4.Text}";
+                chuoiLoc += $"Nam = {textBox4.Text} ";
             }
+
             if (!string.IsNullOrEmpty(textBox5.Text))
             {
                 if (!string.IsNullOrEmpty(chuoiLoc))
-                {
                     chuoiLoc += " AND ";
-                }
-                ((DataTable)dG1.DataSource).DefaultView.RowFilter = $"Thang= {textBox5.Text}";
+                chuoiLoc += $"Thang = {textBox5.Text} ";
             }
+
             ((DataTable)dG2.DataSource).DefaultView.RowFilter = chuoiLoc;
 
         }
